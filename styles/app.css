@@ -1,0 +1,60 @@
+/* App-only additions that aren't part of the ported Claude Design CSS.
+   Kept separate so styles/tokens.css, site.css and pages.css stay pristine. */
+
+/* ---- NAV DROPDOWN — render label + mono sub-meta on their own lines ----
+   The ported site.css leaves .nav__panel-label and .nav__panel-meta as inline
+   spans, so "For Blue-Collar Workers" and "In development · UAE" mash onto one
+   line. The meta's `margin-top: 4px` only takes effect as a block, and every
+   parallel label+meta pattern in the system stacks — so this realizes the
+   intended two-line item rather than a latent prototype bug. */
+.nav__panel-label,
+.nav__panel-meta {
+  display: block;
+}
+
+/* ---- TRANSLATION GATE ----
+   Shown when a visitor switches to हिं / বাং. Honest placeholder, styled to
+   the same editorial system rather than fake-translated content. */
+.translation-gate {
+  padding-top: clamp(96px, 16vh, 200px);
+  padding-bottom: clamp(96px, 16vh, 200px);
+}
+.translation-gate__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--marigold-deep);
+  margin: 0 0 28px;
+}
+.translation-gate__head {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, "SOFT" 25;
+  color: var(--ink);
+  margin: 0;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+.translation-gate__body {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.6vw, 26px);
+  line-height: 1.42;
+  color: var(--ink-70);
+  font-variation-settings: "opsz" 30, "SOFT" 60;
+  margin: 36px 0 0;
+  max-width: 40rem;
+  text-wrap: pretty;
+}
+
+/* ---- TEMPORARY shell preview (removed once the homepage lands) ---- */
+.shell-preview {
+  padding-top: clamp(72px, 12vh, 144px);
+  padding-bottom: clamp(72px, 12vh, 144px);
+}

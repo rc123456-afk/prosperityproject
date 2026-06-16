@@ -1,0 +1,377 @@
+/* ==========================================================================
+   The Prosperity Project — Design Tokens
+   Colors, type, spacing, and semantic style variables.
+   Single source of truth — import this on every page.
+   Fonts are imported once in app/globals.css (Google Fonts @import, identical
+   to the Claude Design output).
+   ========================================================================== */
+
+:root {
+  /* ----------------------------------------------------------------------
+     COLOR — three-color palette. No substitutions.
+     ---------------------------------------------------------------------- */
+
+  /* Foundations */
+  --paper:        #F2EBDC;   /* Paper cream — dominant background */
+  --ink:          #1F1A17;   /* Ink — body text, structure, inverted hero */
+  --marigold:     #C88A2E;   /* Marigold — accent, used sparingly */
+
+  /* Derived (do not introduce new hues — only opacity / darkening of the above) */
+  --marigold-deep:   #9F6A14;             /* Marigold darkened — body-link AA accessibility on cream */
+  --paper-deep:      #E8DFCB;             /* Paper one step darker — alternating sections */
+  --ink-90:          rgba(31, 26, 23, 0.90);
+  --ink-70:          rgba(31, 26, 23, 0.70);  /* secondary text */
+  --ink-55:          rgba(31, 26, 23, 0.55);  /* tertiary text, captions on paper */
+  --ink-30:          rgba(31, 26, 23, 0.30);  /* hairline dividers */
+  --ink-15:          rgba(31, 26, 23, 0.15);  /* subtle dividers */
+  --ink-08:          rgba(31, 26, 23, 0.08);  /* hover wash on paper */
+  --paper-70:        rgba(242, 235, 220, 0.70);
+  --paper-55:        rgba(242, 235, 220, 0.55);
+
+  /* Semantic surfaces */
+  --bg:              var(--paper);
+  --bg-alt:          var(--paper-deep);
+  --bg-inverse:      var(--ink);
+  --fg:              var(--ink);
+  --fg-muted:        var(--ink-70);
+  --fg-quiet:        var(--ink-55);
+  --fg-inverse:      var(--paper);
+  --rule:            var(--ink-30);
+  --rule-quiet:      var(--ink-15);
+  --accent:          var(--marigold);
+  --accent-link:     var(--marigold-deep);
+
+  /* ----------------------------------------------------------------------
+     TYPE — four families, deliberate roles.
+     ---------------------------------------------------------------------- */
+
+  --font-display:    'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:       'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-deva:       'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
+  --font-mono:       'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Display optical sizing — Fraunces is variable; lean editorial */
+  --display-opsz-xl: 144;
+  --display-opsz-lg: 96;
+  --display-opsz-md: 48;
+  --display-opsz-sm: 24;
+
+  /* Type scale (rem; 1rem = 16px). Large editorial scale; modest body. */
+  --t-eyebrow:       0.75rem;     /* 12px — mono eyebrows */
+  --t-caption:       0.8125rem;   /* 13px — mono captions, photo credits */
+  --t-small:         0.875rem;    /* 14px — small body, footer */
+  --t-body:          1.0625rem;   /* 17px — body */
+  --t-lede:          1.25rem;     /* 20px — lede paragraphs, intros */
+  --t-h6:            1.0625rem;   /* 17px */
+  --t-h5:            1.25rem;     /* 20px */
+  --t-h4:            1.625rem;    /* 26px */
+  --t-h3:            2.25rem;     /* 36px */
+  --t-h2:            3.25rem;     /* 52px */
+  --t-h1:            4.75rem;     /* 76px */
+  --t-display:       7rem;        /* 112px — hero displays */
+  --t-tagline-deva:  3.5rem;      /* 56px — tagline Devanagari */
+
+  /* Line heights — tighter for display, generous for serif body */
+  --lh-display:      1.02;
+  --lh-heading:      1.10;
+  --lh-subhead:      1.20;
+  --lh-body:         1.55;
+  --lh-caption:      1.45;
+
+  /* Letter-spacing — Fraunces wants near-zero; mono wants wide tracking for eyebrows */
+  --ls-display:      -0.02em;
+  --ls-heading:      -0.01em;
+  --ls-body:          0em;
+  --ls-eyebrow:       0.14em;     /* uppercase mono eyebrows */
+  --ls-mono-caps:     0.08em;
+
+  /* Weights — editorial restraint; we mostly live at 400/500/600 */
+  --w-regular:       400;
+  --w-medium:        500;
+  --w-semibold:      600;
+  --w-bold:          700;
+
+  /* ----------------------------------------------------------------------
+     SPACING — 4px base, named for editorial clarity.
+     ---------------------------------------------------------------------- */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   48px;
+  --s-8:   64px;
+  --s-9:   96px;
+  --s-10:  128px;
+  --s-11:  192px;   /* section breaks */
+
+  /* ----------------------------------------------------------------------
+     LAYOUT — measured columns, editorial widths.
+     ---------------------------------------------------------------------- */
+  /* Spacing tiers — vertical rhythm (use these, not raw px) */
+  --space-related:   var(--s-4);   /* 16 — between tightly related elements (label → field) */
+  --space-block:     var(--s-7);   /* 48 — between blocks within a section (header → body) */
+  --space-section:   var(--s-9);   /* 96 — between sections on a page */
+  --space-page:      var(--s-11);  /* 192 — between major page chapters */
+
+  /* Photo aspect-ratio tokens */
+  --aspect-portrait:  4 / 5;
+  --aspect-landscape: 4 / 3;
+  --aspect-square:    1 / 1;
+  --aspect-cinema:    16 / 9;
+
+  --measure-narrow:  36rem;    /* ~576px — long-form text column */
+  --measure-body:    44rem;    /* ~704px — body block in essays */
+  --measure-wide:    72rem;    /* ~1152px — feature blocks */
+  --measure-page:    84rem;    /* ~1344px — outer page max */
+  --gutter:          var(--s-7);
+  --gutter-lg:       var(--s-9);
+
+  /* ----------------------------------------------------------------------
+     RADII — 4px maximum, by brand rule. Mostly square.
+     ---------------------------------------------------------------------- */
+  --r-0:   0px;
+  --r-1:   2px;
+  --r-2:   4px;       /* MAX */
+  --r-pill: 999px;    /* reserved for very small mono tags only */
+
+  /* ----------------------------------------------------------------------
+     BORDERS — hairlines on paper, no glow effects.
+     ---------------------------------------------------------------------- */
+  --border-hair:   1px solid var(--rule-quiet);
+  --border-rule:   1px solid var(--rule);
+  --border-ink:    1px solid var(--ink);
+  --border-thick:  2px solid var(--ink);
+
+  /* ----------------------------------------------------------------------
+     MOTION — restrained. Editorial, not bouncy.
+     ---------------------------------------------------------------------- */
+  --ease-out:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in:   cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --dur-fast:  140ms;
+  --dur-base:  220ms;
+  --dur-slow:  420ms;
+}
+
+/* ==========================================================================
+   SEMANTIC ELEMENT STYLES — sensible HTML defaults.
+   Apply by adding `class="tpp"` to a root container, or use these as
+   reference for component-level styles.
+   ========================================================================== */
+
+.tpp {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  font-feature-settings: "kern", "liga", "onum";  /* old-style figures by default */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.tpp h1, .tpp .h1,
+.tpp h2, .tpp .h2,
+.tpp h3, .tpp .h3,
+.tpp h4, .tpp .h4 {
+  font-family: var(--font-display);
+  color: var(--fg);
+  font-weight: var(--w-regular);
+  letter-spacing: var(--ls-heading);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.tpp h1, .tpp .h1 {
+  font-size: var(--t-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+}
+.tpp h2, .tpp .h2 {
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+}
+.tpp h3, .tpp .h3 {
+  font-size: var(--t-h3);
+  line-height: var(--lh-heading);
+  font-variation-settings: "opsz" 48, "SOFT" 30;
+}
+.tpp h4, .tpp .h4 {
+  font-size: var(--t-h4);
+  line-height: var(--lh-subhead);
+  font-variation-settings: "opsz" 36;
+  font-weight: var(--w-medium);
+}
+.tpp h5, .tpp .h5 {
+  font-family: var(--font-display);
+  font-size: var(--t-h5);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-subhead);
+  margin: 0;
+}
+.tpp h6, .tpp .h6 {
+  font-family: var(--font-display);
+  font-size: var(--t-h6);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-subhead);
+  margin: 0;
+}
+
+.tpp p {
+  margin: 0 0 var(--s-4) 0;
+  max-width: var(--measure-body);
+  text-wrap: pretty;
+}
+
+.tpp .lede {
+  font-size: var(--t-lede);
+  line-height: 1.45;
+  color: var(--fg);
+  font-style: italic;
+  font-variation-settings: "opsz" 24;
+}
+
+.tpp .eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-eyebrow);
+  font-weight: var(--w-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--fg-muted);
+  margin: 0 0 var(--s-4) 0;
+}
+
+.tpp .caption {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  line-height: var(--lh-caption);
+  color: var(--fg-muted);
+  letter-spacing: 0;
+}
+
+.tpp .credit {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--fg-quiet);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono-caps);
+}
+
+.tpp .num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "lnum";
+  color: var(--accent-link);
+}
+
+/* Devanagari tagline */
+.tpp .tagline-deva {
+  font-family: var(--font-deva);
+  font-size: var(--t-tagline-deva);
+  line-height: 1.25;
+  color: var(--fg);
+  margin: 0;
+}
+.tpp .tagline-roman {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--w-regular);
+  font-size: var(--t-h5);
+  color: var(--fg-muted);
+  letter-spacing: 0;
+  margin: var(--s-3) 0 0 0;
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+}
+
+/* Links — marigold-deep on paper, underlined with offset */
+.tpp a,
+.tpp .link {
+  color: var(--accent-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--accent-link);
+  transition: color var(--dur-fast) var(--ease-out),
+              text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.tpp a:hover,
+.tpp .link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+/* Lists — marigold mono numerals */
+.tpp ol.editorial {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: ed;
+}
+.tpp ol.editorial > li {
+  counter-increment: ed;
+  position: relative;
+  padding: var(--s-4) 0 var(--s-4) var(--s-8);
+  border-top: var(--border-hair);
+}
+.tpp ol.editorial > li:last-child { border-bottom: var(--border-hair); }
+.tpp ol.editorial > li::before {
+  content: counter(ed, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--accent);
+  letter-spacing: var(--ls-mono-caps);
+}
+
+/* Horizontal rule — single hairline */
+.tpp hr {
+  border: 0;
+  border-top: var(--border-rule);
+  margin: var(--s-7) 0;
+}
+
+/* Blockquote — pull quote treatment */
+.tpp blockquote {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-style: italic;
+  font-weight: var(--w-regular);
+  line-height: 1.20;
+  margin: var(--s-7) 0;
+  padding: 0;
+  border: 0;
+  color: var(--fg);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  text-wrap: balance;
+}
+.tpp blockquote cite {
+  display: block;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: var(--t-caption);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono-caps);
+  margin-top: var(--s-4);
+}
+
+/* Code / mono */
+.tpp code, .tpp kbd, .tpp pre {
+  font-family: var(--font-mono);
+  font-size: 0.9375em;
+}
+
+/* Selection */
+.tpp ::selection { background: var(--marigold); color: var(--ink); }
+
+/* Focus */
+.tpp :focus-visible {
+  outline: 2px solid var(--marigold-deep);
+  outline-offset: 2px;
+}
