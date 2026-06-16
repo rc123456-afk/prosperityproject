@@ -12,6 +12,99 @@
   display: block;
 }
 
+/* ---- CONDENSED FOOTER ----
+   A slimmer take on the ported .footer: brand signature + a compact link row +
+   a slim legal strip. Same ink/paper/mono/marigold language, far less height. */
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  margin-top: auto;
+  padding: 56px 0 26px;
+}
+.site-footer a {
+  color: var(--paper);
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: var(--marigold);
+}
+.site-footer__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.site-footer__deva {
+  font-family: var(--font-deva);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--paper);
+  margin: 0;
+}
+.site-footer__roman {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+  color: rgba(242, 235, 220, 0.6);
+  margin: 6px 0 0;
+}
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: flex-end;
+}
+.site-footer__links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(242, 235, 220, 0.82);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.site-footer__links a:hover {
+  color: var(--marigold);
+}
+.site-footer__rule {
+  height: 1px;
+  background: rgba(242, 235, 220, 0.15);
+  margin: 28px 0 18px;
+}
+.site-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 28px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: rgba(242, 235, 220, 0.5);
+}
+.site-footer__legal a {
+  color: rgba(242, 235, 220, 0.72);
+}
+.site-footer__legal a:hover {
+  color: var(--marigold);
+}
+.site-footer__legal .sep {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+@media (max-width: 720px) {
+  .site-footer__top {
+    gap: 26px;
+  }
+  .site-footer__links {
+    justify-content: flex-start;
+    max-width: none;
+  }
+}
+
 /* ---- TRANSLATION GATE ----
    Shown when a visitor switches to हिं / বাং. Honest placeholder, styled to
    the same editorial system rather than fake-translated content. */
