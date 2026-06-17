@@ -145,9 +145,3 @@
   max-width: 40rem;
   text-wrap: pretty;
 }
-
-/* ---- TEMPORARY shell preview (removed once the homepage lands) ---- */
-.shell-preview {
-  padding-top: clamp(72px, 12vh, 144px);
-  padding-bottom: clamp(72px, 12vh, 144px);
-}
