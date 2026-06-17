@@ -2,18 +2,33 @@
    Presentational only (no client state) so they work in server components. */
 
 import type { CSSProperties, ReactNode } from "react";
+import Image from "next/image";
 import { SmartLink } from "./SmartLink";
 
 type Aspect = "portrait" | "landscape" | "square" | "cinema" | "hero" | "tall";
 type Tone = "warm" | "cool" | "green" | "ledger" | "brick" | "dusk" | "cream";
 
-/* Photo — placeholder documentary photo with bracket tag + scope stamp.
-   Renders a tinted gradient panel until real imagery lands. */
+/* Photo — documentary photo panel.
+
+   • Pass `src` (a path under /public, e.g. "/photos/cohort-2023.jpg") to show a
+     real photograph. It fills the panel, cropped to the chosen `aspect`, with
+     the tinted gradient showing only while it loads. Always pass `alt`.
+   • Omit `src` to keep the placeholder: a tinted gradient with the bracket
+     `tag` + scope `stamp` burned on, so the layout is reviewable before the
+     real imagery lands.
+
+   `objectPosition` nudges the crop (e.g. "center top") when a face or detail
+   sits off-centre. `priority` should be true only for an above-the-fold hero. */
 export function Photo({
   aspect = "landscape",
   tone = "warm",
   tag,
   stamp = "PHOTO",
+  src,
+  alt,
+  sizes = "(max-width: 768px) 100vw, 1100px",
+  priority,
+  objectPosition,
   style,
   children,
 }: {
@@ -21,13 +36,36 @@ export function Photo({
   tone?: Tone;
   tag?: ReactNode;
   stamp?: ReactNode | false;
+  src?: string;
+  alt?: string;
+  sizes?: string;
+  priority?: boolean;
+  objectPosition?: string;
   style?: CSSProperties;
   children?: ReactNode;
 }) {
+  const hasImage = Boolean(src);
   return (
-    <div className={`photo photo--${tone}`} data-aspect={aspect} style={style}>
-      {stamp && <span className="photo-stamp">[ {stamp} ]</span>}
-      {tag && <span className="photo-tag">[ {tag} ]</span>}
+    <div
+      className={`photo photo--${tone}${hasImage ? " photo--img" : ""}`}
+      data-aspect={aspect}
+      style={style}
+    >
+      {hasImage ? (
+        <Image
+          src={src as string}
+          alt={alt ?? (typeof tag === "string" ? tag : "")}
+          fill
+          sizes={sizes}
+          priority={priority}
+          style={{ objectFit: "cover", objectPosition }}
+        />
+      ) : (
+        <>
+          {stamp && <span className="photo-stamp">[ {stamp} ]</span>}
+          {tag && <span className="photo-tag">[ {tag} ]</span>}
+        </>
+      )}
       {children}
     </div>
   );

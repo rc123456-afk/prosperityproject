@@ -29,6 +29,8 @@ type GalleryPhoto = {
   aspect: Aspect;
   tone: Tone;
   tag: string;
+  src?: string;
+  alt?: string;
   desc?: string;
   meta?: string;
 };
@@ -68,7 +70,7 @@ export function PhotoDump() {
         <div className="photo-dump">
           {GALLERY_PHOTOS.map((p, i) => (
             <figure key={i} className={`photo-dump__item photo-dump__item--${p.width}`}>
-              <Photo aspect={p.aspect} tone={p.tone} tag={p.tag} stamp={false} />
+              <Photo aspect={p.aspect} tone={p.tone} src={p.src} alt={p.alt} tag={p.tag} stamp={false} />
               {(p.desc || p.meta) && (
                 <figcaption>
                   {p.desc && <span className="desc">{p.desc}</span>}

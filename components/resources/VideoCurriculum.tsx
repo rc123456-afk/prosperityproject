@@ -19,17 +19,40 @@ const VIDEO_LANGS = [
 ] as const;
 type LangId = (typeof VIDEO_LANGS)[number]["id"];
 
-/* Placeholder YouTube ID used for every language of every module.
-   Big Buck Bunny (Creative Commons, family-safe) as a neutral placeholder.
-   Replace with real IDs once the recordings ship. */
-const PLACEHOLDER_YT = "aqz-KE-bpKQ";
+/* ─── REAL VIDEOS GO HERE ──────────────────────────────────────────────────
+   One YouTube video per module, per language. The value is a YouTube *video
+   ID* — the part of the URL after "watch?v=". For
+       https://www.youtube.com/watch?v=dQw4w9WgXcQ
+   the ID is  "dQw4w9WgXcQ"  (also the last path segment of a youtu.be link).
 
-function buildVideoMap(modules: Module[]) {
-  const out: Record<string, Record<LangId, string>> = {};
-  for (const m of modules) {
-    out[m.num] = { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT };
-  }
-  return out;
+   To set Module 02's Hindi video, replace its `hi` value with the real ID.
+   Any slot still left as PLACEHOLDER_YT plays the neutral placeholder, so you
+   can fill these in gradually, in any order — every row stays usable.
+
+   `hi` = Hindi (हिं) · `bn` = Bengali (বাং) · `en` = English (EN)            */
+const PLACEHOLDER_YT = "aqz-KE-bpKQ"; // Big Buck Bunny — neutral stand-in
+
+const MODULE_VIDEO_IDS: Record<string, Record<LangId, string>> = {
+  "01": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "02": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "04": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "05": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "06": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "07": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "08": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "09": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "10": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+};
+
+function videoIdsFor(num: string): Record<LangId, string> {
+  return (
+    MODULE_VIDEO_IDS[num] ?? {
+      hi: PLACEHOLDER_YT,
+      bn: PLACEHOLDER_YT,
+      en: PLACEHOLDER_YT,
+    }
+  );
 }
 
 /* BCW preview overrides: a few women's-cohort teasers read awkwardly out of
@@ -175,8 +198,7 @@ export function VideoCurriculum({ cohort }: { cohort: Cohort }) {
     () => (isWomen ? WOMEN_MODULES : applyBcwOverrides(WOMEN_MODULES)),
     [isWomen],
   );
-  const videos = useMemo(() => buildVideoMap(modules), [modules]);
-  // { "01": "hi" | "bn" | "en" }
+  // { "01": "hi" | "bn" | "en" } — which language each module row is open to.
   const [openMap, setOpenMap] = useState<Record<string, LangId>>({});
 
   const open = (num: string, lang: LangId) => {
@@ -236,7 +258,7 @@ export function VideoCurriculum({ cohort }: { cohort: Cohort }) {
                   <VideoRow
                     key={m.num}
                     module={m}
-                    videos={videos[m.num]}
+                    videos={videoIdsFor(m.num)}
                     openLang={openMap[m.num] ?? null}
                     onOpen={(lang) => open(m.num, lang)}
                     onClose={() => close(m.num)}

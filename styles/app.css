@@ -12,6 +12,14 @@
   display: block;
 }
 
+/* ---- REAL-IMAGE MODE FOR <Photo> ----
+   When a Photo is given a `src`, it renders a next/image filling the panel.
+   Drop the placeholder grain (`.photo::after`) so real photographs aren't
+   textured, and ensure the fill image is cropped, not stretched. The gradient
+   background stays underneath as a tasteful blur-in while the image loads. */
+.photo--img::after { display: none; }
+.photo--img img { object-fit: cover; }
+
 /* ---- CONDENSED FOOTER ----
    A slimmer take on the ported .footer: brand signature + a compact link row +
    a slim legal strip. Same ink/paper/mono/marigold language, far less height. */
