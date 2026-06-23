@@ -8,20 +8,20 @@ import {
 } from "@/components/stories/sections";
 
 export const metadata: Metadata = {
-  title: "Stories · For Women — The Prosperity Project",
+  title: "Stories — The Prosperity Project",
   description:
     "Students who finished Knowing Your Money, and the Community Resource Persons who came back to teach. Told in their own words, in West Bengal.",
 };
 
-export default function StoriesWomen() {
+export default function Stories() {
   return (
     <>
-      <StoriesHero cohort="women" />
+      <StoriesHero />
       <ConsentNote />
-      <StorySection kind="crp" cohort="women" />
-      <StoryPullQuote cohort="women" />
-      <StorySection kind="beneficiary" cohort="women" />
-      <VideoTestimonials cohort="women" />
+      <StorySection kind="crp" />
+      <StoryPullQuote />
+      <StorySection kind="beneficiary" />
+      <VideoTestimonials />
     </>
   );
 }

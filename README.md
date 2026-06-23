@@ -34,7 +34,7 @@ app/                     App Router routes + root layout
   layout.tsx             page-shell: Nav + main (LanguageGate) + Footer
   globals.css            font @import + Tailwind directives
 components/
-  Nav.tsx                sticky dropdown nav (+ EN/हिं/বাং switcher)
+  Nav.tsx                sticky nav, flat links (+ EN/हिं/বাং switcher)
   Footer.tsx             dark footer, mirrors nav IA
   primitives.tsx         Photo, Caption, Figure, SectionMarker, TertiaryLink, …
   LanguageContext.tsx    EN / HI / BN state
@@ -48,10 +48,7 @@ styles/
 
 ## Routes
 
-`/` · `/curriculum/{women,blue-collar-workers}` ·
-`/workshops/{women,blue-collar-workers}` ·
-`/resources/{women,blue-collar-workers}` ·
-`/stories/{women,blue-collar-workers}` ·
+`/` · `/curriculum` · `/workshops` · `/resources` · `/stories` ·
 `/gallery` · `/impact` · `/about` · `/contact`
 
 ## Notes

@@ -218,67 +218,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   transition: color var(--dur-fast) var(--ease-out);
 }
 .nav__link:hover { color: var(--marigold-deep); text-decoration: none; }
-.nav__link[aria-expanded="true"] { color: var(--marigold-deep); }
-.nav__link .caret { font-size: 9px; opacity: 0.65; transform: translateY(-1px); transition: transform var(--dur-fast) var(--ease-out); }
-.nav__link[aria-expanded="true"] .caret { transform: translateY(0) rotate(180deg); }
-
-/* Dropdown panel */
-.nav__panel {
-  position: absolute;
-  top: calc(100% + 1px); left: 50%;
-  transform: translateX(-50%) translateY(-4px);
-  min-width: 360px;
-  background: var(--paper);
-  border: 1px solid var(--ink-15);
-  border-top: 1px solid var(--ink-30);
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--dur-fast) var(--ease-out),
-              transform var(--dur-base) var(--ease-out),
-              visibility 0s linear var(--dur-base);
-  z-index: 60;
-}
-.nav__panel[data-open="true"] {
-  opacity: 1; visibility: visible;
-  transform: translateX(-50%) translateY(0);
-  transition: opacity var(--dur-fast) var(--ease-out),
-              transform var(--dur-base) var(--ease-out),
-              visibility 0s linear 0s;
-}
-.nav__panel-item {
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  gap: 14px;
-  align-items: start;
-  padding: 14px 16px;
-  text-decoration: none;
-  border-radius: 0;
-  transition: background var(--dur-fast) var(--ease-out);
-  cursor: pointer;
-}
-.nav__panel-item:hover { background: var(--ink-08); text-decoration: none; }
-.nav__panel-item + .nav__panel-item { border-top: 1px solid var(--ink-15); }
-.nav__panel-dot {
-  width: 9px; height: 9px; border-radius: 999px;
-  margin-top: 8px;
-  border: 1px solid var(--ink);
-}
-.nav__panel-dot--active { background: var(--ink); }
-.nav__panel-dot--dev { background: transparent; }
-.nav__panel-label {
-  font-family: var(--font-display); font-weight: 500;
-  font-size: 17px; line-height: 1.2;
-  color: var(--ink);
-  letter-spacing: -0.005em;
-}
-.nav__panel-meta {
-  font-family: var(--font-mono); font-size: 10px;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  color: var(--ink-55);
-  margin-top: 4px;
-}
-.nav__panel-meta--active { color: var(--marigold-deep); }
 
 .nav__right { display: flex; align-items: center; gap: 22px; justify-self: end; }
 .nav__lang {
@@ -489,20 +428,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .cohort__body .cohort__copy { margin-top: 20px; }
 .cohort__body .cohort__links { margin-top: 28px; }
 .cohort__copy strong { font-weight: 600; }
-.cohort__status {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.14em;
-}
-.cohort__status .dot {
-  width: 10px; height: 10px; border-radius: 999px;
-  border: 1px solid var(--ink);
-  background: var(--ink);
-}
-.cohort__status .dot--dev { background: transparent; }
-.cohort__status--active { color: var(--ink); }
-.cohort__status--dev { color: var(--ink-55); }
-.cohort__status--dev .dot { border-color: var(--ink-55); }
 .cohort__region {
   font-family: var(--font-mono); font-size: 11px;
   text-transform: uppercase; letter-spacing: 0.14em;
@@ -620,7 +545,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .scroll-cue .bar { width: 28px; height: 1px; background: rgba(242,235,220,0.40); }
 
 /* ================================================================
-   CURRICULUM SUB-PAGES (women / blue-collar-workers)
+   CURRICULUM PAGE
    Two sister pages, same structural rhythm.
    ================================================================ */
 
@@ -867,38 +792,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   text-align: right;
 }
 
-/* ---- IN DEVELOPMENT (BCW) ---- */
-.curr-indev { padding-top: var(--space-section); padding-bottom: var(--space-section); }
-.curr-indev__head {
-  font-family: var(--font-display); font-weight: 400;
-  font-style: italic;
-  font-size: clamp(40px, 4.6vw, 64px);
-  line-height: 1.04;
-  letter-spacing: -0.018em;
-  color: var(--ink);
-  font-variation-settings: "opsz" 72, "SOFT" 40;
-  margin: 0 0 36px 0;
-  text-wrap: balance;
-}
-.curr-indev__body {
-  font-family: var(--font-body);
-  font-size: clamp(18px, 1.3vw, 21px);
-  line-height: 1.65;
-  color: var(--ink);
-  max-width: 42rem;
-  text-wrap: pretty;
-  margin: 0 0 28px 0;
-}
-.curr-indev__body em { font-style: italic; }
-.curr-indev__body strong { font-weight: 600; }
-.curr-indev__cta-row {
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
-}
-
 /* ---- responsive for curriculum pages ---- */
 @media (max-width: 1024px) {
   .curr-origin__grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1069,7 +962,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 }
 
 /* ================================================================
-   WORKSHOPS SUB-PAGES (women / blue-collar-workers)
+   WORKSHOPS PAGE
    Pillars · CRP Model · In the room · What changed · Bandhan.
    ================================================================ */
 
@@ -1427,7 +1320,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 }
 
 /* ================================================================
-   RESOURCES SUB-PAGES (women / blue-collar-workers)
+   RESOURCES PAGE
    Library-like, generous, restrained. The page is a public good.
    ================================================================ */
 
@@ -1529,9 +1422,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   text-transform: uppercase; letter-spacing: 0.16em;
   color: var(--ink-55);
 }
-.download-card__meta--soon {
-  color: var(--marigold-deep);
-}
 .download-card__action {
   display: flex; align-items: center; gap: 14px;
   margin-top: 8px;
@@ -1556,10 +1446,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
               border-color var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
 }
-.download-card--soon { cursor: default; }
-.download-card--soon:hover { background: transparent; }
-.download-card__action--soon .download-card__action-label { color: var(--ink-55); }
-
 /* ---- VIDEO CURRICULUM ---- */
 .vid-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink-30); }
 .vid-row { border-bottom: 1px solid var(--ink-15); }
@@ -1632,18 +1518,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .vid-tab.is-active {
   background: var(--ink);
   color: var(--paper);
-}
-.vid-tab--soon {
-  color: var(--ink-30);
-  cursor: not-allowed;
-}
-.vid-tab--soon:hover { background: transparent; }
-.vid-row__soon-label {
-  margin-left: 18px;
-  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--marigold-deep);
-  align-self: center;
 }
 
 .vid-row__player-clip {
@@ -1736,7 +1610,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   .download-card:last-child { border-bottom: 0; }
   .vid-row__head { grid-template-columns: 52px 1fr; }
   .vid-row__tabs { grid-column: 1 / -1; margin-left: 80px; margin-top: 6px; align-self: start; }
-  .vid-row__soon-label { margin-left: 14px; }
   .vid-row__player { grid-template-columns: 52px 1fr; }
   .vid-row__player-meta,
   .vid-row__frame,

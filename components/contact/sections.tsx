@@ -58,7 +58,7 @@ const INVOLVE_PATHS = [
     num: "02",
     label: "Partner with us",
     body:
-      "NGOs, foundations, and institutions wanting to partner formally — the way Bandhan delivers the work across West Bengal — should write here. The model is simple: you bring the halls, the trust, and the relationships; we bring the curriculum and the training. We're actively seeking a counterpart for the UAE.",
+      "NGOs, foundations, and institutions wanting to partner formally — the way Bandhan delivers the work across West Bengal — should write here. The model is simple: you bring the halls, the trust, and the relationships; we bring the curriculum and the training.",
     email: "partner@theprosperityproject.org",
   },
 ];

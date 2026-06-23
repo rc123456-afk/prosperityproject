@@ -221,7 +221,7 @@ export function ImpactClosing() {
             <em>
               Most of what matters here doesn&rsquo;t fit in a number. For the part
               that doesn&rsquo;t, read the{" "}
-              <SmartLink href="/stories/women">Stories</SmartLink> — that is where
+              <SmartLink href="/stories">Stories</SmartLink> — that is where
               the work actually shows up.
             </em>
           </p>

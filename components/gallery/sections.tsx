@@ -1,4 +1,4 @@
-/* Gallery — single-page photo dump. ~25 placeholder photographs in mixed
+/* Gallery — single-page photo dump. ~20 placeholder photographs in mixed
    aspect ratios and widths, loose chronological flow, captions on roughly
    half. Ported verbatim from GalleryPage.jsx. Server component. */
 
@@ -12,8 +12,8 @@ export function GalleryHero() {
         <h1 className="gallery-hero__head">From the rooms where the work happens.</h1>
         <p className="gallery-hero__sub">
           Workshops, graduations, hands, materials, the walk to the bank — across
-          the Sundarbans, Howrah, and South 24 Parganas, and the first UAE pilot.
-          Loosely in order. Photographers credited where known.
+          the Sundarbans, Howrah, and South 24 Parganas. Loosely in order.
+          Photographers credited where known.
         </p>
       </div>
     </section>
@@ -57,10 +57,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   { width: "third", aspect: "square",    tone: "warm",   tag: "the tin where she keeps it" },
   { width: "third", aspect: "landscape", tone: "brick",  tag: "graduation day · the meal", desc: "Graduation ends with a shared meal.", meta: "Howrah · 2024" },
   { width: "full",  aspect: "cinema",    tone: "warm",   tag: "the 2025 cohort · taught by CRPs", desc: "The 2025 cohort — the first taught largely by facilitators who were students in 2023 and 2024.", meta: "Howrah · 2025 · [ PHOTOGRAPHER ]" },
-  { width: "half",  aspect: "landscape", tone: "dusk",   tag: "Karama pilot · session one", desc: "The first UAE pilot session, in a Karama cafeteria after hours.", meta: "Dubai · 2025 pilot" },
-  { width: "half",  aspect: "portrait",  tone: "cool",   tag: "pocket textbook · mock-up" },
-  { width: "third", aspect: "square",    tone: "brick",  tag: "detail · pay slip, line by line" },
-  { width: "wide",  aspect: "landscape", tone: "dusk",   tag: "exchange-house visit · Module 04", desc: "A guided walk to the nearest exchange house with the pilot cohort.", meta: "Dubai · 2025 pilot · [ PHOTOGRAPHER ]" },
 ];
 
 export function PhotoDump() {

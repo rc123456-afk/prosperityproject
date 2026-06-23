@@ -4,10 +4,10 @@
 import Link from "next/link";
 
 const LINKS: { label: string; href: string }[] = [
-  { label: "Curriculum", href: "/curriculum/women" },
-  { label: "Workshops", href: "/workshops/women" },
-  { label: "Resources", href: "/resources/women" },
-  { label: "Stories", href: "/stories/women" },
+  { label: "Curriculum", href: "/curriculum" },
+  { label: "Workshops", href: "/workshops" },
+  { label: "Resources", href: "/resources" },
+  { label: "Stories", href: "/stories" },
   { label: "Gallery", href: "/gallery" },
   { label: "Impact", href: "/impact" },
   { label: "About", href: "/about" },

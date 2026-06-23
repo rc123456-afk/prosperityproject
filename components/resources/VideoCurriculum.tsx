@@ -1,16 +1,13 @@
 "use client";
 
-/* VideoCurriculum — ten module rows. Each (women's cohort) has three language
-   tabs (हिं · বাং · EN); clicking a tab expands the row inline and loads an
+/* VideoCurriculum — ten module rows. Each has three language tabs
+   (हिं · বাং · EN); clicking a tab expands the row inline and loads an
    embedded YouTube player in that language. Clicking the open tab closes it.
-   Blue-collar rows are non-interactive ("coming soon"). Ported from
-   ResourcesVideos.jsx. */
+   Ported from ResourcesVideos.jsx. */
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { SectionMarker } from "@/components/primitives";
 import { WOMEN_MODULES, type Module } from "@/lib/modules";
-
-type Cohort = "women" | "blue-collar";
 
 const VIDEO_LANGS = [
   { id: "hi", script: "हिं", label: "Hindi" },
@@ -55,26 +52,11 @@ function videoIdsFor(num: string): Record<LangId, string> {
   );
 }
 
-/* BCW preview overrides: a few women's-cohort teasers read awkwardly out of
-   context. Override only those so the row shape stays identical. */
-const BCW_TEASER_OVERRIDES: Record<string, string> = {
-  "03": "Fear is the most expensive thing in a worker's life.",
-  "08": "From cash under the mattress to a mutual fund SIP — making money work harder.",
-};
-
-function applyBcwOverrides(modules: Module[]): Module[] {
-  return modules.map((m) =>
-    BCW_TEASER_OVERRIDES[m.num]
-      ? { ...m, teaser: BCW_TEASER_OVERRIDES[m.num] }
-      : m,
-  );
-}
-
 function langMeta(id: LangId) {
   return VIDEO_LANGS.find((l) => l.id === id)!;
 }
 
-/* ---------- ONE MODULE ROW (Women — interactive) ---------- */
+/* ---------- ONE MODULE ROW (interactive) ---------- */
 function VideoRow({
   module,
   videos,
@@ -163,41 +145,9 @@ function VideoRow({
   );
 }
 
-/* ---------- ONE MODULE ROW (BCW — coming soon, non-interactive) ---------- */
-function VideoRowSoon({ module }: { module: Module }) {
-  return (
-    <li className="vid-row vid-row--soon">
-      <div className="vid-row__head">
-        <span className="vid-row__num">{module.num}</span>
-        <span className="vid-row__title-wrap">
-          <span className="vid-row__title">{module.title}</span>
-          <span className="vid-row__teaser">{module.teaser}</span>
-        </span>
-        <span className="vid-row__tabs" aria-disabled="true">
-          {VIDEO_LANGS.map((l) => (
-            <span
-              key={l.id}
-              data-script={l.id === "en" ? "latin" : "deva"}
-              className="vid-tab vid-tab--soon"
-              title={`${l.label} edition — coming soon`}
-            >
-              {l.script}
-            </span>
-          ))}
-          <span className="vid-row__soon-label">Coming soon</span>
-        </span>
-      </div>
-    </li>
-  );
-}
-
 /* ---------- THE VIDEO CURRICULUM SECTION ---------- */
-export function VideoCurriculum({ cohort }: { cohort: Cohort }) {
-  const isWomen = cohort === "women";
-  const modules = useMemo(
-    () => (isWomen ? WOMEN_MODULES : applyBcwOverrides(WOMEN_MODULES)),
-    [isWomen],
-  );
+export function VideoCurriculum() {
+  const modules = WOMEN_MODULES;
   // { "01": "hi" | "bn" | "en" } — which language each module row is open to.
   const [openMap, setOpenMap] = useState<Record<string, LangId>>({});
 
@@ -220,9 +170,8 @@ export function VideoCurriculum({ cohort }: { cohort: Cohort }) {
           <div className="curr-origin__label">
             <SectionMarker index="02" label="Video curriculum" />
             <p className="curr-modules__hint">
-              {isWomen
-                ? "One short video per module, in Hindi · Bengali · English. Click a script to play."
-                : "Ten modules, in three languages. Recordings begin after the first UAE pilot completes."}
+              One short video per module, in Hindi · Bengali · English. Click a
+              script to play.
             </p>
           </div>
 
@@ -231,42 +180,23 @@ export function VideoCurriculum({ cohort }: { cohort: Cohort }) {
               className="curr-premise__body"
               style={{ marginBottom: 56, maxWidth: "42rem" }}
             >
-              {isWomen ? (
-                <>
-                  Every module of <em>Knowing Your Money</em> has a short
-                  companion video — between four and seven minutes — recorded for
-                  households where a daughter, son, or husband can sit beside the
-                  student and watch together at home. Three language editions per
-                  module.
-                </>
-              ) : (
-                <>
-                  Every module of the UAE adaptation will have a short companion
-                  video — sized to send over WhatsApp from a labour camp, paced
-                  for a worker's evening. Three language editions per module,
-                  recorded after the first pilot cohort completes.
-                  <span className="ph-stamp" style={{ marginLeft: 14 }}>
-                    [ PLACEHOLDER ]
-                  </span>
-                </>
-              )}
+              Every module of <em>Knowing Your Money</em> has a short companion
+              video — between four and seven minutes — recorded for households
+              where a daughter, son, or husband can sit beside the student and
+              watch together at home. Three language editions per module.
             </p>
 
             <ul className="vid-list">
-              {modules.map((m) =>
-                isWomen ? (
-                  <VideoRow
-                    key={m.num}
-                    module={m}
-                    videos={videoIdsFor(m.num)}
-                    openLang={openMap[m.num] ?? null}
-                    onOpen={(lang) => open(m.num, lang)}
-                    onClose={() => close(m.num)}
-                  />
-                ) : (
-                  <VideoRowSoon key={m.num} module={m} />
-                ),
-              )}
+              {modules.map((m) => (
+                <VideoRow
+                  key={m.num}
+                  module={m}
+                  videos={videoIdsFor(m.num)}
+                  openLang={openMap[m.num] ?? null}
+                  onOpen={(lang) => open(m.num, lang)}
+                  onClose={() => close(m.num)}
+                />
+              ))}
             </ul>
           </div>
         </div>

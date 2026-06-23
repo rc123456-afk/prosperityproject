@@ -96,15 +96,6 @@ export function FounderStory() {
                 in the back row.
               </p>
               <p>
-                We&rsquo;re now extending the same curriculum to{" "}
-                <strong>blue-collar workers in the UAE</strong> — drivers,
-                construction and domestic workers navigating remittance, contracts,
-                and end-of-service pay largely alone. The spine holds; the surface
-                shifts. The budget worksheet now tracks a remittance window; the walk
-                to the bank becomes a walk to the exchange house. The first stories
-                from there will be told by the workers themselves.
-              </p>
-              <p>
                 I think about what Phoolmati would have done with an account in her
                 own name, thirty years ago. I can&rsquo;t give her that. This is the
                 next best thing I know how to build.

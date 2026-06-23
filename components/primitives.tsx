@@ -185,16 +185,6 @@ export function TertiaryLink({
   );
 }
 
-/* StatusDot — solid for active / hollow for in-development. */
-export function StatusDot({ kind }: { kind: "active" | "dev" }) {
-  return (
-    <span className={`cohort__status cohort__status--${kind === "active" ? "active" : "dev"}`}>
-      <span className={`dot ${kind === "active" ? "" : "dot--dev"}`} />
-      {kind === "active" ? "In active use" : "In development"}
-    </span>
-  );
-}
-
 /* PlaceholderStamp — small marigold-bordered mono tag, "[ PLACEHOLDER ]". */
 export function PlaceholderStamp({ children = "PLACEHOLDER" }: { children?: ReactNode }) {
   return <span className="ph-stamp">[ {children} ]</span>;

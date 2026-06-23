@@ -1,17 +1,6 @@
 /* App-only additions that aren't part of the ported Claude Design CSS.
    Kept separate so styles/tokens.css, site.css and pages.css stay pristine. */
 
-/* ---- NAV DROPDOWN — render label + mono sub-meta on their own lines ----
-   The ported site.css leaves .nav__panel-label and .nav__panel-meta as inline
-   spans, so "For Blue-Collar Workers" and "In development · UAE" mash onto one
-   line. The meta's `margin-top: 4px` only takes effect as a block, and every
-   parallel label+meta pattern in the system stacks — so this realizes the
-   intended two-line item rather than a latent prototype bug. */
-.nav__panel-label,
-.nav__panel-meta {
-  display: block;
-}
-
 /* ---- REAL-IMAGE MODE FOR <Photo> ----
    When a Photo is given a `src`, it renders a next/image filling the panel.
    Drop the placeholder grain (`.photo::after`) so real photographs aren't

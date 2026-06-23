@@ -1,5 +1,5 @@
-/* Homepage — the eight regions:
-   01 Hero · 02 What this is · 03 Two cohorts · 04 Numbers ·
+/* Homepage — the seven regions:
+   01 Hero · 02 What this is · 03 Where we work · 04 Numbers ·
    05 Workshops · 06 Stories · 07 Gallery. (Nav + Footer come from the layout.)
    Ported from the Claude Design Homepage.jsx. */
 
@@ -9,7 +9,6 @@ import {
   Figure,
   SectionMarker,
   TertiaryLink,
-  StatusDot,
   PlaceholderStamp,
 } from "@/components/primitives";
 
@@ -33,7 +32,7 @@ function Hero() {
           communities they serve, in partnership with Bandhan NGO.
         </p>
         <div className="hero__actions">
-          <Link href="/curriculum/women" className="btn btn--primary">
+          <Link href="/curriculum" className="btn btn--primary">
             Read the curriculum <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -69,11 +68,8 @@ function WhatThisIs() {
             payments, emergency planning — to people the financial system has
             historically ignored. The flagship curriculum,{" "}
             <em>Knowing Your Money</em>, is ten modules grounded in real
-            interviews. We began with women in <strong>West Bengal</strong> and
-            are now extending the work to{" "}
-            <strong>blue-collar workers in the UAE</strong>: construction
-            workers, drivers, factory hands, and others in informal-sector
-            labour.
+            interviews, taught to women in <strong>West Bengal</strong> in
+            partnership with Bandhan NGO.
           </p>
         </div>
       </div>
@@ -81,85 +77,49 @@ function WhatThisIs() {
   );
 }
 
-/* ---------- 03 · TWO COHORTS (centerpiece) ---------- */
-function TwoCohorts() {
+/* ---------- 03 · WHERE WE WORK ---------- */
+function WhereWeWork() {
   return (
     <section className="section section--alt">
       <div className="container">
         <div className="section-head">
-          <SectionMarker index="02" label="Two contexts, one curriculum" />
+          <SectionMarker index="02" label="Where we work" />
           <h2 className="h2 head" style={{ maxWidth: "22ch" }}>
-            The same ten modules, adapted for the room they&rsquo;re taught in.
+            Ten modules, taught in the rooms the community already trusts.
           </h2>
         </div>
 
         <div className="cohorts">
-          {/* Cohort A — Women, West Bengal */}
-          <article className="stack-block">
-            <Photo
-              aspect="portrait"
-              tone="warm"
-              tag="Sundarbans cohort · Module 03"
-              stamp="PHOTO · WOMEN · WEST BENGAL"
-            />
-            <div className="cohort__body">
-              <div className="cohort__row">
-                <StatusDot kind="active" />
-                <span className="cohort__region">
-                  West Bengal &nbsp;·&nbsp; India
-                </span>
-              </div>
-              <h3 className="cohort__title">Women in West Bengal</h3>
-              <p className="cohort__copy">
-                Our first and longest-running cohort. Twice-weekly workshops in{" "}
-                <strong>Bengali and Hindi</strong>, run in self-help-group halls
-                across <span className="ph ph--ink">[ N&nbsp;villages ]</span> in
-                the Sundarbans, Howrah, and South&nbsp;24&nbsp;Parganas. Students
-                complete the curriculum and many return as facilitators for the
-                next cohort.
-              </p>
-              <div className="cohort__links">
-                <TertiaryLink href="/curriculum/women">
-                  Read the curriculum
-                </TertiaryLink>
-                <TertiaryLink href="/stories/women">
-                  Stories from the cohort
-                </TertiaryLink>
-              </div>
+          <Photo
+            aspect="portrait"
+            tone="warm"
+            tag="Sundarbans cohort · Module 03"
+            stamp="PHOTO · WOMEN · WEST BENGAL"
+          />
+          <div className="cohort__body">
+            <div className="cohort__row">
+              <span className="cohort__region">
+                West Bengal &nbsp;·&nbsp; India
+              </span>
             </div>
-          </article>
-
-          {/* Cohort B — Blue-Collar Workers, UAE */}
-          <article className="stack-block">
-            <Photo
-              aspect="portrait"
-              tone="dusk"
-              tag="Karama cohort · pilot session"
-              stamp="PHOTO · UAE · IN DEVELOPMENT"
-            />
-            <div className="cohort__body">
-              <div className="cohort__row">
-                <StatusDot kind="dev" />
-                <span className="cohort__region">United Arab Emirates</span>
-              </div>
-              <h3 className="cohort__title">Blue-collar workers in the UAE</h3>
-              <p className="cohort__copy">
-                Construction workers, drivers, and factory hands — many sending
-                money home each month, few with formal access to advice. Pilots
-                running in <strong>Hindi and English</strong> in Dubai and
-                Sharjah, with the same ten modules reframed for remittance,
-                contract literacy, and labour-camp life.
-              </p>
-              <div className="cohort__links">
-                <TertiaryLink href="/curriculum/blue-collar-workers">
-                  Read the curriculum
-                </TertiaryLink>
-                <TertiaryLink href="/workshops/blue-collar-workers">
-                  Pilot timeline
-                </TertiaryLink>
-              </div>
+            <h3 className="cohort__title">Women in West Bengal</h3>
+            <p className="cohort__copy">
+              Twice-weekly workshops in <strong>Bengali and Hindi</strong>, run
+              in self-help-group halls across{" "}
+              <span className="ph ph--ink">[ N&nbsp;villages ]</span> in the
+              Sundarbans, Howrah, and South&nbsp;24&nbsp;Parganas. Students
+              complete the curriculum and many return as facilitators for the
+              next cohort.
+            </p>
+            <div className="cohort__links">
+              <TertiaryLink href="/curriculum">
+                Read the curriculum
+              </TertiaryLink>
+              <TertiaryLink href="/stories">
+                Stories from the cohort
+              </TertiaryLink>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -182,8 +142,7 @@ function Numbers() {
           <span className="num">[ N%&nbsp;]</span> opened a savings account
           during Module&nbsp;04. <span className="num">[ N ]</span> graduates
           have returned as facilitators under the&nbsp;CRP&nbsp;Model. The next
-          cohort begins in <span className="ph">[ MONTH&nbsp;YEAR ]</span>; the
-          UAE pilot opens in <span className="ph">[ MONTH&nbsp;YEAR ]</span>.
+          cohort begins in <span className="ph">[ MONTH&nbsp;YEAR ]</span>.
         </p>
         <div
           style={{
@@ -262,7 +221,7 @@ function WorkshopsPreview() {
             </div>
 
             <div style={{ marginTop: 36 }}>
-              <TertiaryLink href="/workshops/women">
+              <TertiaryLink href="/workshops">
                 See a workshop in session
               </TertiaryLink>
             </div>
@@ -308,7 +267,7 @@ function StoriesPreview() {
               </span>
             </p>
             <div style={{ marginTop: 40 }}>
-              <TertiaryLink href="/stories/women">Read more stories</TertiaryLink>
+              <TertiaryLink href="/stories">Read more stories</TertiaryLink>
             </div>
           </div>
         </div>
@@ -326,7 +285,7 @@ function GalleryPreview() {
     { aspect: "landscape", tone: "green", tag: "hall · Howrah", stamp: "02" },
     { aspect: "square", tone: "ledger", tag: "hands · counting change", stamp: "03" },
     { aspect: "tall", tone: "cool", tag: "facilitator · pre-session", stamp: "04" },
-    { aspect: "landscape", tone: "brick", tag: "Karama pilot · UAE", stamp: "05" },
+    { aspect: "landscape", tone: "brick", tag: "graduation day · Howrah", stamp: "05" },
   ] as const;
 
   return (
@@ -387,7 +346,7 @@ export default function Homepage() {
     <>
       <Hero />
       <WhatThisIs />
-      <TwoCohorts />
+      <WhereWeWork />
       <Numbers />
       <WorkshopsPreview />
       <StoriesPreview />
