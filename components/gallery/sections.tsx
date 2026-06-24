@@ -3,18 +3,15 @@
    half. Ported verbatim from GalleryPage.jsx. Server component. */
 
 import { Photo } from "@/components/primitives";
+import { copy } from "@/content/copy";
 
 export function GalleryHero() {
   return (
     <section className="gallery-hero">
       <div className="container">
-        <p className="gallery-hero__kicker">Gallery</p>
-        <h1 className="gallery-hero__head">From the rooms where the work happens.</h1>
-        <p className="gallery-hero__sub">
-          Workshops, graduations, hands, materials, the walk to the bank — across
-          the Sundarbans, Howrah, and South 24 Parganas. Loosely in order.
-          Photographers credited where known.
-        </p>
+        <p className="gallery-hero__kicker">{copy.gallery.kicker}</p>
+        <h1 className="gallery-hero__head">{copy.gallery.heading}</h1>
+        <p className="gallery-hero__sub">{copy.gallery.sub}</p>
       </div>
     </section>
   );

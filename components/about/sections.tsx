@@ -4,6 +4,8 @@
 
 import { Photo, Caption, SectionMarker } from "@/components/primitives";
 import { SmartLink } from "@/components/SmartLink";
+import { renderInline } from "@/components/Rich";
+import { copy } from "@/content/copy";
 
 /* ---------- HERO ---------- */
 export function AboutHero() {
@@ -12,11 +14,11 @@ export function AboutHero() {
       <div className="container">
         <div className="about-hero__grid">
           <div>
-            <p className="about-hero__kicker">About</p>
-            <h1 className="about-hero__head">Why this exists.</h1>
+            <p className="about-hero__kicker">{copy.about.hero.kicker}</p>
+            <h1 className="about-hero__head">{copy.about.hero.heading}</h1>
             <p className="about-hero__byline">
-              By Rehaan Chowdhary &nbsp;·&nbsp;{" "}
-              <span className="accent">Founder</span>
+              By {copy.about.hero.bylineName} &nbsp;·&nbsp;{" "}
+              <span className="accent">{copy.about.hero.bylineRole}</span>
               <span className="ph-stamp" style={{ marginLeft: 14 }}>
                 [ PLACEHOLDER ]
               </span>
@@ -44,65 +46,24 @@ export function FounderStory() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="01" label="The founder" />
+            <SectionMarker index="01" label={copy.about.founder.sectionLabel} />
             <p className="curr-modules__hint">
-              First-person. Placeholder prose, to be edited with Rehaan.
+              {copy.about.founder.sectionHint}
             </p>
             <span id="facilitators"></span>
           </div>
           <div>
             <div className="founder__body">
-              <p>
-                The first person who taught me about money couldn&rsquo;t open a
-                bank account in her own name. Phoolmati looked after me from the
-                time I was four, and ran a household budget in her head I&rsquo;ve
-                never managed to reproduce on paper — all of it in cash, in a tin,
-                none of it with a bank. I grew up assuming this was normal: that
-                the people who managed money most carefully were the ones the
-                system had least room for.
-              </p>
-              <p>
-                The curriculum began as one long interview with her. I asked the
-                questions I&rsquo;d never thought to ask — where do you keep it, who
-                do you trust with it, what happens in an emergency. I expected to
-                find gaps in what she knew. Instead I found a complete system
-                missing one piece: not knowledge, but access.{" "}
-                <em>Knowing Your Money</em> is built backwards from that interview —
-                ten modules, each answering a question she had already answered for
-                herself.
-              </p>
-              <p>
-                The first cohort was twenty-two women in a borrowed hall in Howrah.
-                I facilitated it myself, badly, and learned more in ten weeks than
-                in the year of planning before it. The slides mattered less than the
-                tea. The worksheet that worked was built around a woman&rsquo;s
-                lowest-earning month, not her average. Module&nbsp;04 couldn&rsquo;t
-                stay on paper, so it ended with all of us walking to the branch and
-                queueing together — for most of the room, the first account in their
-                own name.
-              </p>
-              <p>
-                None of it scaled past that hall without <strong>Bandhan</strong> —
-                their rooms, their relationships, the trust that lets a workshop open
-                on day one with a cohort already inside. We bring the curriculum and
-                the training; they bring the ground it stands on.
-              </p>
-              <p>
-                The other lesson was to get out of the room. A curriculum carried by
-                an outsider is one people listen to politely; carried by a neighbour,
-                it&rsquo;s one they argue with and take home. The women who finished
-                the early cohorts trained as facilitators — Community Resource
-                Persons — and most workshops today are taught by someone who once sat
-                in the back row.
-              </p>
-              <p>
-                I think about what Phoolmati would have done with an account in her
-                own name, thirty years ago. I can&rsquo;t give her that. This is the
-                next best thing I know how to build.
-                <span className="ph-stamp" style={{ marginLeft: 12 }}>
-                  [ PLACEHOLDER PROSE ]
-                </span>
-              </p>
+              {copy.about.founder.story.map((para, i) => (
+                <p key={i}>
+                  {renderInline(para)}
+                  {i === copy.about.founder.story.length - 1 && (
+                    <span className="ph-stamp" style={{ marginLeft: 12 }}>
+                      [ PLACEHOLDER PROSE ]
+                    </span>
+                  )}
+                </p>
+              ))}
             </div>
 
             <figure className="founder__figure">
@@ -148,13 +109,9 @@ export function VisionMission() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label="Vision & mission" />
+            <SectionMarker index="02" label={copy.about.mission.sectionLabel} />
           </div>
-          <p className="vision__text">
-            The project exists so that people navigating finance without formal
-            access have the tools, and the confidence, to navigate it on their own
-            terms.
-          </p>
+          <p className="vision__text">{renderInline(copy.about.mission.text)}</p>
         </div>
       </div>
     </section>
@@ -164,12 +121,11 @@ export function VisionMission() {
 /* ---------- ORGANIZATIONS — flexible vertical list ---------- */
 const ORGANIZATIONS = [
   {
-    name: "Bandhan NGO",
-    role: "Delivery partner · West Bengal",
-    body:
-      "Bandhan brings the halls, the relationships in every block, and the trust that lets a workshop open with a cohort already in the room. We bring the curriculum, the training, and the textbook. Now in its third year, the partnership extends next to four new blocks across Howrah and Hooghly.",
+    name: copy.about.organizations.partnerName,
+    role: copy.about.organizations.partnerRole,
+    body: copy.about.organizations.partnerBody,
     photo: { tone: "green" as const, tag: "a Bandhan branch hall · after hours", stamp: "PHOTO · PARTNER" },
-    link: { label: "More on the partnership", href: "#partners" },
+    link: { label: copy.about.organizations.partnerLinkLabel, href: "#partners" },
   },
 ];
 
@@ -179,9 +135,9 @@ export function Organizations() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label="Organizations" />
+            <SectionMarker index="03" label={copy.about.organizations.sectionLabel} />
             <p className="curr-modules__hint">
-              The institutions the work is built with.
+              {copy.about.organizations.sectionHint}
             </p>
           </div>
           <div>
@@ -191,7 +147,7 @@ export function Organizations() {
                   <div>
                     <h3 className="org__name">{o.name}</h3>
                     <p className="org__role">{o.role}</p>
-                    <p className="org__body">{o.body}</p>
+                    <p className="org__body">{renderInline(o.body)}</p>
                     {o.link && (
                       <p className="org__link">
                         <SmartLink className="tertiary" href={o.link.href}>

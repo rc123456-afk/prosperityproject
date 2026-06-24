@@ -4,36 +4,36 @@
 
 import Link from "next/link";
 import { Photo, SectionMarker } from "@/components/primitives";
+import { renderInline } from "@/components/Rich";
+import { copy } from "@/content/copy";
 
-const COPY = {
-  kicker: "Curriculum",
-  standfirst:
-    "For the women's cohorts in West Bengal — delivered in Bengali and Hindi, in partnership with Bandhan NGO.",
+const c = copy.curriculum;
+const HERO = {
   heroTag: "workshop · Module 02 · Howrah, West Bengal",
   heroStamp: "PHOTO · WORKSHOP · WOMEN",
   heroTone: "warm" as const,
   heroMeta: "South 24 Parganas · 2025 · [ PHOTOGRAPHER ]",
-  interviewSlot: "Interview analysis document — coming soon",
 };
+const ROMAN = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x."];
 
 /* ---------- HERO ---------- */
 export function CurriculumHero() {
   return (
     <section className="curr-hero">
       <div className="container">
-        <p className="curr-hero__kicker">{COPY.kicker}</p>
-        <h1 className="curr-hero__headline">Knowing Your Money</h1>
-        <p className="curr-hero__standfirst">{COPY.standfirst}</p>
+        <p className="curr-hero__kicker">{c.hero.kicker}</p>
+        <h1 className="curr-hero__headline">{c.hero.headline}</h1>
+        <p className="curr-hero__standfirst">{c.hero.standfirst}</p>
       </div>
       <div className="container">
         <Photo
           aspect="cinema"
-          tone={COPY.heroTone}
-          tag={COPY.heroTag}
-          stamp={COPY.heroStamp}
+          tone={HERO.heroTone}
+          tag={HERO.heroTag}
+          stamp={HERO.heroStamp}
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">{COPY.heroMeta}</p>
+        <p className="curr-hero__credit">{HERO.heroMeta}</p>
       </div>
     </section>
   );
@@ -46,22 +46,13 @@ export function CurriculumOrigin() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="01" label="Where it came from" />
+            <SectionMarker index="01" label={c.origin.sectionLabel} />
           </div>
           <div>
-            <p className="curr-origin__body">
-              <em>Knowing Your Money</em> began at a kitchen table. The founder
-              spent two years interviewing women across West Bengal — beginning
-              with her family&rsquo;s longtime nanny — about how money moved
-              through their lives: who held it, who decided, what they wished
-              they had been taught. Every one of the ten modules carries a
-              question a real woman asked, and an answer worked out alongside
-              her. The curriculum is not adapted from a Western framework. It
-              was built, sentence by sentence, in the rooms it is now taught in.
-            </p>
+            <p className="curr-origin__body">{renderInline(c.origin.body)}</p>
             <p className="curr-origin__link">
               <Link href="/about">
-                Read the full origin story <span aria-hidden="true">→</span>
+                {c.origin.linkLabel} <span aria-hidden="true">→</span>
               </Link>
             </p>
             <div className="curr-origin__slot">
@@ -69,7 +60,7 @@ export function CurriculumOrigin() {
                 [ ]
               </span>
               <span className="curr-origin__slot-label">
-                {COPY.interviewSlot}
+                {c.origin.interviewSlot}
               </span>
               <span className="curr-origin__slot-meta">PDF · forthcoming</span>
             </div>
@@ -87,46 +78,18 @@ export function CurriculumPremise() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="04" label="How it is taught" />
+            <SectionMarker index="04" label={c.premise.sectionLabel} />
           </div>
           <div>
-            <p className="curr-premise__body">
-              Every module opens with a story — a recurring cast of characters
-              drawn from the original interviews, whose households we follow
-              across the ten weeks. A facilitator from the same district leads
-              the room; live translation between Bengali and Hindi runs through
-              every session, so no student is asked to stretch for language.
-              Each student leaves with the <em>Knowing Your Money</em> textbook
-              in her own script. A short video explainer accompanies each
-              module, recorded for households where a daughter or son can sit
-              with their mother and watch together at home. The work travels in
-              the voice it was learned in.
-            </p>
+            <p className="curr-premise__body">{renderInline(c.premise.body)}</p>
 
             <ul className="curr-premise__list">
-              <li>
-                <span className="curr-premise__list-num">i.</span>
-                <span>Real interviews shape every module.</span>
-              </li>
-              <li>
-                <span className="curr-premise__list-num">ii.</span>
-                <span>
-                  Recurring story characters carry the lessons across the ten
-                  weeks.
-                </span>
-              </li>
-              <li>
-                <span className="curr-premise__list-num">iii.</span>
-                <span>Live translation runs through every workshop.</span>
-              </li>
-              <li>
-                <span className="curr-premise__list-num">iv.</span>
-                <span>Every student keeps the textbook.</span>
-              </li>
-              <li>
-                <span className="curr-premise__list-num">v.</span>
-                <span>One short video explainer per module, for home.</span>
-              </li>
+              {c.premise.points.map((point, i) => (
+                <li key={i}>
+                  <span className="curr-premise__list-num">{ROMAN[i]}</span>
+                  <span>{renderInline(point)}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -169,21 +132,16 @@ export function TextbookRail() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label="The textbook" />
-            <p className="curr-modules__hint">
-              Three editions — Bengali, Hindi, English. Each routes to the
-              resources page.
-            </p>
+            <SectionMarker index="03" label={c.textbook.sectionLabel} />
+            <p className="curr-modules__hint">{c.textbook.sectionHint}</p>
           </div>
 
           <div>
             <h2 className="curr-textbook__head">
-              <em>Knowing Your Money,</em> in the language of the room.
+              {renderInline(c.textbook.heading)}
             </h2>
             <p className="curr-textbook__intro">
-              Every student receives the textbook in her own script — 184 pages,
-              typeset for reading aloud, with module-by-module worksheets at the
-              back. All three editions are freely downloadable.
+              {renderInline(c.textbook.intro)}
             </p>
 
             <ul className="textbook-list">
@@ -222,12 +180,9 @@ export function TextbookRail() {
 
             <div className="curr-textbook__foot">
               <Link href="/resources" className="tertiary">
-                All resources <span aria-hidden="true">→</span>
+                {c.textbook.linkLabel} <span aria-hidden="true">→</span>
               </Link>
-              <span className="curr-textbook__note">
-                Print copies are distributed in workshops — not available by
-                post.
-              </span>
+              <span className="curr-textbook__note">{c.textbook.note}</span>
             </div>
           </div>
         </div>

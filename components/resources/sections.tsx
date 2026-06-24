@@ -1,75 +1,40 @@
 /* Resources — hero, textbook downloads, and license note.
    Ported from ResourcesPage.jsx. (VideoCurriculum is a separate client
-   component.) */
+   component.) Copy lives in content/copy.ts. */
 
-import type { ReactNode } from "react";
 import { Photo, Caption, SectionMarker } from "@/components/primitives";
+import { renderInline, RichText } from "@/components/Rich";
+import { copy } from "@/content/copy";
 
-const RESOURCES_COPY: {
-  kicker: string;
-  headline: string;
-  standfirst: string;
-  heroTag: string;
-  heroStamp: string;
-  heroTone: "ledger" | "dusk";
-  heroMeta: string;
-  textbook: {
-    body: ReactNode;
-    photoTag: string;
-    photoStamp: string;
-    photoMeta: string;
-  };
-} = {
-  kicker: "Resources",
-  headline: "Materials, free to use.",
-  standfirst:
-    "The textbook in three scripts. A short video for every module. Free for any household, classroom, or partner organisation that can use them.",
+const c = copy.resources;
+const HERO = {
   heroTag: "textbook · classroom · Howrah",
   heroStamp: "PHOTO · RESOURCES",
-  heroTone: "ledger",
+  heroTone: "ledger" as const,
   heroMeta: "Howrah · 2025 · [ PHOTOGRAPHER ]",
-  textbook: {
-    body: (
-      <>
-        <p>
-          <em>Knowing Your Money</em> is a 184-page textbook covering all ten
-          modules — the book the cohorts use, typeset for reading aloud, with
-          worksheets and a glossary of Indian banking terms in every edition.
-          Three editions are in circulation, each freely downloadable below.
-        </p>
-        <p>
-          Households can use it as a guide; partner organisations can teach from
-          it directly. We ask only that it be passed on intact — cover and
-          credits attached — and that anyone running a formal cohort lets us
-          know.
-        </p>
-      </>
-    ),
-    photoTag: "textbook · second edition · 2025",
-    photoStamp: "PHOTO · TEXTBOOK",
-    photoMeta: "Second edition · 2025 · [ PHOTOGRAPHER ]",
-  },
+  photoTag: "textbook · second edition · 2025",
+  photoStamp: "PHOTO · TEXTBOOK",
+  photoMeta: "Second edition · 2025 · [ PHOTOGRAPHER ]",
 };
 
 /* ---------- HERO ---------- */
 export function ResourcesHero() {
-  const c = RESOURCES_COPY;
   return (
     <section className="curr-hero">
       <div className="container">
-        <p className="curr-hero__kicker">{c.kicker}</p>
-        <h1 className="curr-hero__headline">{c.headline}</h1>
-        <p className="curr-hero__standfirst">{c.standfirst}</p>
+        <p className="curr-hero__kicker">{c.hero.kicker}</p>
+        <h1 className="curr-hero__headline">{c.hero.headline}</h1>
+        <p className="curr-hero__standfirst">{c.hero.standfirst}</p>
       </div>
       <div className="container">
         <Photo
           aspect="cinema"
-          tone={c.heroTone}
-          tag={c.heroTag}
-          stamp={c.heroStamp}
+          tone={HERO.heroTone}
+          tag={HERO.heroTag}
+          stamp={HERO.heroStamp}
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">{c.heroMeta}</p>
+        <p className="curr-hero__credit">{HERO.heroMeta}</p>
       </div>
     </section>
   );
@@ -110,30 +75,28 @@ const TEXTBOOK_EDITIONS = [
 ];
 
 export function TextbookDownloads() {
-  const c = RESOURCES_COPY.textbook;
-
   return (
     <section className="section curr-origin res-textbook">
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="01" label="The textbook" />
-            <p className="curr-modules__hint">
-              184 pages. Three editions, freely downloadable.
-            </p>
+            <SectionMarker index="01" label={c.textbook.sectionLabel} />
+            <p className="curr-modules__hint">{c.textbook.sectionHint}</p>
           </div>
 
           <div>
-            <div className="res-textbook__body">{c.body}</div>
+            <div className="res-textbook__body">
+              <RichText items={c.textbook.body} />
+            </div>
 
             <div className="res-textbook__split">
               <Photo
                 aspect="landscape"
                 tone="ledger"
-                tag={c.photoTag}
-                stamp={c.photoStamp}
+                tag={HERO.photoTag}
+                stamp={HERO.photoStamp}
               />
-              <Caption meta={c.photoMeta} />
+              <Caption meta={HERO.photoMeta} />
             </div>
 
             <div className="downloads">
@@ -174,11 +137,7 @@ export function TextbookDownloads() {
               ))}
             </div>
 
-            <p className="res-textbook__note">
-              Print copies are distributed in workshops — not available by post.
-              Partner organisations using the book in formal cohorts: please
-              write to us.
-            </p>
+            <p className="res-textbook__note">{c.textbook.note}</p>
           </div>
         </div>
       </div>
@@ -193,22 +152,13 @@ export function LicenseNote() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label="License" />
+            <SectionMarker index="03" label={c.license.sectionLabel} />
           </div>
           <div>
             <p className="res-license__line">
-              <em>
-                Free for educational use — household, classroom, or community.
-                Pass it on intact.
-              </em>
+              <em>{renderInline(c.license.line1)}</em>
             </p>
-            <p className="res-license__line">
-              Organisations adopting the curriculum into a formal programme —
-              schools, NGOs, government departments, livelihood missions — should
-              write to <a href="mailto:adopt@prosperity.in">adopt@prosperity.in</a>.
-              We will send you the facilitator's edition, a brief licence, and an
-              invitation to a one-day onboarding.
-            </p>
+            <p className="res-license__line">{renderInline(c.license.line2)}</p>
           </div>
         </div>
       </div>

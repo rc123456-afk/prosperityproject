@@ -2,6 +2,7 @@
    legal strip. Keeps the design's ink/paper/mono/marigold language. */
 
 import Link from "next/link";
+import { copy } from "@/content/copy";
 
 const LINKS: { label: string; href: string }[] = [
   { label: "Curriculum", href: "/curriculum" },
@@ -20,8 +21,8 @@ export function Footer() {
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__brand">
-            <p className="site-footer__deva">समृद्धि की पाठशाला</p>
-            <p className="site-footer__roman">A school of prosperity</p>
+            <p className="site-footer__deva">{copy.site.footerDevaLine}</p>
+            <p className="site-footer__roman">{copy.site.footerRomanLine}</p>
           </div>
           <nav className="site-footer__links" aria-label="Footer">
             {LINKS.map((l) => (

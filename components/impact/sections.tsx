@@ -4,25 +4,24 @@
 
 import type { ReactNode } from "react";
 import { SectionMarker } from "@/components/primitives";
-import { SmartLink } from "@/components/SmartLink";
+import { renderInline, RichText } from "@/components/Rich";
+import { copy } from "@/content/copy";
+
+const c = copy.impact;
 
 /* ---------- HERO ---------- */
 export function ImpactHero() {
   return (
     <section className="curr-hero">
       <div className="container">
-        <p className="curr-hero__kicker">Impact</p>
+        <p className="curr-hero__kicker">{c.hero.kicker}</p>
         <h1 className="curr-hero__headline">
-          What&rsquo;s been built.
+          {c.hero.headline}
           <span className="ph-stamp" style={{ marginLeft: 16, verticalAlign: "middle" }}>
             [ PLACEHOLDER HEADLINE ]
           </span>
         </h1>
-        <p className="curr-hero__standfirst">
-          We count what we can, honestly, and we say where the counting stops.
-          The numbers below are placeholders until the first annual report is
-          published.
-        </p>
+        <p className="curr-hero__standfirst">{c.hero.standfirst}</p>
       </div>
     </section>
   );
@@ -35,10 +34,8 @@ export function ImpactLead() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="01" label="In short" />
-            <p className="curr-modules__hint">
-              Editorial copy. Numbers slotted in on publication.
-            </p>
+            <SectionMarker index="01" label={c.lead.sectionLabel} />
+            <p className="curr-modules__hint">{c.lead.sectionHint}</p>
           </div>
           <p className="impact-lead">
             In <span className="slot">[ YEAR ]</span>, we ran{" "}
@@ -104,21 +101,7 @@ const IMPACT_SUBS: { num: string; label: string; head: string; body: ReactNode }
     num: "04",
     label: "Methodology",
     head: "Methodology",
-    body: (
-      <>
-        <p>
-          Placeholder, and deliberately honest. This section sets out how outcomes
-          are measured: what is counted at registration, at graduation, in
-          follow-up, and by whom.
-        </p>
-        <p>
-          It&rsquo;s candid about the limits. We work with small cohorts in places
-          hard to return to; follow-up is partial; self-reported saving isn&rsquo;t
-          audited saving. We&rsquo;d rather publish a smaller number we trust.{" "}
-          <strong>The numbers are a floor, not a verdict.</strong>
-        </p>
-      </>
-    ),
+    body: <RichText items={c.subs.methodologyBody} />,
   },
 ];
 
@@ -128,8 +111,8 @@ export function ImpactSubsections() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label="The measure" />
-            <p className="curr-modules__hint">Reach · Outcomes · Methodology.</p>
+            <SectionMarker index="—" label={c.subs.sectionLabel} />
+            <p className="curr-modules__hint">{c.subs.sectionHint}</p>
           </div>
           <div className="impact-subs">
             {IMPACT_SUBS.map((s) => (
@@ -153,15 +136,13 @@ export function ImpactPullQuote() {
       <div className="container">
         <figure className="pullquote">
           <p className="pullquote__mark">
-            On what the numbers leave out
+            {c.pullQuote.mark}
             <span className="ph-stamp" style={{ marginLeft: 12 }}>
               [ PLACEHOLDER ]
             </span>
           </p>
           <blockquote className="pullquote__text">
-            &ldquo;A figure can tell you a woman opened an account. It can&rsquo;t
-            tell you she opened it in her own name, and what that cost her to
-            do.&rdquo;
+            &ldquo;{c.pullQuote.text}&rdquo;
           </blockquote>
           <figcaption className="pullquote__cite">
             [ ATTRIBUTION ] &nbsp;·&nbsp;{" "}
@@ -184,8 +165,8 @@ export function AnnualReports() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="05" label="Annual reports" />
-            <p className="curr-modules__hint">Published yearly. Newest first.</p>
+            <SectionMarker index="05" label={c.reports.sectionLabel} />
+            <p className="curr-modules__hint">{c.reports.sectionHint}</p>
           </div>
           <div>
             <ul className="reports-list">
@@ -215,15 +196,10 @@ export function ImpactClosing() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label="And the rest" />
+            <SectionMarker index="—" label={c.closing.sectionLabel} />
           </div>
           <p className="impact-closing">
-            <em>
-              Most of what matters here doesn&rsquo;t fit in a number. For the part
-              that doesn&rsquo;t, read the{" "}
-              <SmartLink href="/stories">Stories</SmartLink> — that is where
-              the work actually shows up.
-            </em>
+            <em>{renderInline(c.closing.text)}</em>
           </p>
         </div>
       </div>

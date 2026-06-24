@@ -11,6 +11,10 @@ import {
   TertiaryLink,
   PlaceholderStamp,
 } from "@/components/primitives";
+import { renderInline } from "@/components/Rich";
+import { copy } from "@/content/copy";
+
+const c = copy.home;
 
 /* ---------- 01 · HERO ---------- */
 function Hero() {
@@ -21,19 +25,16 @@ function Hero() {
       <div className="hero__inner">
         <p className="hero__kicker">
           <span className="dot" aria-hidden="true" />
-          Knowing Your Money &nbsp;·&nbsp; ten modules, three languages
+          {c.hero.kicker}
         </p>
         <h1 className="hero__headline">
-          Practical financial literacy for the people who build the world.
+          {c.hero.headline}
           <PlaceholderStamp>HEADLINE · PLACEHOLDER</PlaceholderStamp>
         </h1>
-        <p className="hero__standfirst">
-          Workshops in Bengali, Hindi, and English — taught by people from the
-          communities they serve, in partnership with Bandhan NGO.
-        </p>
+        <p className="hero__standfirst">{c.hero.standfirst}</p>
         <div className="hero__actions">
           <Link href="/curriculum" className="btn btn--primary">
-            Read the curriculum <span aria-hidden="true">→</span>
+            {c.hero.ctaLabel} <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
@@ -56,21 +57,13 @@ function WhatThisIs() {
     <section className="section">
       <div className="container--narrow">
         <div className="section-head" style={{ marginBottom: 56 }}>
-          <SectionMarker index="01" label="What this is" />
+          <SectionMarker index="01" label={c.whatThisIs.sectionLabel} />
         </div>
         <div
           className="prose"
           style={{ maxWidth: "40rem", fontSize: 20, lineHeight: 1.65 }}
         >
-          <p>
-            The Prosperity Project teaches practical money skills — bank
-            accounts, budgeting, debt, savings, scam protection, digital
-            payments, emergency planning — to people the financial system has
-            historically ignored. The flagship curriculum,{" "}
-            <em>Knowing Your Money</em>, is ten modules grounded in real
-            interviews, taught to women in <strong>West Bengal</strong> in
-            partnership with Bandhan NGO.
-          </p>
+          <p>{renderInline(c.whatThisIs.body)}</p>
         </div>
       </div>
     </section>
@@ -83,9 +76,9 @@ function WhereWeWork() {
     <section className="section section--alt">
       <div className="container">
         <div className="section-head">
-          <SectionMarker index="02" label="Where we work" />
+          <SectionMarker index="02" label={c.whereWeWork.sectionLabel} />
           <h2 className="h2 head" style={{ maxWidth: "22ch" }}>
-            Ten modules, taught in the rooms the community already trusts.
+            {c.whereWeWork.heading}
           </h2>
         </div>
 
@@ -98,25 +91,16 @@ function WhereWeWork() {
           />
           <div className="cohort__body">
             <div className="cohort__row">
-              <span className="cohort__region">
-                West Bengal &nbsp;·&nbsp; India
-              </span>
+              <span className="cohort__region">{c.whereWeWork.region}</span>
             </div>
-            <h3 className="cohort__title">Women in West Bengal</h3>
-            <p className="cohort__copy">
-              Twice-weekly workshops in <strong>Bengali and Hindi</strong>, run
-              in self-help-group halls across{" "}
-              <span className="ph ph--ink">[ N&nbsp;villages ]</span> in the
-              Sundarbans, Howrah, and South&nbsp;24&nbsp;Parganas. Students
-              complete the curriculum and many return as facilitators for the
-              next cohort.
-            </p>
+            <h3 className="cohort__title">{c.whereWeWork.cardTitle}</h3>
+            <p className="cohort__copy">{renderInline(c.whereWeWork.cardCopy)}</p>
             <div className="cohort__links">
               <TertiaryLink href="/curriculum">
-                Read the curriculum
+                {c.whereWeWork.curriculumLinkLabel}
               </TertiaryLink>
               <TertiaryLink href="/stories">
-                Stories from the cohort
+                {c.whereWeWork.storiesLinkLabel}
               </TertiaryLink>
             </div>
           </div>
@@ -132,7 +116,7 @@ function Numbers() {
     <section className="section">
       <div className="container">
         <div className="section-head" style={{ marginBottom: 48 }}>
-          <SectionMarker index="03" label="The work, in numbers" />
+          <SectionMarker index="03" label={c.numbers.sectionLabel} />
         </div>
         <p className="number-prose">
           Across <span className="ph">[ YEAR ]</span>,{" "}
@@ -190,39 +174,29 @@ function WorkshopsPreview() {
 
           <div>
             <div className="section-head" style={{ marginBottom: 32 }}>
-              <SectionMarker index="04" label="How a workshop runs" />
+              <SectionMarker index="04" label={c.workshopsPreview.sectionLabel} />
               <h2 className="h2 head" style={{ maxWidth: "20ch" }}>
-                Twice a week, for ten weeks, in the room the community already
-                trusts.
+                {c.workshopsPreview.heading}
               </h2>
             </div>
 
             <div className="prose" style={{ maxWidth: "32rem" }}>
-              <p>
-                We work with partners who already have a hall, a livelihood
-                programme, or a self-help group running. Facilitators are
-                recruited from the same district and trained over four weeks.
-                Each cohort caps at <span className="ph">[ 24 ]</span> students.
-                Sessions run in Bengali, Hindi, or English, depending on the
-                room.
-              </p>
+              <p>{renderInline(c.workshopsPreview.body)}</p>
             </div>
 
             <div className="crp-callout">
               <div className="crp-callout__label">
-                <span className="num-prefix">A method</span>
-                The CRP Model
+                <span className="num-prefix">{c.workshopsPreview.crpLabel}</span>
+                {c.workshopsPreview.crpTitle}
               </div>
               <p className="crp-callout__body">
-                Students complete the curriculum themselves, then return as
-                facilitators — so the work travels in a familiar voice and stays
-                after the founder leaves the room.
+                {renderInline(c.workshopsPreview.crpBody)}
               </p>
             </div>
 
             <div style={{ marginTop: 36 }}>
               <TertiaryLink href="/workshops">
-                See a workshop in session
+                {c.workshopsPreview.linkLabel}
               </TertiaryLink>
             </div>
           </div>
@@ -238,7 +212,7 @@ function StoriesPreview() {
     <section className="section section--alt">
       <div className="container">
         <div className="section-head" style={{ marginBottom: 56 }}>
-          <SectionMarker index="05" label="Stories from the cohort" />
+          <SectionMarker index="05" label={c.storiesPreview.sectionLabel} />
         </div>
 
         <div className="stories">
@@ -252,22 +226,21 @@ function StoriesPreview() {
 
           <div>
             <blockquote className="stories__quote">
-              &ldquo;Before, I didn&rsquo;t understand where the money was going.
-              Now there is a notebook, and every week I look at it.&rdquo;
+              &ldquo;{c.storiesPreview.quote}&rdquo;
               <PlaceholderStamp>QUOTE · TRANSLATION</PlaceholderStamp>
             </blockquote>
-            <p className="stories__original">
-              पहले समझ नहीं थी कि पैसा कहाँ जा रहा है। अब नोटबुक है, और हर हफ़्ते मैं
-              देखती हूँ।
-            </p>
+            <p className="stories__original">{c.storiesPreview.original}</p>
             <p className="stories__cite">
-              Rekha Mondal &nbsp;·&nbsp; Module 02 graduate &nbsp;·&nbsp;{" "}
+              {c.storiesPreview.citeName} &nbsp;·&nbsp; {c.storiesPreview.citeMeta}{" "}
+              &nbsp;·&nbsp;{" "}
               <span style={{ color: "var(--marigold-deep)" }}>
-                spoken in Hindi
+                {c.storiesPreview.citeLang}
               </span>
             </p>
             <div style={{ marginTop: 40 }}>
-              <TertiaryLink href="/stories">Read more stories</TertiaryLink>
+              <TertiaryLink href="/stories">
+                {c.storiesPreview.linkLabel}
+              </TertiaryLink>
             </div>
           </div>
         </div>
@@ -303,12 +276,12 @@ function GalleryPreview() {
           }}
         >
           <div className="stack-4">
-            <SectionMarker index="06" label="Gallery" />
+            <SectionMarker index="06" label={c.galleryPreview.sectionLabel} />
             <h2 className="h2" style={{ maxWidth: "22ch" }}>
-              The classrooms, the materials, the people in the room.
+              {c.galleryPreview.heading}
             </h2>
           </div>
-          <TertiaryLink href="/gallery">See the full gallery</TertiaryLink>
+          <TertiaryLink href="/gallery">{c.galleryPreview.linkLabel}</TertiaryLink>
         </div>
 
         <div className="gallery">

@@ -1,20 +1,22 @@
 /* Contact — all outward connection on one page: one inbox per reason, two
    get-involved paths, press, and social. Ported verbatim from ContactPage.jsx.
-   Server components; mailto + social links stay plain anchors. */
+   Server components; mailto + social links stay plain anchors.
+   Copy lives in content/copy.ts. */
 
 import { SectionMarker } from "@/components/primitives";
+import { renderInline } from "@/components/Rich";
+import { copy } from "@/content/copy";
+
+const c = copy.contact;
 
 /* ---------- HERO ---------- */
 export function ContactHero() {
   return (
     <section className="curr-hero">
       <div className="container">
-        <p className="curr-hero__kicker">Contact</p>
-        <h1 className="curr-hero__headline">Reach out.</h1>
-        <p className="curr-hero__standfirst">
-          One inbox per reason. We read everything and reply to most things —
-          partnership, press, and anyone who wants to run the curriculum.
-        </p>
+        <p className="curr-hero__kicker">{c.hero.kicker}</p>
+        <h1 className="curr-hero__headline">{c.hero.headline}</h1>
+        <p className="curr-hero__standfirst">{c.hero.standfirst}</p>
       </div>
     </section>
   );
@@ -26,16 +28,13 @@ export function GeneralContact() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="01" label="General" />
-            <p className="curr-modules__hint">For everything else.</p>
+            <SectionMarker index="01" label={c.general.sectionLabel} />
+            <p className="curr-modules__hint">{c.general.sectionHint}</p>
           </div>
           <div>
-            <p className="contact-block__body">
-              Questions about the curriculum, the workshops, or the project — write
-              to us. No form; a real person reads this inbox.
-            </p>
-            <a className="contact-email" href="mailto:hello@theprosperityproject.org">
-              hello@theprosperityproject.org{" "}
+            <p className="contact-block__body">{renderInline(c.general.body)}</p>
+            <a className="contact-email" href={`mailto:${c.general.email}`}>
+              {c.general.email}{" "}
               <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -49,17 +48,15 @@ export function GeneralContact() {
 const INVOLVE_PATHS = [
   {
     num: "01",
-    label: "Run a workshop",
-    body:
-      "Organisations, CSR teams, college societies, and Resident Welfare Associations can teach Knowing Your Money directly. We'll send the facilitator's edition, a short licence, and a one-day onboarding — so a workshop in your community is run the way it's meant to be.",
-    email: "adopt@theprosperityproject.org",
+    label: c.getInvolved.runLabel,
+    body: c.getInvolved.runBody,
+    email: c.getInvolved.runEmail,
   },
   {
     num: "02",
-    label: "Partner with us",
-    body:
-      "NGOs, foundations, and institutions wanting to partner formally — the way Bandhan delivers the work across West Bengal — should write here. The model is simple: you bring the halls, the trust, and the relationships; we bring the curriculum and the training.",
-    email: "partner@theprosperityproject.org",
+    label: c.getInvolved.partnerLabel,
+    body: c.getInvolved.partnerBody,
+    email: c.getInvolved.partnerEmail,
   },
 ];
 
@@ -69,8 +66,8 @@ export function GetInvolved() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label="Get involved" />
-            <p className="curr-modules__hint">Two ways the work travels further.</p>
+            <SectionMarker index="02" label={c.getInvolved.sectionLabel} />
+            <p className="curr-modules__hint">{c.getInvolved.sectionHint}</p>
           </div>
           <div>
             <div className="involve-paths">
@@ -81,7 +78,7 @@ export function GetInvolved() {
                     {p.label}
                   </h3>
                   <div>
-                    <p className="involve-path__body">{p.body}</p>
+                    <p className="involve-path__body">{renderInline(p.body)}</p>
                     <a
                       className="contact-email"
                       href={`mailto:${p.email}`}
@@ -107,17 +104,13 @@ export function PressContact() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label="Press" />
-            <p className="curr-modules__hint">Journalists welcome.</p>
+            <SectionMarker index="03" label={c.press.sectionLabel} />
+            <p className="curr-modules__hint">{c.press.sectionHint}</p>
           </div>
           <div>
-            <p className="contact-block__body">
-              We welcome press enquiries and are glad to arrange interviews,
-              photographs with consent, and workshop visits. For a media kit or to
-              speak with the founder, write to us.
-            </p>
-            <a className="contact-email" href="mailto:press@theprosperityproject.org">
-              press@theprosperityproject.org{" "}
+            <p className="contact-block__body">{renderInline(c.press.body)}</p>
+            <a className="contact-email" href={`mailto:${c.press.email}`}>
+              {c.press.email}{" "}
               <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -133,14 +126,16 @@ export function Elsewhere() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="04" label="Elsewhere" />
+            <SectionMarker index="04" label={c.elsewhere.sectionLabel} />
           </div>
           <div className="elsewhere-links">
             <a className="elsewhere-link" href="#" target="_blank" rel="noopener">
-              Instagram <span className="arrow" aria-hidden="true">↗</span>
+              {c.elsewhere.instagramLabel}{" "}
+              <span className="arrow" aria-hidden="true">↗</span>
             </a>
             <a className="elsewhere-link" href="#" target="_blank" rel="noopener">
-              LinkedIn <span className="arrow" aria-hidden="true">↗</span>
+              {c.elsewhere.linkedinLabel}{" "}
+              <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

@@ -13,6 +13,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage, LANGS } from "./LanguageContext";
+import { copy } from "@/content/copy";
 
 const NAV_LINKS: { id: string; label: string; href: string }[] = [
   { id: "curriculum", label: "Curriculum", href: "/curriculum" },
@@ -46,7 +47,7 @@ export function Nav() {
     <nav className="nav" aria-label="Primary">
       <div className="nav__inner">
         <Link href="/" className="nav__wordmark">
-          The Prosperity Project
+          {copy.site.wordmark}
         </Link>
 
         <ul className="nav__links" role="menubar">

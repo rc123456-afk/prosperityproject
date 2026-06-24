@@ -1,51 +1,13 @@
 /* Stories — photo-essay sections. Ported verbatim from StoriesPage.jsx.
    Presentational only (no client state); the play-button overlays are pure
-   CSS, so every section stays a server component.
-
-   Composition (per route):
-     <StoriesHero />
-     <ConsentNote />
-     <StorySection kind="crp" />
-     <StoryPullQuote />
-     <StorySection kind="beneficiary" />
-     <VideoTestimonials />
-*/
+   CSS, so every section stays a server component. Editable copy lives in
+   content/copy.ts; names, Hindi/Bengali originals, and photo specs stay here. */
 
 import { Photo, Figure, SectionMarker } from "@/components/primitives";
+import { renderInline } from "@/components/Rich";
+import { copy } from "@/content/copy";
 
-/* ---------- COPY (hero + pull quote) ---------- */
-type StoryCopy = {
-  kicker: string;
-  headline: string;
-  standfirst: string;
-  heroTag: string;
-  heroStamp: string;
-  heroTone: "warm" | "dusk";
-  heroMeta: string;
-  pullquote: {
-    mark: string;
-    text: string;
-    cite: string;
-    citeMeta: string;
-  };
-};
-
-const STORIES_COPY: StoryCopy = {
-  kicker: "Stories",
-  headline: "The women who carry it.",
-  standfirst:
-    "Students who finished the curriculum, and the Community Resource Persons who came back to teach it. In their own words.",
-  heroTag: "graduation day · Howrah cohort · 2025",
-  heroStamp: "PHOTO · STORIES",
-  heroTone: "warm",
-  heroMeta: "Howrah · 2025 · [ PHOTOGRAPHER ]",
-  pullquote: {
-    mark: "From a workshop in the Sundarbans",
-    text: "I came to learn how to keep my money. I stayed to teach my neighbours how to keep theirs.",
-    cite: "Sabita Halder",
-    citeMeta: "CRP · South 24 Parganas",
-  },
-};
+const c = copy.stories;
 
 /* ---------- STORY DATA (crp + beneficiary) ---------- */
 type PhotoSpec = {
@@ -82,10 +44,9 @@ type StoryBlock = {
 const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
   crp: {
     marker: "01",
-    label: "Community Resource Persons",
-    hint: "Students first, facilitators second.",
-    intro:
-      "Most women teaching today sat in a cohort themselves, a year or two earlier. Two of them:",
+    label: c.crp.sectionLabel,
+    hint: c.crp.sectionHint,
+    intro: c.crp.intro,
     stories: [
       {
         name: "Anjali Saha",
@@ -95,12 +56,10 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         portrait: { tone: "warm", tag: "Anjali, in the hall where she now teaches", stamp: "PHOTO · CRP" },
         quoteOrig:
           "पहले मैं सिर्फ़ सुनती थी। अब मेरे हाथ में चॉक है और कमरा मेरी बात सुनता है।",
-        quoteEn:
-          "Before, I only listened. Now the chalk is in my hand and the room listens to me.",
+        quoteEn: c.people.anjali.quoteEn,
         citeName: "Anjali Saha",
         citeMeta: "spoken in Hindi",
-        body:
-          "Anjali finished the 2023 cohort with one question: could she do this herself? She trained that spring. The cohort she leads now meets in the same hall where she once sat in the back row.",
+        body: c.people.anjali.body,
         detail: { tone: "ledger", aspect: "square", tag: "her facilitator's notebook · margin notes", stamp: "PHOTO · DETAIL" },
         group: { tone: "green", aspect: "landscape", tag: "the 2025 Howrah cohort she leads", stamp: "PHOTO · WORKSHOP" },
       },
@@ -112,12 +71,10 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         portrait: { tone: "green", tag: "Sabita, before a Sundarbans session", stamp: "PHOTO · CRP" },
         quoteOrig:
           "जो बात मेरी माँ को कोई नहीं समझा पाया, वह मैं अब पूरे गाँव को समझा रही हूँ।",
-        quoteEn:
-          "What no one could explain to my mother, I now explain to the whole village.",
+        quoteEn: c.people.sabita.quoteEn,
         citeName: "Sabita Halder",
         citeMeta: "spoken in Hindi",
-        body:
-          "Sabita travels by boat to three villages across the Sundarbans, the textbook in a plastic bag against the spray. In two years she has run the curriculum nine times; six women in her current cohort have already asked about training to teach.",
+        body: c.people.sabita.body,
         detail: { tone: "cool", aspect: "square", tag: "the boat crossing to the next village", stamp: "PHOTO · DETAIL" },
         group: { tone: "warm", aspect: "landscape", tag: "Module 04 · the walk to the branch", stamp: "PHOTO · WORKSHOP" },
       },
@@ -125,10 +82,9 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
   },
   beneficiary: {
     marker: "02",
-    label: "Students",
-    hint: "Women who finished all ten modules.",
-    intro:
-      "Most students simply take the curriculum home and put it to work. Two on what changed:",
+    label: c.beneficiary.sectionLabel,
+    hint: c.beneficiary.sectionHint,
+    intro: c.beneficiary.intro,
     stories: [
       {
         name: "Rekha Mondal",
@@ -138,12 +94,10 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         portrait: { tone: "ledger", tag: "Rekha, with her household notebook", stamp: "PHOTO · STUDENT", anon: false },
         quoteOrig:
           "पहले समझ नहीं थी कि पैसा कहाँ जा रहा है। अब नोटबुक है, और हर हफ़्ते मैं देखती हूँ।",
-        quoteEn:
-          "Before, I didn't understand where the money was going. Now there is a notebook, and every week I look at it.",
+        quoteEn: c.people.rekha.quoteEn,
         citeName: "Rekha Mondal",
         citeMeta: "spoken in Hindi",
-        body:
-          "Rekha runs a tailoring business from her front room. Module 02 — budgeting against her lowest-earning month, not her average — stayed with her. She opened her first account, in her own name, on the Module 04 walk.",
+        body: c.people.rekha.body,
         detail: { tone: "warm", aspect: "square", tag: "the sewing machine · her front room", stamp: "PHOTO · DETAIL" },
         group: { tone: "green", aspect: "landscape", tag: "her graduation · 2024", stamp: "PHOTO · WORKSHOP" },
       },
@@ -155,12 +109,10 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         portrait: { tone: "cool", aspect: "portrait", tag: "her hands · counting the week's savings", stamp: "PHOTO · DETAIL", anon: true },
         quoteOrig:
           "मैंने किसी को नहीं बताया कि मैं बचत कर रही हूँ। यह मेरा है।",
-        quoteEn:
-          "I haven't told anyone that I am saving. This is mine.",
+        quoteEn: c.people.anonymous.quoteEn,
         citeName: "Anonymous",
         citeMeta: "pictured by request · spoken in Hindi",
-        body:
-          "This student asked not to be named or photographed by face. She keeps a private emergency fund the household doesn't know about — the habit Module 10 is built to teach. Her story is hers to tell, on her terms.",
+        body: c.people.anonymous.body,
         detail: { tone: "ledger", aspect: "square", tag: "the tin where she keeps it", stamp: "PHOTO · DETAIL" },
         group: { tone: "dusk", aspect: "landscape", tag: "her cohort · faces withheld", stamp: "PHOTO · WORKSHOP" },
       },
@@ -170,23 +122,22 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
 
 /* ---------- HERO ---------- */
 export function StoriesHero() {
-  const c = STORIES_COPY;
   return (
     <section className="curr-hero">
       <div className="container">
-        <p className="curr-hero__kicker">{c.kicker}</p>
-        <h1 className="curr-hero__headline">{c.headline}</h1>
-        <p className="curr-hero__standfirst">{c.standfirst}</p>
+        <p className="curr-hero__kicker">{c.hero.kicker}</p>
+        <h1 className="curr-hero__headline">{c.hero.headline}</h1>
+        <p className="curr-hero__standfirst">{c.hero.standfirst}</p>
       </div>
       <div className="container">
         <Photo
           aspect="cinema"
-          tone={c.heroTone}
-          tag={c.heroTag}
-          stamp={c.heroStamp}
+          tone="warm"
+          tag="graduation day · Howrah cohort · 2025"
+          stamp="PHOTO · STORIES"
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">{c.heroMeta}</p>
+        <p className="curr-hero__credit">Howrah · 2025 · [ PHOTOGRAPHER ]</p>
       </div>
     </section>
   );
@@ -201,10 +152,7 @@ export function ConsentNote() {
           <div className="curr-origin__label">
             <SectionMarker index="—" label="A note on consent" />
           </div>
-          <p className="consent-note">
-            Names are used with permission. Some subjects requested anonymity and
-            are pictured by their hands or workspace.
-          </p>
+          <p className="consent-note">{renderInline(c.consentNote)}</p>
         </div>
       </div>
     </section>
@@ -238,7 +186,7 @@ function Story({ s, index }: { s: StoryItem; index: string }) {
         </figure>
         <div className="story__quote-wrap">
           <p className="story__quote-orig">{s.quoteOrig}</p>
-          <p className="story__quote-en">{s.quoteEn}</p>
+          <p className="story__quote-en">{renderInline(s.quoteEn)}</p>
           <span className="story__cite">
             {s.citeName} &nbsp;·&nbsp;{" "}
             <span className="accent">{s.citeMeta}</span>
@@ -246,7 +194,7 @@ function Story({ s, index }: { s: StoryItem; index: string }) {
         </div>
       </div>
 
-      <p className="story__body">{s.body}</p>
+      <p className="story__body">{renderInline(s.body)}</p>
 
       <div className="story__photos">
         <Figure
@@ -280,7 +228,7 @@ export function StorySection({ kind }: { kind: "crp" | "beneficiary" }) {
           </div>
           <div>
             <p className="curr-premise__body" style={{ marginBottom: 64 }}>
-              {data.intro}
+              {renderInline(data.intro)}
             </p>
             <div className="story-set">
               {data.stories.map((s, i) => (
@@ -296,7 +244,7 @@ export function StorySection({ kind }: { kind: "crp" | "beneficiary" }) {
 
 /* ---------- FULL-WIDTH PULL QUOTE ---------- */
 export function StoryPullQuote() {
-  const q = STORIES_COPY.pullquote;
+  const q = c.pullQuote;
   return (
     <section className="pullquote-section section--ink">
       <div className="container">
@@ -313,38 +261,25 @@ export function StoryPullQuote() {
 }
 
 /* ---------- VIDEO TESTIMONIALS ---------- */
-type VideoClip = {
-  tone: "warm" | "green" | "dusk";
-  tag: string;
-  stamp: string;
-  caption: string;
-  meta: string;
-};
-type VideoBlock = { intro: string; clips: VideoClip[] };
-
-const VIDEO_COPY: VideoBlock = {
-  intro: "Two short testimonials, filmed at graduations. Subtitled in English.",
-  clips: [
-    { tone: "warm", tag: "Anjali · on becoming a facilitator", stamp: "VIDEO · 02:40", caption: "Anjali Saha on the first cohort she taught.", meta: "Howrah · 2025 · Bengali, English subtitles" },
-    { tone: "green", tag: "Rekha · on the notebook", stamp: "VIDEO · 01:55", caption: "Rekha Mondal on the week she opened her account.", meta: "Salkia · 2024 · Hindi, English subtitles" },
-  ],
-};
+const VIDEO_CLIPS = [
+  { tone: "warm" as const, tag: "Anjali · on becoming a facilitator", stamp: "VIDEO · 02:40", caption: "Anjali Saha on the first cohort she taught.", meta: "Howrah · 2025 · Bengali, English subtitles" },
+  { tone: "green" as const, tag: "Rekha · on the notebook", stamp: "VIDEO · 01:55", caption: "Rekha Mondal on the week she opened her account.", meta: "Salkia · 2024 · Hindi, English subtitles" },
+];
 
 export function VideoTestimonials() {
-  const v = VIDEO_COPY;
   return (
     <section className="section section--alt">
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label="Video testimonials" />
-            <p className="curr-modules__hint">{v.intro}</p>
+            <SectionMarker index="03" label={c.videos.sectionLabel} />
+            <p className="curr-modules__hint">{c.videos.intro}</p>
           </div>
           <div>
             <div
-              className={`story-videos${v.clips.length === 1 ? " story-videos--single" : ""}`}
+              className={`story-videos${VIDEO_CLIPS.length === 1 ? " story-videos--single" : ""}`}
             >
-              {v.clips.map((clip, i) => (
+              {VIDEO_CLIPS.map((clip, i) => (
                 <figure className="story-video" key={i}>
                   <div className="ws-clip">
                     <Photo

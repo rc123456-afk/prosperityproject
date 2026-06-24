@@ -7,7 +7,9 @@
 
 import { useState } from "react";
 import { SectionMarker } from "@/components/primitives";
+import { renderInline } from "@/components/Rich";
 import { WOMEN_MODULES, type Module } from "@/lib/modules";
+import { copy } from "@/content/copy";
 
 const VIDEO_LANGS = [
   { id: "hi", script: "हिं", label: "Hindi" },
@@ -168,10 +170,9 @@ export function VideoCurriculum() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label="Video curriculum" />
+            <SectionMarker index="02" label={copy.resources.videos.sectionLabel} />
             <p className="curr-modules__hint">
-              One short video per module, in Hindi · Bengali · English. Click a
-              script to play.
+              {copy.resources.videos.sectionHint}
             </p>
           </div>
 
@@ -180,10 +181,7 @@ export function VideoCurriculum() {
               className="curr-premise__body"
               style={{ marginBottom: 56, maxWidth: "42rem" }}
             >
-              Every module of <em>Knowing Your Money</em> has a short companion
-              video — between four and seven minutes — recorded for households
-              where a daughter, son, or husband can sit beside the student and
-              watch together at home. Three language editions per module.
+              {renderInline(copy.resources.videos.intro)}
             </p>
 
             <ul className="vid-list">
