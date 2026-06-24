@@ -32,7 +32,7 @@ export const copy = {
       kicker: "Knowing Your Money · ten modules, three languages",
       headline: "Practical financial literacy for the people who build the world.",
       standfirst:
-        "Workshops in Bengali, Hindi, and English — taught by people from the communities they serve, in partnership with Bandhan NGO.",
+        "Workshops in Bengali, Hindi, and English — taught by people from the communities they serve, in partnership with Bandhan Bank.",
       ctaLabel: "Read the curriculum",
     },
     whatThisIs: {
