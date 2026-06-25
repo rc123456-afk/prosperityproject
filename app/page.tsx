@@ -38,14 +38,8 @@ function Hero() {
           </Link>
         </div>
       </div>
-      <span className="hero__meta" aria-hidden="true">
-        <span className="bar" />[ HERO PHOTO PLACEHOLDER ]
-      </span>
       <div className="hero__credit">
-        Workshop &nbsp;·&nbsp; Module 04 &nbsp;·&nbsp; South 24 Parganas, West
-        Bengal
-        <span className="sep">·</span>
-        2025
+        A Knowing Your Money workshop <span className="sep">·</span> West Bengal
       </div>
     </section>
   );

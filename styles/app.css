@@ -142,3 +142,16 @@
   max-width: 40rem;
   text-wrap: pretty;
 }
+
+/* ---- HOMEPAGE HERO IMAGE ----
+   Lay the real workshop photo under a warm dark gradient so the hero shows a
+   real scene while the headline stays legible. Overrides the placeholder
+   gradient in site.css; the grain (.hero__photo::after) and the left scrim
+   (.hero__scrim) still layer on top. */
+.hero__photo {
+  background-image:
+    linear-gradient(105deg, rgba(18, 12, 7, 0.82) 0%, rgba(18, 12, 7, 0.5) 42%, rgba(40, 28, 16, 0.34) 78%, rgba(70, 46, 24, 0.3) 100%),
+    url("/photos/home/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
