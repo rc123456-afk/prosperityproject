@@ -30,8 +30,9 @@ export function ResourcesHero() {
         <Photo
           aspect="cinema"
           tone={HERO.heroTone}
-          tag={HERO.heroTag}
-          stamp={HERO.heroStamp}
+          src="/photos/resources/hero.jpg"
+          alt="A facilitator presenting the Knowing Your Money curriculum on screen"
+          priority
           style={{ marginTop: 64 }}
         />
         <p className="curr-hero__credit">{HERO.heroMeta}</p>

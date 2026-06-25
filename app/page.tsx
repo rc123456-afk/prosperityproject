@@ -86,8 +86,8 @@ function WhereWeWork() {
           <Photo
             aspect="portrait"
             tone="warm"
-            tag="Sundarbans cohort · Module 03"
-            stamp="PHOTO · WOMEN · WEST BENGAL"
+            src="/photos/home/where.jpg"
+            alt="A participant in West Bengal during a workshop"
           />
           <div className="cohort__body">
             <div className="cohort__row">
@@ -166,10 +166,9 @@ function WorkshopsPreview() {
           <Figure
             aspect="landscape"
             tone="green"
-            tag="workshop · Howrah · Module 04"
-            stamp="PHOTO · WORKSHOP"
-            description="A Howrah cohort works through Module 04 — opening real accounts at the State Bank branch a fifteen-minute walk from the workshop hall."
-            meta="West Bengal · 2025 · [ PHOTOGRAPHER ]"
+            src="/photos/home/workshops.jpg"
+            alt="A facilitator leading the cohort through a module"
+            description="A facilitator leads the cohort through a module, the curriculum on screen behind."
           />
 
           <div>
@@ -219,9 +218,8 @@ function StoriesPreview() {
           <Figure
             aspect="portrait"
             tone="ledger"
-            tag="portrait · Rekha Mondal"
-            stamp="PHOTO · STORY"
-            meta="Rekha Mondal · South 24 Parganas · 2025 cohort · [ PHOTOGRAPHER ]"
+            src="/photos/home/rekha.jpg"
+            alt="A graduate of the Knowing Your Money curriculum"
           />
 
           <div>
@@ -254,11 +252,11 @@ function GalleryPreview() {
   // Five photos, varied aspect ratios. Heights are set in CSS per data-aspect
   // so the strip has visual rhythm without competing with content.
   const shots = [
-    { aspect: "portrait", tone: "warm", tag: "Module 01 · ledger work", stamp: "01" },
-    { aspect: "landscape", tone: "green", tag: "hall · Howrah", stamp: "02" },
-    { aspect: "square", tone: "ledger", tag: "hands · counting change", stamp: "03" },
-    { aspect: "tall", tone: "cool", tag: "facilitator · pre-session", stamp: "04" },
-    { aspect: "landscape", tone: "brick", tag: "graduation day · Howrah", stamp: "05" },
+    { aspect: "portrait", tone: "warm", src: "/photos/gallery/g-portrait-smiling.jpg", alt: "A participant speaks into the microphone" },
+    { aspect: "landscape", tone: "green", src: "/photos/gallery/g-passing-the-mic.jpg", alt: "Passing the microphone to a participant" },
+    { aspect: "square", tone: "ledger", src: "/photos/gallery/g-the-worksheet.jpg", alt: "Working through the budget worksheet" },
+    { aspect: "tall", tone: "cool", src: "/photos/gallery/g-portrait-orange.jpg", alt: "A participant during the session" },
+    { aspect: "landscape", tone: "brick", src: "/photos/gallery/g-the-cohort.jpg", alt: "The cohort together" },
   ] as const;
 
   return (
@@ -290,25 +288,12 @@ function GalleryPreview() {
               key={i}
               aspect={s.aspect}
               tone={s.tone}
-              tag={s.tag}
-              stamp={s.stamp}
+              src={s.src}
+              alt={s.alt}
+              stamp={false}
             />
           ))}
         </div>
-
-        <p
-          style={{
-            marginTop: 28,
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
-            textTransform: "uppercase",
-            letterSpacing: "0.14em",
-            color: "var(--ink-55)",
-          }}
-        >
-          [ PHOTOGRAPHY PLACEHOLDERS ] &nbsp;·&nbsp; documentary, warm-toned, not
-          stock &nbsp;·&nbsp; subjects with consent
-        </p>
       </div>
     </section>
   );

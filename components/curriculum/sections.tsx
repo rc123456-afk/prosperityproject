@@ -29,8 +29,9 @@ export function CurriculumHero() {
         <Photo
           aspect="cinema"
           tone={HERO.heroTone}
-          tag={HERO.heroTag}
-          stamp={HERO.heroStamp}
+          src="/photos/curriculum/hero.jpg"
+          alt="A facilitator presenting the day's lesson to the cohort"
+          priority
           style={{ marginTop: 64 }}
         />
         <p className="curr-hero__credit">{HERO.heroMeta}</p>

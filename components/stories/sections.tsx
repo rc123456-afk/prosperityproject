@@ -133,8 +133,9 @@ export function StoriesHero() {
         <Photo
           aspect="cinema"
           tone="warm"
-          tag="graduation day · Howrah cohort · 2025"
-          stamp="PHOTO · STORIES"
+          src="/photos/stories/hero.jpg"
+          alt="The full cohort gathered together under the programme banner"
+          priority
           style={{ marginTop: 64 }}
         />
         <p className="curr-hero__credit">Howrah · 2025 · [ PHOTOGRAPHER ]</p>

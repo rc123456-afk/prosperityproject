@@ -2,7 +2,7 @@
    AboutPage.jsx. Server components. PressSlot keeps the architecture in place
    but renders nothing until PRESS_ITEMS is populated. */
 
-import { Photo, Caption, SectionMarker } from "@/components/primitives";
+import { Photo, SectionMarker } from "@/components/primitives";
 import { SmartLink } from "@/components/SmartLink";
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
@@ -28,10 +28,11 @@ export function AboutHero() {
             <Photo
               aspect="portrait"
               tone="warm"
-              tag="Rehaan Chowdhary · founder"
-              stamp="PHOTO · PORTRAIT"
+              src="/photos/about/founder.jpg"
+              alt="Rehaan Chowdhary, the founder, speaking at a workshop"
+              objectPosition="center 28%"
+              priority
             />
-            <Caption meta="Kolkata · 2025 · [ PHOTOGRAPHER ]" />
           </div>
         </div>
       </div>
@@ -70,30 +71,27 @@ export function FounderStory() {
               <Photo
                 aspect="landscape"
                 tone="ledger"
-                tag="the borrowed hall · first cohort · Howrah"
-                stamp="PHOTO · ARCHIVE"
+                src="/photos/about/hall.jpg"
+                alt="The cohort gathered at a workshop hall"
               />
-              <Caption meta="Howrah · 2023 · [ PHOTOGRAPHER ]" />
             </figure>
 
             <figure className="founder__figure founder__figure--wide">
               <Photo
                 aspect="cinema"
                 tone="warm"
-                tag="Module 04 · the first walk to the branch"
-                stamp="PHOTO · ARCHIVE"
+                src="/photos/about/walk.jpg"
+                alt="A wide view of a workshop session in progress"
               />
-              <Caption meta="South 24 Parganas · 2024 · [ PHOTOGRAPHER ]" />
             </figure>
 
             <figure className="founder__figure">
               <Photo
                 aspect="square"
                 tone="cool"
-                tag="the original interview notebook"
-                stamp="PHOTO · DETAIL"
+                src="/photos/about/notebook.jpg"
+                alt="Worksheets and the printed booklet on the workshop table"
               />
-              <Caption meta="Kolkata · 2022 · [ PHOTOGRAPHER ]" />
             </figure>
           </div>
         </div>
@@ -124,7 +122,7 @@ const ORGANIZATIONS = [
     name: copy.about.organizations.partnerName,
     role: copy.about.organizations.partnerRole,
     body: copy.about.organizations.partnerBody,
-    photo: { tone: "green" as const, tag: "a Bandhan branch hall · after hours", stamp: "PHOTO · PARTNER" },
+    photo: { tone: "green" as const, src: "/photos/about/partner.jpg", alt: "A Bandhan Financial Literacy Programme workshop hall during a session" },
     link: { label: copy.about.organizations.partnerLinkLabel, href: "#partners" },
   },
 ];
@@ -160,8 +158,8 @@ export function Organizations() {
                     <Photo
                       aspect="landscape"
                       tone={o.photo.tone}
-                      tag={o.photo.tag}
-                      stamp={o.photo.stamp}
+                      src={o.photo.src}
+                      alt={o.photo.alt}
                     />
                   )}
                 </article>

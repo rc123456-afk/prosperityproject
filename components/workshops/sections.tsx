@@ -28,8 +28,9 @@ export function WorkshopsHero() {
         <Photo
           aspect="cinema"
           tone="warm"
-          tag="Module 04 · Howrah cohort · 2025"
-          stamp="PHOTO · WORKSHOP"
+          src="/photos/workshops/hero.jpg"
+          alt="A wide view of a workshop in session, the cohort seated around the tables"
+          priority
           style={{ marginTop: 64 }}
         />
         <p className="curr-hero__credit">
