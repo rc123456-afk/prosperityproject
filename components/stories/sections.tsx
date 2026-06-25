@@ -15,6 +15,8 @@ type PhotoSpec = {
   aspect?: "portrait" | "landscape" | "square";
   tag: string;
   stamp: string;
+  src?: string;
+  alt?: string;
   anon?: boolean;
 };
 
@@ -53,30 +55,30 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         roleAccent: "CRP · since 2024",
         role: "Bara Kachari, Howrah",
         flip: false,
-        portrait: { tone: "warm", tag: "Anjali, in the hall where she now teaches", stamp: "PHOTO · CRP" },
+        portrait: { tone: "warm", tag: "Anjali, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "A Community Resource Person at a workshop" },
         quoteOrig:
           "पहले मैं सिर्फ़ सुनती थी। अब मेरे हाथ में चॉक है और कमरा मेरी बात सुनता है।",
         quoteEn: c.people.anjali.quoteEn,
         citeName: "Anjali Saha",
         citeMeta: "spoken in Hindi",
         body: c.people.anjali.body,
-        detail: { tone: "ledger", aspect: "square", tag: "her facilitator's notebook · margin notes", stamp: "PHOTO · DETAIL" },
-        group: { tone: "green", aspect: "landscape", tag: "the 2025 Howrah cohort she leads", stamp: "PHOTO · WORKSHOP" },
+        detail: { tone: "ledger", aspect: "square", tag: "her facilitator's notebook · margin notes", stamp: "PHOTO · DETAIL", src: "/photos/stories/anjali-detail.jpg", alt: "Participants taking notes during a session" },
+        group: { tone: "green", aspect: "landscape", tag: "the 2025 Howrah cohort she leads", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/anjali-group.jpg", alt: "The cohort gathered for a session" },
       },
       {
         name: "Sabita Halder",
         roleAccent: "CRP · since 2023",
         role: "Gosaba, South 24 Parganas",
         flip: true,
-        portrait: { tone: "green", tag: "Sabita, before a Sundarbans session", stamp: "PHOTO · CRP" },
+        portrait: { tone: "green", tag: "Sabita, before a Sundarbans session", stamp: "PHOTO · CRP", src: "/photos/stories/sabita-portrait.jpg", alt: "A facilitator standing to speak at a session" },
         quoteOrig:
           "जो बात मेरी माँ को कोई नहीं समझा पाया, वह मैं अब पूरे गाँव को समझा रही हूँ।",
         quoteEn: c.people.sabita.quoteEn,
         citeName: "Sabita Halder",
         citeMeta: "spoken in Hindi",
         body: c.people.sabita.body,
-        detail: { tone: "cool", aspect: "square", tag: "the boat crossing to the next village", stamp: "PHOTO · DETAIL" },
-        group: { tone: "warm", aspect: "landscape", tag: "Module 04 · the walk to the branch", stamp: "PHOTO · WORKSHOP" },
+        detail: { tone: "cool", aspect: "square", tag: "the boat crossing to the next village", stamp: "PHOTO · DETAIL", src: "/photos/stories/sabita-detail.jpg", alt: "The printed booklet and worksheets on the table" },
+        group: { tone: "warm", aspect: "landscape", tag: "Module 04 · the walk to the branch", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/sabita-group.jpg", alt: "The cohort gathered together" },
       },
     ],
   },
@@ -91,15 +93,15 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         roleAccent: "Graduate · 2024 cohort",
         role: "Salkia, Howrah",
         flip: false,
-        portrait: { tone: "ledger", tag: "Rekha, with her household notebook", stamp: "PHOTO · STUDENT", anon: false },
+        portrait: { tone: "ledger", tag: "Rekha, with her household notebook", stamp: "PHOTO · STUDENT", anon: false, src: "/photos/stories/rekha-portrait.jpg", alt: "A graduate of the Knowing Your Money curriculum" },
         quoteOrig:
           "पहले समझ नहीं थी कि पैसा कहाँ जा रहा है। अब नोटबुक है, और हर हफ़्ते मैं देखती हूँ।",
         quoteEn: c.people.rekha.quoteEn,
         citeName: "Rekha Mondal",
         citeMeta: "spoken in Hindi",
         body: c.people.rekha.body,
-        detail: { tone: "warm", aspect: "square", tag: "the sewing machine · her front room", stamp: "PHOTO · DETAIL" },
-        group: { tone: "green", aspect: "landscape", tag: "her graduation · 2024", stamp: "PHOTO · WORKSHOP" },
+        detail: { tone: "warm", aspect: "square", tag: "the sewing machine · her front room", stamp: "PHOTO · DETAIL", src: "/photos/stories/rekha-detail.jpg", alt: "Notes and worksheets from the session" },
+        group: { tone: "green", aspect: "landscape", tag: "her graduation · 2024", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/rekha-group.jpg", alt: "The cohort during a workshop" },
       },
       {
         name: "Pictured by her hands",
@@ -181,6 +183,8 @@ function Story({ s, index }: { s: StoryItem; index: string }) {
           <Photo
             aspect={s.portrait.aspect || "portrait"}
             tone={s.portrait.tone}
+            src={s.portrait.src}
+            alt={s.portrait.alt}
             tag={s.portrait.tag}
             stamp={s.portrait.stamp}
           />
@@ -201,12 +205,16 @@ function Story({ s, index }: { s: StoryItem; index: string }) {
         <Figure
           aspect={s.detail.aspect}
           tone={s.detail.tone}
+          src={s.detail.src}
+          alt={s.detail.alt}
           tag={s.detail.tag}
           stamp={s.detail.stamp}
         />
         <Figure
           aspect={s.group.aspect}
           tone={s.group.tone}
+          src={s.group.src}
+          alt={s.group.alt}
           tag={s.group.tag}
           stamp={s.group.stamp}
         />

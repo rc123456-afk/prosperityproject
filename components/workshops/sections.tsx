@@ -169,8 +169,9 @@ export function WorkshopsPillars() {
 type PhotoDatum = {
   aspect: Aspect;
   tone: Tone;
-  tag: string;
-  stamp: string;
+  src: string;
+  alt: string;
+  objectPosition?: string;
   description?: string;
   meta?: string;
 };
@@ -179,29 +180,24 @@ const CRP_PHOTOS: PhotoDatum[] = [
   {
     aspect: "portrait",
     tone: "warm",
-    tag: "CRP · Anjali Saha · in her village hall",
-    stamp: "PHOTO · CRP",
-    description:
-      "Anjali, a 2023 graduate, now facilitates the Howrah cohort she once sat in.",
-    meta: "Howrah · 2025",
+    src: "/photos/workshops/crp-1.jpg",
+    alt: "A Community Resource Person speaking during a session",
+    description: "A Community Resource Person leads part of a session.",
   },
   {
     aspect: "landscape",
     tone: "ledger",
-    tag: "facilitator training · week 03",
-    stamp: "PHOTO · TRAINING",
+    src: "/photos/workshops/crp-2.jpg",
+    alt: "A facilitator working through the curriculum with the cohort",
     description:
-      "Week three of the four-week facilitator training — working a budget worksheet line by line with the cohort that will teach next.",
-    meta: "Kolkata · 2025",
+      "Working through the curriculum with the cohort that will teach next.",
   },
   {
     aspect: "portrait",
     tone: "green",
-    tag: "co-facilitation · Sundarbans",
-    stamp: "PHOTO · CRP",
-    description:
-      "Co-facilitation week. A new CRP runs Module 02 with a senior CRP in the room.",
-    meta: "Sundarbans · 2025",
+    src: "/photos/workshops/crp-3.jpg",
+    alt: "A facilitator-in-training taking part in a session",
+    description: "A facilitator-in-training takes part in the room.",
   },
 ];
 
@@ -241,13 +237,13 @@ export function CRPModel() {
 /* ================================================================
    05 IN THE ROOM
    ================================================================ */
-const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; tag: string; stamp: string }[] = [
-  { aspect: "portrait", tone: "warm", tag: "founder facilitating · Module 02", stamp: "PHOTO · ROOM" },
-  { aspect: "landscape", tone: "green", tag: "cohort circle · Howrah", stamp: "PHOTO · ROOM" },
-  { aspect: "square", tone: "ledger", tag: "hands · counting change", stamp: "PHOTO · DETAIL" },
-  { aspect: "portrait", tone: "cool", tag: "tea before the session", stamp: "PHOTO · ROOM" },
-  { aspect: "landscape", tone: "brick", tag: "walk to the bank · Module 04", stamp: "PHOTO · ROOM" },
-  { aspect: "square", tone: "dusk", tag: "textbook · margin notes", stamp: "PHOTO · DETAIL" },
+const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; src: string; alt: string }[] = [
+  { aspect: "portrait", tone: "warm", src: "/photos/workshops/room-1.jpg", alt: "The founder facilitating a session" },
+  { aspect: "landscape", tone: "green", src: "/photos/workshops/room-2.jpg", alt: "The cohort gathered during a session" },
+  { aspect: "square", tone: "ledger", src: "/photos/workshops/room-3.jpg", alt: "Participants working through the worksheet" },
+  { aspect: "portrait", tone: "cool", src: "/photos/workshops/room-4.jpg", alt: "Participants between sessions" },
+  { aspect: "landscape", tone: "brick", src: "/photos/workshops/room-5.jpg", alt: "Passing the microphone during the session" },
+  { aspect: "square", tone: "dusk", src: "/photos/workshops/room-6.jpg", alt: "Notes and worksheets on the table" },
 ];
 const ROOM_CLIPS = [
   { tag: "clip · 02:14 · Bengali · Module 03", stamp: "VIDEO · ROOM" },
@@ -272,8 +268,8 @@ export function InTheRoom() {
                   key={i}
                   aspect={p.aspect}
                   tone={p.tone}
-                  tag={p.tag}
-                  stamp={p.stamp}
+                  src={p.src}
+                  alt={p.alt}
                 />
               ))}
             </div>

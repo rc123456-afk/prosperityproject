@@ -2,7 +2,7 @@
    Ported from ResourcesPage.jsx. (VideoCurriculum is a separate client
    component.) Copy lives in content/copy.ts. */
 
-import { Photo, Caption, SectionMarker } from "@/components/primitives";
+import { Photo, SectionMarker } from "@/components/primitives";
 import { renderInline, RichText } from "@/components/Rich";
 import { copy } from "@/content/copy";
 
@@ -94,10 +94,9 @@ export function TextbookDownloads() {
               <Photo
                 aspect="landscape"
                 tone="ledger"
-                tag={HERO.photoTag}
-                stamp={HERO.photoStamp}
+                src="/photos/resources/textbook.jpg"
+                alt="The printed booklet and worksheets on a workshop table"
               />
-              <Caption meta={HERO.photoMeta} />
             </div>
 
             <div className="downloads">
