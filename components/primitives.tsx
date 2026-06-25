@@ -114,12 +114,17 @@ export function Caption({
   );
 }
 
-/* Figure — Photo + Caption together. */
+/* Figure — Photo + Caption together. Pass `src` (+ `alt`) to show a real
+   photograph; omit it to keep the labeled placeholder. */
 export function Figure({
   aspect,
   tone,
   tag,
   stamp,
+  src,
+  alt,
+  objectPosition,
+  priority,
   description,
   meta,
   style,
@@ -128,13 +133,26 @@ export function Figure({
   tone?: Tone;
   tag?: ReactNode;
   stamp?: ReactNode | false;
+  src?: string;
+  alt?: string;
+  objectPosition?: string;
+  priority?: boolean;
   description?: ReactNode;
   meta?: ReactNode;
   style?: CSSProperties;
 }) {
   return (
     <figure style={{ margin: 0, ...style }}>
-      <Photo aspect={aspect} tone={tone} tag={tag} stamp={stamp} />
+      <Photo
+        aspect={aspect}
+        tone={tone}
+        tag={tag}
+        stamp={stamp}
+        src={src}
+        alt={alt}
+        objectPosition={objectPosition}
+        priority={priority}
+      />
       <Caption description={description} meta={meta} />
     </figure>
   );

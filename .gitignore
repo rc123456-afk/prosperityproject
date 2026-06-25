@@ -20,6 +20,9 @@
 .DS_Store
 *.pem
 
+# raw photo dump (staging only — selected/resized photos go in public/photos)
+/incoming-photos/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
