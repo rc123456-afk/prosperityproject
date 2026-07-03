@@ -136,9 +136,9 @@ function VideoRow({
               />
             </div>
             <p className="vid-row__caption">
-              <span className="vid-row__caption-stamp">[ PLACEHOLDER VIDEO ]</span>{" "}
-              Real recordings replace this player once Module {module.num} is
-              filmed in {langMeta(openLang).label}.
+              <span className="vid-row__caption-stamp">[ VIDEO COMING ]</span>{" "}
+              The recording for Module {module.num} in {langMeta(openLang).label}{" "}
+              will play here once its video link is added.
             </p>
           </div>
         )}

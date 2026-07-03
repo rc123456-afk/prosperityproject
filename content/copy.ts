@@ -10,8 +10,8 @@
         [click here](/about)  ->  a link to another page
    • Some values are lists — one item per line, each in its own "quotes",
      separated by commas. Add or remove lines to add or remove paragraphs.
-   • Things in square brackets like [ N ] or [ YEAR ] are number placeholders —
-     leave them; just tell Rehaan/Claude the real figures to drop in.
+   • Things in square brackets like [ N ] or [ YEAR ] are placeholders —
+     leave them; just drop the real figure/word in when you have it.
    • Grouped by page, top to bottom, the way you'd click through the site.
 
    If anything here ever looks confusing or breaks the site, don't worry — it's
@@ -24,21 +24,24 @@ export const copy = {
     wordmark: "The Prosperity Project",
     footerDevaLine: "समृद्धि की पाठशाला",
     footerRomanLine: "A school of prosperity",
+    tagline: "Luck alone is not enough — knowledge is everything.",
   },
 
   /* ----------------------------------------------------------------- HOMEPAGE */
   home: {
     hero: {
-      kicker: "Knowing Your Money · ten modules, three languages",
-      headline: "Practical financial literacy for the people who build the world.",
-      standfirst:
-        "Workshops in Bengali, Hindi, and English — taught by people from the communities they serve, in partnership with Bandhan Bank.",
+      // Photo-forward hero: keep text minimal. Leave kicker "" to hide the eyebrow;
+      // set standfirst "" to hide the subhead entirely. The big Bandhan line now
+      // lives on the inner pages + footer, not here.
+      kicker: "",
+      headline: "For the people who build the world.",
+      standfirst: "Practical financial literacy — ten modules, three languages.",
       ctaLabel: "Read the curriculum",
     },
     whatThisIs: {
       sectionLabel: "What this is",
       body:
-        "The Prosperity Project teaches practical money skills — bank accounts, budgeting, debt, savings, scam protection, digital payments, emergency planning — to people the financial system has historically ignored. The flagship curriculum, *Knowing Your Money*, is ten modules grounded in real interviews, taught to women in **West Bengal** in partnership with Bandhan NGO.",
+        "The Prosperity Project teaches practical money skills — bank accounts, budgeting, debt, savings, scam protection, digital payments, emergency planning — to people the financial system has historically ignored. The flagship curriculum, *Knowing Your Money*, is ten modules grounded in real interviews, taught to women in **West Bengal** — delivered with **Bandhan-Konnagar** and supported by **Bandhan Bank Ltd**.",
     },
     whereWeWork: {
       sectionLabel: "Where we work",
@@ -46,21 +49,21 @@ export const copy = {
       region: "West Bengal · India",
       cardTitle: "Women in West Bengal",
       cardCopy:
-        "Twice-weekly workshops in **Bengali and Hindi**, run in self-help-group halls across [ N villages ] in the Sundarbans, Howrah, and South 24 Parganas. Students complete the curriculum and many return as facilitators for the next cohort.",
+        "Workshops in **Bengali and Hindi**, run in the halls a community already trusts — so far in **Baruipur**, near Kolkata. A cohort of fifty or more women works through the ten modules together, and the learning carries on in follow-up sessions, several of them over video call. Some students have since come back to facilitate.",
       curriculumLinkLabel: "Read the curriculum",
       storiesLinkLabel: "Stories from the cohort",
     },
     numbers: {
       sectionLabel: "The work, in numbers",
       // The sentence below keeps its number placeholders ([ N ], [ YEAR ]) in
-      // code so they stay styled; give Claude the real figures to fill in.
+      // code so they stay styled; drop the real figures in there when ready.
     },
     workshopsPreview: {
       sectionLabel: "How a workshop runs",
       heading:
-        "Twice a week, for ten weeks, in the room the community already trusts.",
+        "Ten modules, fifty women, one room the community already trusts — and follow-up that continues after.",
       body:
-        "We work with partners who already have a hall, a livelihood programme, or a self-help group running. Facilitators are recruited from the same district and trained over four weeks. Each cohort caps at [ 24 ] students. Sessions run in Bengali, Hindi, or English, depending on the room.",
+        "We work with partners who already have a hall, a livelihood programme, or a self-help group running. A cohort of [ fifty or more ] women works through the ten modules of *Knowing Your Money* together; what follows is shaped around them — follow-up sessions, several over video call, that return to whatever a student still needs, with her progress tracked along the way. Facilitators are drawn from the same community, many of them former students. Sessions run in Bengali and Hindi.",
       crpLabel: "A method",
       crpTitle: "The CRP Model",
       crpBody:
@@ -70,12 +73,12 @@ export const copy = {
     storiesPreview: {
       sectionLabel: "Stories from the cohort",
       quote:
-        "Before, I didn't understand where the money was going. Now there is a notebook, and every week I look at it.",
+        "[ A line from a graduate — in her own words ]",
       original:
-        "पहले समझ नहीं थी कि पैसा कहाँ जा रहा है। अब नोटबुक है, और हर हफ़्ते मैं देखती हूँ।",
-      citeName: "Rekha Mondal",
+        "[ The same line, in Bengali ]",
+      citeName: "[ Name ]",
       citeMeta: "Module 02 graduate",
-      citeLang: "spoken in Hindi",
+      citeLang: "spoken in Bengali",
       linkLabel: "Read more stories",
     },
     galleryPreview: {
@@ -91,22 +94,22 @@ export const copy = {
       kicker: "Curriculum",
       headline: "Knowing Your Money",
       standfirst:
-        "For the women's cohorts in West Bengal — delivered in Bengali and Hindi, in partnership with Bandhan NGO.",
+        "For the women's cohorts in West Bengal — delivered in Bengali and Hindi, with Bandhan-Konnagar and the support of Bandhan Bank Ltd.",
     },
     origin: {
       sectionLabel: "Where it came from",
       body:
-        "*Knowing Your Money* began at a kitchen table. The founder spent two years interviewing women across West Bengal — beginning with her family's longtime nanny — about how money moved through their lives: who held it, who decided, what they wished they had been taught. Every one of the ten modules carries a question a real woman asked, and an answer worked out alongside her. The curriculum is not adapted from a Western framework. It was built, sentence by sentence, in the rooms it is now taught in.",
+        "*Knowing Your Money* began with one person. **Shampa** looked after the founder from the time he was born; over the years it became clear how little room the system had left her — no account fully her own, nowhere truly safe for what she managed to save. So he sat with her, over weeks of interviews, and asked the questions he had never thought to ask: where the money went, who decided, what she wished she had been taught. What those conversations revealed was not a gap in what she knew, but a gap in what she could reach. Every one of the ten modules carries a real question, worked out alongside a real person. The curriculum was not adapted from a Western framework — it was built, sentence by sentence, from those interviews.",
       linkLabel: "Read the full origin story",
       interviewSlot: "Interview analysis document — coming soon",
     },
     premise: {
       sectionLabel: "How it is taught",
       body:
-        "Every module opens with a story — a recurring cast of characters drawn from the original interviews, whose households we follow across the ten weeks. A facilitator from the same district leads the room; live translation between Bengali and Hindi runs through every session, so no student is asked to stretch for language. Each student leaves with the *Knowing Your Money* textbook in her own script. A short video explainer accompanies each module, recorded for households where a daughter or son can sit with their mother and watch together at home. The work travels in the voice it was learned in.",
+        "Every module opens with a story — a recurring cast of characters drawn from the original interviews, whose households we follow across the curriculum. A facilitator from the same community leads the room; translation between Bengali and Hindi runs through every session, so no student is asked to stretch for language. Each student leaves with the *Knowing Your Money* textbook in her own script. A short video explainer accompanies each module, recorded for households where a daughter or son can sit with their mother and watch together at home. The work travels in the voice it was learned in.",
       points: [
         "Real interviews shape every module.",
-        "Recurring story characters carry the lessons across the ten weeks.",
+        "Recurring story characters carry the lessons across the curriculum.",
         "Live translation runs through every workshop.",
         "Every student keeps the textbook.",
         "One short video explainer per module, for home.",
@@ -118,7 +121,7 @@ export const copy = {
         "Three editions — Bengali, Hindi, English. Each routes to the resources page.",
       heading: "*Knowing Your Money,* in the language of the room.",
       intro:
-        "Every student receives the textbook in her own script — 184 pages, typeset for reading aloud, with module-by-module worksheets at the back. All three editions are freely downloadable.",
+        "Every student receives the textbook in her own script — [ N ] pages, typeset for reading aloud, with module-by-module worksheets at the back. All three editions are freely downloadable.",
       linkLabel: "All resources",
       note: "Print copies are distributed in workshops — not available by post.",
     },
@@ -130,15 +133,15 @@ export const copy = {
       kicker: "Workshops",
       headline: "How a workshop runs.",
       standfirst:
-        "Twice a week, for ten weeks, in the rooms the community already trusts — across the Sundarbans, Howrah, and South 24 Parganas, in Bengali with Hindi translation.",
+        "All ten modules in a room the community already trusts, then follow-up for as long as it takes — so far in Baruipur, near Kolkata, in Bengali with Hindi alongside it.",
     },
     format: {
       sectionLabel: "The format",
-      sectionHint: "Two sessions a week. Ten weeks. Twenty-four students.",
+      sectionHint: "Ten modules. Fifty-plus women. Follow-up that continues after.",
       body: [
-        "Workshops run **twice a week for ten weeks**, in spaces a community already trusts — a Self-Help Group hall in Howrah, a livelihood room in the Sundarbans, the back of a Bandhan branch after hours. Sessions are ninety minutes; cohorts cap at **twenty-four students** so every voice is heard.",
-        "**Bengali** is the working language, with **Hindi** in live translation; most facilitators move between the two in a sentence. Each student gets the *Knowing Your Money* textbook in her own script on day one, and a notebook to track her household.",
-        "By Module 04 — Banks and how they work — the cohort walks together to the nearest branch and opens accounts. For many, it's the first account in their own name. The work ends with a graduation, a meal, and an invitation: those who want to come back as facilitators are recruited for the next cohort.",
+        "A workshop gathers **fifty or more women** in a space the community already trusts — a Self-Help Group hall, a livelihood room, a partner's premises. Together the cohort works through the **ten modules** of *Knowing Your Money*. The first sessions introduce the whole curriculum; what comes after is shaped around the room.",
+        "**Bengali** is the working language, with **Hindi** alongside it; most facilitators move between the two in a sentence. Each student gets the *Knowing Your Money* textbook in her own script and a notebook to track her own household.",
+        "The work doesn't end when the modules do. Follow-up sessions — several of them over video call — return to whatever a cohort still needs, from opening an account in her own name to setting up UPI, with each woman's progress tracked along the way. Some students go on to facilitate the next cohort themselves.",
       ],
     },
     pillars: {
@@ -159,39 +162,38 @@ export const copy = {
       heading: "The CRP Model.",
       sub: "Community Resource Person — student first, facilitator second.",
       body: [
-        "The **CRP Model** — Community Resource Person — is the spine of how this work travels. A student completes the ten modules, then — if she wants to teach the next cohort — enters a **four-week facilitator training**: deeper work on every module, practice in front of a room in Bengali and Hindi, and a week co-facilitating alongside a senior CRP.",
-        "She then returns to her own block, sometimes her own village, and runs the workshop in a room that already knows her. A curriculum carried by an outside expert is one people listen to politely; carried by a neighbour, it's one they argue with, push back on, take home.",
-        "By the end of 2025, most facilitators teaching active cohorts had themselves been students in 2023 or 2024. The work stays in the community after the founder leaves the room.",
+        "The **CRP Model** — Community Resource Person — is the spine of how this work travels. A student completes the ten modules, then — if she wants to teach the next cohort — trains to facilitate it herself: deeper work on every module, and practice in front of a room in Bengali and Hindi before she leads one of her own.",
+        "She then returns to her own community, sometimes her own neighbourhood, and runs the workshop in a room that already knows her. A curriculum carried by an outside expert is one people listen to politely; carried by a neighbour, it's one they argue with, push back on, take home.",
+        "Several of the women who first sat in a cohort have gone on to teach others. The work stays in the community after the founder leaves the room.",
       ],
       statLabel:
-        "of facilitators teaching the 2025 cohorts were themselves students in 2023 or 2024.",
+        "of the women now facilitating workshops first completed the curriculum as students themselves.",
     },
     inTheRoom: {
       sectionLabel: "In the room",
       sectionHint: "The founder facilitating. Photos and clips.",
       heading: "In the room.",
       body:
-        "The first thing facilitating teaches you is how little of it is about the slides. The slides are there in case the room needs them. What the room wants is for the facilitator to sit on the floor, take the tea, hear the story about last month's missing wages — and then, only then, open the notebook and work the numbers with the woman beside her. The modules give the work its bones; the room gives it its voice. I learned to stop arriving early — the half-hour before a workshop became the most important part of the day.",
-      attribution: "— [ FOUNDER ] · first-person, after the 2024 cycle",
+        "What stays with me is how good it felt to be useful. We taught through activities, not lectures — counting out a month's spending in paper notes, arguing over which jar a rupee belonged in. Some women were shy at first; a few barely spoke for the first hour. By the end they were the ones correcting their neighbours, and the room ran itself. The modules give the work its bones; the women in the room give it its voice. The lesson, I learned, was never really the slides — it was the moment a woman realised she already knew more than she thought.",
+      attribution: "— Rehaan Chowdhary, founder",
     },
     whatChanged: {
       sectionLabel: "What changed between cohorts",
-      sectionHint: "Iteration log — what each cycle taught the curriculum.",
+      sectionHint: "What each workshop taught the curriculum.",
       heading: "The curriculum is fixed in its spine and porous at its surface.",
       body: [
-        "The first **2023 cohort** taught us that Module 04 — opening a bank account — could not stay theoretical. The session now ends with a walk to the nearest branch and a queue ticket in hand.",
-        "The **2024 cohort** showed that the budgeting module landed harder when worked against a woman's lowest-earning month, not her average. The worksheet was rewritten.",
-        "The **2025 cohort** is the first to be taught largely by CRPs from the 2023 and 2024 cohorts. The pace and pedagogy shifted around them.",
-        "What's still being adjusted: the order of the digital-money and scam-shield modules; the length of the emergency-fund worksheet. **The curriculum is fixed in its spine and porous at its surface.** We re-edit between cohorts, not during them.",
+        "Two workshops have run so far, both in **Baruipur**. Between them the curriculum changed in small ways — what landed, what needed more time, which examples a room recognised and which fell flat.",
+        "The pattern that holds: the budgeting work bites harder when it's run against a woman's lowest-earning month, not her average. So that is how it is now taught.",
+        "What's still being worked out is mostly sequence and length — the order of the digital-money and scam-shield modules, how much time the emergency-fund worksheet really needs. **The curriculum is fixed in its spine and porous at its surface.** We re-edit between workshops, not during them.",
       ],
     },
     bandhan: {
       sectionLabel: "Partnership",
       sectionHint: "The institutional spine that makes the workshops possible.",
-      heading: "In partnership with Bandhan NGO.",
+      heading: "In partnership with Bandhan.",
       body: [
-        "None of this happens without **Bandhan NGO**. Bandhan brings the halls, the institutional relationships in every block we operate in, and the trust that lets a workshop open its doors on the first day with a cohort already in the room.",
-        "The Prosperity Project brings the curriculum, the facilitator training, the textbook, and the design system that holds it all together. The partnership is in its third year; the next phase extends to four new blocks across Howrah and Hooghly.",
+        "None of this happens without **Bandhan-Konnagar**. The NGO brings the halls, the relationships on the ground, and the trust that lets a workshop open its doors with a cohort already in the room. **Bandhan Bank Ltd** supports the work behind it.",
+        "The Prosperity Project brings the curriculum, the facilitator training, the textbook, and the design that holds it all together. The partnership is in its **second year**, with the current cohort still in follow-up; where it extends next is being worked out now.",
       ],
       linkLabel: "Read more about the partnership",
     },
@@ -207,9 +209,9 @@ export const copy = {
     },
     textbook: {
       sectionLabel: "The textbook",
-      sectionHint: "184 pages. Three editions, freely downloadable.",
+      sectionHint: "[ N ] pages. Three editions, freely downloadable.",
       body: [
-        "*Knowing Your Money* is a 184-page textbook covering all ten modules — the book the cohorts use, typeset for reading aloud, with worksheets and a glossary of Indian banking terms in every edition. Three editions are in circulation, each freely downloadable below.",
+        "*Knowing Your Money* is a [ N ]-page textbook covering all ten modules — the book the cohorts use, typeset for reading aloud, with worksheets and a glossary of Indian banking terms in every edition. Three editions are in circulation, each freely downloadable below.",
         "Households can use it as a guide; partner organisations can teach from it directly. We ask only that it be passed on intact — cover and credits attached — and that anyone running a formal cohort lets us know.",
       ],
       note:
@@ -227,7 +229,7 @@ export const copy = {
       line1:
         "Free for educational use — household, classroom, or community. Pass it on intact.",
       line2:
-        "Organisations adopting the curriculum into a formal programme — schools, NGOs, government departments, livelihood missions — should write to [adopt@prosperity.in](mailto:adopt@prosperity.in). We will send you the facilitator's edition, a brief licence, and an invitation to a one-day onboarding.",
+        "Organisations adopting the curriculum into a formal programme — schools, NGOs, government departments, livelihood missions — should write to **[ adopt@ — email coming soon ]**. We will send you the facilitator's edition, a brief licence, and an invitation to a one-day onboarding.",
     },
   },
 
@@ -245,7 +247,7 @@ export const copy = {
       sectionLabel: "Community Resource Persons",
       sectionHint: "Students first, facilitators second.",
       intro:
-        "Most women teaching today sat in a cohort themselves, a year or two earlier. Two of them:",
+        "Most women teaching today sat in a cohort themselves, not long before. One of them:",
     },
     beneficiary: {
       sectionLabel: "Students",
@@ -253,44 +255,40 @@ export const copy = {
       intro:
         "Most students simply take the curriculum home and put it to work. Two on what changed:",
     },
-    // Each person: the English quote, who they are, and the short story under it.
-    // (The Hindi/Bengali original quotes stay in code — ask Claude to change those.)
+    // Each person: the English quote and the short story under it. These are
+    // blanked to placeholders until real, consented names/quotes are added.
+    // (Displayed names and original-language quotes live in the Stories
+    // component — ask Claude to fill those in alongside these.)
     people: {
-      anjali: {
+      crp1: {
         quoteEn:
-          "Before, I only listened. Now the chalk is in my hand and the room listens to me.",
+          "[ Quote — in her own words ]",
         body:
-          "Anjali finished the 2023 cohort with one question: could she do this herself? She trained that spring. The cohort she leads now meets in the same hall where she once sat in the back row.",
+          "[ Her story — who she is, what the curriculum changed for her, and why she came back to teach it. ]",
       },
-      sabita: {
+      student1: {
         quoteEn:
-          "What no one could explain to my mother, I now explain to the whole village.",
+          "[ Quote — in her own words ]",
         body:
-          "Sabita travels by boat to three villages across the Sundarbans, the textbook in a plastic bag against the spray. In two years she has run the curriculum nine times; six women in her current cohort have already asked about training to teach.",
-      },
-      rekha: {
-        quoteEn:
-          "Before, I didn't understand where the money was going. Now there is a notebook, and every week I look at it.",
-        body:
-          "Rekha runs a tailoring business from her front room. Module 02 — budgeting against her lowest-earning month, not her average — stayed with her. She opened her first account, in her own name, on the Module 04 walk.",
+          "[ Her story — what changed for her household after the ten modules. ]",
       },
       anonymous: {
-        quoteEn: "I haven't told anyone that I am saving. This is mine.",
+        quoteEn: "[ Quote — in her own words ]",
         body:
-          "This student asked not to be named or photographed by face. She keeps a private emergency fund the household doesn't know about — the habit Module 10 is built to teach. Her story is hers to tell, on her terms.",
+          "[ Her story — told on her terms, name and face withheld by request. ]",
       },
     },
     pullQuote: {
-      mark: "From a workshop in the Sundarbans",
+      mark: "From a workshop in Baruipur",
       text:
-        "I came to learn how to keep my money. I stayed to teach my neighbours how to keep theirs.",
-      cite: "Sabita Halder",
-      citeMeta: "CRP · South 24 Parganas",
+        "[ A line from the room — in her own words ]",
+      cite: "[ Name ]",
+      citeMeta: "Community Resource Person · Baruipur",
     },
     videos: {
       sectionLabel: "Video testimonials",
       intro:
-        "Two short testimonials, filmed at graduations. Subtitled in English.",
+        "Two short testimonials, filmed at workshops. Subtitled in English.",
     },
   },
 
@@ -299,7 +297,7 @@ export const copy = {
     kicker: "Gallery",
     heading: "From the rooms where the work happens.",
     sub:
-      "Workshops, graduations, hands, materials, the walk to the bank — across the Sundarbans, Howrah, and South 24 Parganas. Loosely in order. Photographers credited where known.",
+      "Workshops, hands, materials, the people in the room — in Baruipur, near Kolkata. Loosely in order. Photographers credited where known.",
   },
 
   /* ------------------------------------------------------------------ IMPACT */
@@ -313,7 +311,7 @@ export const copy = {
     lead: {
       sectionLabel: "In short",
       sectionHint: "Editorial copy. Numbers slotted in on publication.",
-      // The lead sentence keeps its number placeholders in code (give Claude the figures).
+      // The lead sentence keeps its number placeholders in code (drop the figures there).
     },
     subs: {
       sectionLabel: "The measure",
@@ -352,7 +350,7 @@ export const copy = {
       sectionHint: "For everything else.",
       body:
         "Questions about the curriculum, the workshops, or the project — write to us. No form; a real person reads this inbox.",
-      email: "hello@theprosperityproject.org",
+      email: "hello@[ domain ]",
     },
     getInvolved: {
       sectionLabel: "Get involved",
@@ -360,18 +358,18 @@ export const copy = {
       runLabel: "Run a workshop",
       runBody:
         "Organisations, CSR teams, college societies, and Resident Welfare Associations can teach Knowing Your Money directly. We'll send the facilitator's edition, a short licence, and a one-day onboarding — so a workshop in your community is run the way it's meant to be.",
-      runEmail: "adopt@theprosperityproject.org",
+      runEmail: "adopt@[ domain ]",
       partnerLabel: "Partner with us",
       partnerBody:
         "NGOs, foundations, and institutions wanting to partner formally — the way Bandhan delivers the work across West Bengal — should write here. The model is simple: you bring the halls, the trust, and the relationships; we bring the curriculum and the training.",
-      partnerEmail: "partner@theprosperityproject.org",
+      partnerEmail: "partner@[ domain ]",
     },
     press: {
       sectionLabel: "Press",
       sectionHint: "Journalists welcome.",
       body:
         "We welcome press enquiries and are glad to arrange interviews, photographs with consent, and workshop visits. For a media kit or to speak with the founder, write to us.",
-      email: "press@theprosperityproject.org",
+      email: "press@[ domain ]",
     },
     elsewhere: {
       sectionLabel: "Elsewhere",
@@ -391,31 +389,32 @@ export const copy = {
 
     founder: {
       sectionLabel: "The founder",
-      sectionHint: "First-person. Placeholder prose, to be edited with Rehaan.",
-      // The founder's first-person story — one paragraph per line.
+      sectionHint: "First-person. To be written by Rehaan.",
+      // PLACEHOLDER — this page is yours to write. The bracketed lines below are
+      // a suggested skeleton (one paragraph per line), not final copy. Replace
+      // each one with your own words, or ask Claude to help draft from notes.
       story: [
-        "The first person who taught me about money couldn't open a bank account in her own name. Phoolmati looked after me from the time I was four, and ran a household budget in her head I've never managed to reproduce on paper — all of it in cash, in a tin, none of it with a bank. I grew up assuming this was normal: that the people who managed money most carefully were the ones the system had least room for.",
-        "The curriculum began as one long interview with her. I asked the questions I'd never thought to ask — where do you keep it, who do you trust with it, what happens in an emergency. I expected to find gaps in what she knew. Instead I found a complete system missing one piece: not knowledge, but access. *Knowing Your Money* is built backwards from that interview — ten modules, each answering a question she had already answered for herself.",
-        "The first cohort was twenty-two women in a borrowed hall in Howrah. I facilitated it myself, badly, and learned more in ten weeks than in the year of planning before it. The slides mattered less than the tea. The worksheet that worked was built around a woman's lowest-earning month, not her average. Module 04 couldn't stay on paper, so it ended with all of us walking to the branch and queueing together — for most of the room, the first account in their own name.",
-        "None of it scaled past that hall without **Bandhan** — their rooms, their relationships, the trust that lets a workshop open on day one with a cohort already inside. We bring the curriculum and the training; they bring the ground it stands on.",
-        "The other lesson was to get out of the room. A curriculum carried by an outsider is one people listen to politely; carried by a neighbour, it's one they argue with and take home. The women who finished the early cohorts trained as facilitators — Community Resource Persons — and most workshops today are taught by someone who once sat in the back row.",
-        "I think about what Phoolmati would have done with an account in her own name, thirty years ago. I can't give her that. This is the next best thing I know how to build.",
+        "[ PLACEHOLDER — Rehaan to write the founder's story. The lines below are a suggested skeleton, not final copy. ]",
+        "[ Open with Shampa — who looked after you from the time you were born — and how you came to understand, over years, how little room the financial system had left her: no account fully her own, nowhere safe for what she saved. ]",
+        "[ The turn: deciding to really understand it, and interviewing her over weeks — the questions you'd never thought to ask, and what the answers revealed (a complete system missing only access, not knowledge). ]",
+        "[ How that became a curriculum, and the first two workshops in Baruipur — what facilitating taught you, and what surprised you in the room. ]",
+        "[ Why Bandhan matters, why the CRP model matters (the work staying in the community), and where you want this to go next. Keep it first-person and personal. ]",
       ],
     },
 
     mission: {
       sectionLabel: "Vision & mission",
       text:
-        "The project exists so that people navigating finance without formal access have the tools, and the confidence, to navigate it on their own terms.",
+        "[ Suggested — refine in your own words: The Prosperity Project exists so that people navigating finance without formal access have the tools, and the confidence, to navigate it on their own terms. ]",
     },
 
     organizations: {
       sectionLabel: "Organizations",
       sectionHint: "The institutions the work is built with.",
-      partnerName: "Bandhan NGO",
+      partnerName: "Bandhan-Konnagar",
       partnerRole: "Delivery partner · West Bengal",
       partnerBody:
-        "Bandhan brings the halls, the relationships in every block, and the trust that lets a workshop open with a cohort already in the room. We bring the curriculum, the training, and the textbook. Now in its third year, the partnership extends next to four new blocks across Howrah and Hooghly.",
+        "Bandhan-Konnagar brings the halls, the relationships on the ground, and the trust that lets a workshop open with a cohort already in the room; **Bandhan Bank Ltd** supports the work. We bring the curriculum, the training, and the textbook. The partnership is in its second year, with the current cohort still in follow-up.",
       partnerLinkLabel: "More on the partnership",
     },
   },

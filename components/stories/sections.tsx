@@ -51,34 +51,18 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
     intro: c.crp.intro,
     stories: [
       {
-        name: "Anjali Saha",
-        roleAccent: "CRP · since 2024",
-        role: "Bara Kachari, Howrah",
+        name: "[ Name ]",
+        roleAccent: "Community Resource Person",
+        role: "Baruipur, West Bengal",
         flip: false,
-        portrait: { tone: "warm", tag: "Anjali, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "A Community Resource Person at a workshop" },
-        quoteOrig:
-          "पहले मैं सिर्फ़ सुनती थी। अब मेरे हाथ में चॉक है और कमरा मेरी बात सुनता है।",
-        quoteEn: c.people.anjali.quoteEn,
-        citeName: "Anjali Saha",
-        citeMeta: "spoken in Hindi",
-        body: c.people.anjali.body,
+        portrait: { tone: "warm", tag: "A facilitator, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "A Community Resource Person at a workshop" },
+        quoteOrig: "[ Original-language quote ]",
+        quoteEn: c.people.crp1.quoteEn,
+        citeName: "[ Name ]",
+        citeMeta: "spoken in Bengali",
+        body: c.people.crp1.body,
         detail: { tone: "ledger", aspect: "square", tag: "her facilitator's notebook · margin notes", stamp: "PHOTO · DETAIL", src: "/photos/stories/anjali-detail.jpg", alt: "Participants taking notes during a session" },
-        group: { tone: "green", aspect: "landscape", tag: "the 2025 Howrah cohort she leads", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/anjali-group.jpg", alt: "The cohort gathered for a session" },
-      },
-      {
-        name: "Sabita Halder",
-        roleAccent: "CRP · since 2023",
-        role: "Gosaba, South 24 Parganas",
-        flip: true,
-        portrait: { tone: "green", tag: "Sabita, before a Sundarbans session", stamp: "PHOTO · CRP", src: "/photos/stories/sabita-portrait.jpg", alt: "A facilitator standing to speak at a session" },
-        quoteOrig:
-          "जो बात मेरी माँ को कोई नहीं समझा पाया, वह मैं अब पूरे गाँव को समझा रही हूँ।",
-        quoteEn: c.people.sabita.quoteEn,
-        citeName: "Sabita Halder",
-        citeMeta: "spoken in Hindi",
-        body: c.people.sabita.body,
-        detail: { tone: "cool", aspect: "square", tag: "the boat crossing to the next village", stamp: "PHOTO · DETAIL", src: "/photos/stories/sabita-detail.jpg", alt: "The printed booklet and worksheets on the table" },
-        group: { tone: "warm", aspect: "landscape", tag: "Module 04 · the walk to the branch", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/sabita-group.jpg", alt: "The cohort gathered together" },
+        group: { tone: "green", aspect: "landscape", tag: "the cohort she now leads", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/anjali-group.jpg", alt: "The cohort gathered for a session" },
       },
     ],
   },
@@ -89,31 +73,29 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
     intro: c.beneficiary.intro,
     stories: [
       {
-        name: "Rekha Mondal",
-        roleAccent: "Graduate · 2024 cohort",
-        role: "Salkia, Howrah",
+        name: "[ Name ]",
+        roleAccent: "Graduate",
+        role: "Baruipur, West Bengal",
         flip: false,
-        portrait: { tone: "ledger", tag: "Rekha, with her household notebook", stamp: "PHOTO · STUDENT", anon: false, src: "/photos/stories/rekha-portrait.jpg", alt: "A graduate of the Knowing Your Money curriculum" },
-        quoteOrig:
-          "पहले समझ नहीं थी कि पैसा कहाँ जा रहा है। अब नोटबुक है, और हर हफ़्ते मैं देखती हूँ।",
-        quoteEn: c.people.rekha.quoteEn,
-        citeName: "Rekha Mondal",
-        citeMeta: "spoken in Hindi",
-        body: c.people.rekha.body,
-        detail: { tone: "warm", aspect: "square", tag: "the sewing machine · her front room", stamp: "PHOTO · DETAIL", src: "/photos/stories/rekha-detail.jpg", alt: "Notes and worksheets from the session" },
-        group: { tone: "green", aspect: "landscape", tag: "her graduation · 2024", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/rekha-group.jpg", alt: "The cohort during a workshop" },
+        portrait: { tone: "ledger", tag: "A graduate, with her household notebook", stamp: "PHOTO · STUDENT", anon: false, src: "/photos/stories/rekha-portrait.jpg", alt: "A graduate of the Knowing Your Money curriculum" },
+        quoteOrig: "[ Original-language quote ]",
+        quoteEn: c.people.student1.quoteEn,
+        citeName: "[ Name ]",
+        citeMeta: "spoken in Bengali",
+        body: c.people.student1.body,
+        detail: { tone: "warm", aspect: "square", tag: "her front room", stamp: "PHOTO · DETAIL", src: "/photos/stories/rekha-detail.jpg", alt: "Notes and worksheets from the session" },
+        group: { tone: "green", aspect: "landscape", tag: "her cohort", stamp: "PHOTO · WORKSHOP", src: "/photos/stories/rekha-group.jpg", alt: "The cohort during a workshop" },
       },
       {
         name: "Pictured by her hands",
-        roleAccent: "Graduate · 2025 cohort · anonymous",
-        role: "Sundarbans",
+        roleAccent: "Graduate · anonymous",
+        role: "Baruipur, West Bengal",
         flip: true,
         portrait: { tone: "cool", aspect: "portrait", tag: "her hands · counting the week's savings", stamp: "PHOTO · DETAIL", anon: true },
-        quoteOrig:
-          "मैंने किसी को नहीं बताया कि मैं बचत कर रही हूँ। यह मेरा है।",
+        quoteOrig: "[ Original-language quote ]",
         quoteEn: c.people.anonymous.quoteEn,
         citeName: "Anonymous",
-        citeMeta: "pictured by request · spoken in Hindi",
+        citeMeta: "pictured by request",
         body: c.people.anonymous.body,
         detail: { tone: "ledger", aspect: "square", tag: "the tin where she keeps it", stamp: "PHOTO · DETAIL" },
         group: { tone: "dusk", aspect: "landscape", tag: "her cohort · faces withheld", stamp: "PHOTO · WORKSHOP" },
@@ -140,7 +122,7 @@ export function StoriesHero() {
           priority
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">Howrah · 2025 · [ PHOTOGRAPHER ]</p>
+        <p className="curr-hero__credit">Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]</p>
       </div>
     </section>
   );
@@ -271,8 +253,8 @@ export function StoryPullQuote() {
 
 /* ---------- VIDEO TESTIMONIALS ---------- */
 const VIDEO_CLIPS = [
-  { tone: "warm" as const, tag: "Anjali · on becoming a facilitator", stamp: "VIDEO · 02:40", caption: "Anjali Saha on the first cohort she taught.", meta: "Howrah · 2025 · Bengali, English subtitles" },
-  { tone: "green" as const, tag: "Rekha · on the notebook", stamp: "VIDEO · 01:55", caption: "Rekha Mondal on the week she opened her account.", meta: "Salkia · 2024 · Hindi, English subtitles" },
+  { tone: "warm" as const, tag: "[ Name ] · on becoming a facilitator", stamp: "VIDEO · [ TIME ]", caption: "[ A facilitator on the first cohort she taught. ]", meta: "Baruipur · [ YEAR ] · Bengali, English subtitles" },
+  { tone: "green" as const, tag: "[ Name ] · on the notebook", stamp: "VIDEO · [ TIME ]", caption: "[ A graduate on the week she opened her account. ]", meta: "Baruipur · [ YEAR ] · Bengali, English subtitles" },
 ];
 
 export function VideoTestimonials() {

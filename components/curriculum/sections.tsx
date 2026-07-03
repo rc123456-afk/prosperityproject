@@ -9,10 +9,10 @@ import { copy } from "@/content/copy";
 
 const c = copy.curriculum;
 const HERO = {
-  heroTag: "workshop · Module 02 · Howrah, West Bengal",
+  heroTag: "workshop · Module 02 · Baruipur, West Bengal",
   heroStamp: "PHOTO · WORKSHOP · WOMEN",
   heroTone: "warm" as const,
-  heroMeta: "South 24 Parganas · 2025 · [ PHOTOGRAPHER ]",
+  heroMeta: "Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]",
 };
 const ROMAN = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x."];
 
@@ -108,7 +108,7 @@ export function TextbookRail() {
       lang: "Bengali",
       lang_native: "বাংলা",
       title: "নিজের টাকা চেনা",
-      meta: "Edition 02 · 2025 · 184 pp · PDF",
+      meta: "[ Edition · year · pages ] · PDF",
     },
     {
       id: "hi",
@@ -116,7 +116,7 @@ export function TextbookRail() {
       lang: "Hindi",
       lang_native: "हिन्दी",
       title: "अपना पैसा जानना",
-      meta: "Edition 02 · 2025 · 184 pp · PDF",
+      meta: "[ Edition · year · pages ] · PDF",
     },
     {
       id: "en",
@@ -124,7 +124,7 @@ export function TextbookRail() {
       lang: "English",
       lang_native: "English",
       title: "Knowing Your Money",
-      meta: "Edition 02 · 2025 · 184 pp · PDF",
+      meta: "[ Edition · year · pages ] · PDF",
     },
   ];
 

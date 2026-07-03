@@ -23,15 +23,16 @@ function Hero() {
       <div className="hero__photo" aria-hidden="true" />
       <div className="hero__scrim" aria-hidden="true" />
       <div className="hero__inner">
-        <p className="hero__kicker">
-          <span className="dot" aria-hidden="true" />
-          {c.hero.kicker}
-        </p>
-        <h1 className="hero__headline">
-          {c.hero.headline}
-          <PlaceholderStamp>HEADLINE · PLACEHOLDER</PlaceholderStamp>
-        </h1>
-        <p className="hero__standfirst">{c.hero.standfirst}</p>
+        {c.hero.kicker && (
+          <p className="hero__kicker">
+            <span className="dot" aria-hidden="true" />
+            {c.hero.kicker}
+          </p>
+        )}
+        <h1 className="hero__headline">{c.hero.headline}</h1>
+        {c.hero.standfirst && (
+          <p className="hero__standfirst">{c.hero.standfirst}</p>
+        )}
         <div className="hero__actions">
           <Link href="/curriculum" className="btn btn--primary">
             {c.hero.ctaLabel} <span aria-hidden="true">→</span>

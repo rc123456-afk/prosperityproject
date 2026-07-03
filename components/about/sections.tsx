@@ -19,9 +19,6 @@ export function AboutHero() {
             <p className="about-hero__byline">
               By {copy.about.hero.bylineName} &nbsp;·&nbsp;{" "}
               <span className="accent">{copy.about.hero.bylineRole}</span>
-              <span className="ph-stamp" style={{ marginLeft: 14 }}>
-                [ PLACEHOLDER ]
-              </span>
             </p>
           </div>
           <div>
@@ -122,7 +119,7 @@ const ORGANIZATIONS = [
     name: copy.about.organizations.partnerName,
     role: copy.about.organizations.partnerRole,
     body: copy.about.organizations.partnerBody,
-    photo: { tone: "green" as const, src: "/photos/about/partner.jpg", alt: "A Bandhan Financial Literacy Programme workshop hall during a session" },
+    photo: { tone: "green" as const, src: "/photos/about/partner.jpg", alt: "A Bandhan-Konnagar workshop hall during a session" },
     link: { label: copy.about.organizations.partnerLinkLabel, href: "#partners" },
   },
 ];

@@ -34,7 +34,7 @@ export function WorkshopsHero() {
           style={{ marginTop: 64 }}
         />
         <p className="curr-hero__credit">
-          South 24 Parganas · 2025 · [ PHOTOGRAPHER ]
+          Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]
         </p>
       </div>
     </section>
@@ -218,7 +218,7 @@ export function CRPModel() {
             </div>
 
             <div className="ws-crp__stat">
-              <div className="ws-crp__figure">63%</div>
+              <div className="ws-crp__figure">[ N% ]</div>
               <div className="ws-crp__stat-label">{c.crp.statLabel}</div>
             </div>
 
@@ -246,8 +246,8 @@ const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; src: string; alt: string }[] = 
   { aspect: "square", tone: "dusk", src: "/photos/workshops/room-6.jpg", alt: "Notes and worksheets on the table" },
 ];
 const ROOM_CLIPS = [
-  { tag: "clip · 02:14 · Bengali · Module 03", stamp: "VIDEO · ROOM" },
-  { tag: "clip · 01:48 · Hindi · Module 06", stamp: "VIDEO · ROOM" },
+  { tag: "clip · [ TIME ] · Bengali · Module 03", stamp: "VIDEO · ROOM" },
+  { tag: "clip · [ TIME ] · Bengali · Module 06", stamp: "VIDEO · ROOM" },
 ];
 
 export function InTheRoom() {
@@ -315,15 +315,7 @@ export function WhatChanged() {
             <p className="curr-modules__hint">{c.whatChanged.sectionHint}</p>
           </div>
           <div>
-            <h2 className="ws-section__head">
-              {c.whatChanged.heading}
-              <span
-                className="ph-stamp"
-                style={{ marginLeft: 14, verticalAlign: "middle" }}
-              >
-                [ PLACEHOLDER · EDITORIAL PROSE ]
-              </span>
-            </h2>
+            <h2 className="ws-section__head">{c.whatChanged.heading}</h2>
             <div className="ws-changed__body">
               <RichText items={c.whatChanged.body} />
             </div>

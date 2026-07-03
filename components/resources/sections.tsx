@@ -8,13 +8,13 @@ import { copy } from "@/content/copy";
 
 const c = copy.resources;
 const HERO = {
-  heroTag: "textbook · classroom · Howrah",
+  heroTag: "textbook · classroom · Baruipur",
   heroStamp: "PHOTO · RESOURCES",
   heroTone: "ledger" as const,
-  heroMeta: "Howrah · 2025 · [ PHOTOGRAPHER ]",
-  photoTag: "textbook · second edition · 2025",
+  heroMeta: "Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]",
+  photoTag: "textbook · [ edition ]",
   photoStamp: "PHOTO · TEXTBOOK",
-  photoMeta: "Second edition · 2025 · [ PHOTOGRAPHER ]",
+  photoMeta: "[ Edition · year ] · [ PHOTOGRAPHER ]",
 };
 
 /* ---------- HERO ---------- */
@@ -49,8 +49,8 @@ const TEXTBOOK_EDITIONS = [
     lang: "Bengali",
     lang_native: "বাংলা",
     title: "নিজের টাকা চেনা",
-    meta: "Edition 02 · 2025 · 184 pp · PDF",
-    size: "8.2 MB",
+    meta: "[ Edition · year · pages ] · PDF",
+    size: "[ N ] MB",
     file: "/downloads/knowing-your-money-bn.pdf",
   },
   {
@@ -59,8 +59,8 @@ const TEXTBOOK_EDITIONS = [
     lang: "Hindi",
     lang_native: "हिन्दी",
     title: "अपना पैसा जानना",
-    meta: "Edition 02 · 2025 · 184 pp · PDF",
-    size: "8.0 MB",
+    meta: "[ Edition · year · pages ] · PDF",
+    size: "[ N ] MB",
     file: "/downloads/knowing-your-money-hi.pdf",
   },
   {
@@ -69,8 +69,8 @@ const TEXTBOOK_EDITIONS = [
     lang: "English",
     lang_native: "English",
     title: "Knowing Your Money",
-    meta: "Edition 02 · 2025 · 184 pp · PDF",
-    size: "7.8 MB",
+    meta: "[ Edition · year · pages ] · PDF",
+    size: "[ N ] MB",
     file: "/downloads/knowing-your-money-en.pdf",
   },
 ];

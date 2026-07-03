@@ -79,8 +79,8 @@ export function ModuleList() {
               ))}
             </ul>
             <p className="curr-modules__close">
-              Ten modules. Eight to ten weeks. Two sessions a week. One textbook
-              in every student&rsquo;s hand.
+              Ten modules. A cohort of fifty or more. One textbook in every
+              student&rsquo;s hand, and follow-up that continues after.
             </p>
           </div>
         </div>

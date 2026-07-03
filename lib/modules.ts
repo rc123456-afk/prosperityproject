@@ -31,7 +31,7 @@ export const WOMEN_MODULES: Module[] = [
     num: "04",
     title: "How Money Grows",
     teaser: "Money can work for you, even while you sleep.",
-    body: "Compound interest means your money earns interest on its own interest. Time is the most powerful ingredient — ₹1,000 a month started at twenty-five becomes roughly twenty lakh by retirement; the same habit started at forty-five becomes a fraction of that. Students also learn the Rule of 72 as a quick way to understand any savings option.",
+    body: "Compound interest means your money earns interest on its own interest. Time is the most powerful ingredient — the same ₹1,000 a month compounds into many times more when the habit is started in your twenties than in your forties. Students also learn the Rule of 72 as a quick way to compare any savings option.",
   },
   {
     num: "05",

@@ -65,8 +65,8 @@ const IMPACT_SUBS: { num: string; label: string; head: string; body: ReactNode }
           Placeholder. This section describes where the work runs and who it
           reaches — the blocks and villages across{" "}
           <span className="slot">[ REGION ]</span>, the number of active cohorts,
-          and the share of students reached through Bandhan&rsquo;s Self-Help
-          Group network.
+          and the share of students reached through Bandhan-Konnagar&rsquo;s
+          Self-Help Group network.
         </p>
         <p>
           Reach is reported as <em>communities named</em> —{" "}

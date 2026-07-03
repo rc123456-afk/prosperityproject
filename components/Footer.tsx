@@ -23,6 +23,12 @@ export function Footer() {
           <div className="site-footer__brand">
             <p className="site-footer__deva">{copy.site.footerDevaLine}</p>
             <p className="site-footer__roman">{copy.site.footerRomanLine}</p>
+            <p
+              className="site-footer__roman"
+              style={{ marginTop: 10, opacity: 0.7, fontStyle: "italic" }}
+            >
+              {copy.site.tagline}
+            </p>
           </div>
           <nav className="site-footer__links" aria-label="Footer">
             {LINKS.map((l) => (
@@ -36,14 +42,11 @@ export function Footer() {
         <div className="site-footer__rule" />
 
         <div className="site-footer__legal">
+          <span>© 2026 The Prosperity Project</span>
           <span>
-            © 2026 The Prosperity Project <span className="sep">·</span> Reg. 80G{" "}
-            <span className="sep">·</span> CSR-1
-          </span>
-          <span>
-            <a href="mailto:hello@prosperity.in">hello@prosperity.in</a>
+            <span>hello@[ domain ]</span>
             <span className="sep">·</span>
-            <Link href="/about#partners">In partnership with Bandhan NGO</Link>
+            <Link href="/about#partners">In partnership with Bandhan-Konnagar</Link>
             <span className="sep">·</span>
             <Link href="/privacy">Privacy</Link>
           </span>

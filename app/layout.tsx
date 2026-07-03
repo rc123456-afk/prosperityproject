@@ -16,7 +16,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "The Prosperity Project",
   description:
-    "The Prosperity Project — practical financial literacy, taught in Bengali, Hindi, and English, in partnership with Bandhan NGO.",
+    "The Prosperity Project — practical financial literacy, taught in Bengali, Hindi, and English, delivered with Bandhan-Konnagar and supported by Bandhan Bank Ltd.",
 };
 
 export default function RootLayout({
