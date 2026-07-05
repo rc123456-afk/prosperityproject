@@ -1378,6 +1378,11 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .download-card:hover .download-card__action-label { color: var(--marigold-deep); }
 .download-card:hover .download-card__lang { color: var(--marigold-deep); }
 
+/* Edition not yet released: shown, but visibly inert (no link, no hover). */
+.download-card--soon { cursor: default; opacity: 0.66; }
+.download-card--soon:hover { background: transparent; }
+.download-card--soon .download-card__action-label { color: var(--ink-55); }
+
 .download-card__script {
   font-family: var(--font-deva);
   font-size: 40px;

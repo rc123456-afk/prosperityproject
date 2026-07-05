@@ -49,9 +49,10 @@ const TEXTBOOK_EDITIONS = [
     lang: "Bengali",
     lang_native: "বাংলা",
     title: "নিজের টাকা চেনা",
-    meta: "[ Edition · year · pages ] · PDF",
-    size: "[ N ] MB",
-    file: "/downloads/knowing-your-money-bn.pdf",
+    meta: "In translation",
+    size: null,
+    file: null,
+    available: false,
   },
   {
     id: "hi",
@@ -59,9 +60,10 @@ const TEXTBOOK_EDITIONS = [
     lang: "Hindi",
     lang_native: "हिन्दी",
     title: "अपना पैसा जानना",
-    meta: "[ Edition · year · pages ] · PDF",
-    size: "[ N ] MB",
-    file: "/downloads/knowing-your-money-hi.pdf",
+    meta: "In translation",
+    size: null,
+    file: null,
+    available: false,
   },
   {
     id: "en",
@@ -69,9 +71,10 @@ const TEXTBOOK_EDITIONS = [
     lang: "English",
     lang_native: "English",
     title: "Knowing Your Money",
-    meta: "[ Edition · year · pages ] · PDF",
-    size: "[ N ] MB",
+    meta: "24 pages · PDF",
+    size: "366 KB",
     file: "/downloads/knowing-your-money-en.pdf",
+    available: true,
   },
 ];
 
@@ -100,41 +103,62 @@ export function TextbookDownloads() {
             </div>
 
             <div className="downloads">
-              {TEXTBOOK_EDITIONS.map((e) => (
-                <a
-                  key={e.id}
-                  id={`textbook-${e.id}`}
-                  href={e.file}
-                  className="download-card"
-                  download
-                >
-                  <span
-                    className={`download-card__script download-card__script--${e.id}`}
+              {TEXTBOOK_EDITIONS.map((e) => {
+                const body = (
+                  <>
+                    <span
+                      className={`download-card__script download-card__script--${e.id}`}
+                    >
+                      {e.script}
+                    </span>
+                    <span className="download-card__body">
+                      <span className="download-card__lang">
+                        {e.lang}{" "}
+                        <span className="download-card__native">
+                          / {e.lang_native}
+                        </span>
+                      </span>
+                      <span
+                        className={`download-card__title download-card__title--${e.id}`}
+                      >
+                        {e.title}
+                      </span>
+                      <span className="download-card__meta">{e.meta}</span>
+                    </span>
+                  </>
+                );
+                return e.available ? (
+                  <a
+                    key={e.id}
+                    id={`textbook-${e.id}`}
+                    href={e.file ?? undefined}
+                    className="download-card"
+                    download
                   >
-                    {e.script}
-                  </span>
-                  <span className="download-card__body">
-                    <span className="download-card__lang">
-                      {e.lang}{" "}
-                      <span className="download-card__native">
-                        / {e.lang_native}
+                    {body}
+                    <span className="download-card__action" aria-hidden="true">
+                      <span className="download-card__action-label">
+                        Download · {e.size}
+                      </span>
+                      <span className="download-card__arrow">↓</span>
+                    </span>
+                  </a>
+                ) : (
+                  <div
+                    key={e.id}
+                    id={`textbook-${e.id}`}
+                    className="download-card download-card--soon"
+                    aria-disabled="true"
+                  >
+                    {body}
+                    <span className="download-card__action" aria-hidden="true">
+                      <span className="download-card__action-label">
+                        Coming soon
                       </span>
                     </span>
-                    <span
-                      className={`download-card__title download-card__title--${e.id}`}
-                    >
-                      {e.title}
-                    </span>
-                    <span className="download-card__meta">{e.meta}</span>
-                  </span>
-                  <span className="download-card__action" aria-hidden="true">
-                    <span className="download-card__action-label">
-                      Download · {e.size}
-                    </span>
-                    <span className="download-card__arrow">↓</span>
-                  </span>
-                </a>
-              ))}
+                  </div>
+                );
+              })}
             </div>
 
             <p className="res-textbook__note">{c.textbook.note}</p>

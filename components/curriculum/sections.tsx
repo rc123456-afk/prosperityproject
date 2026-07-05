@@ -108,7 +108,7 @@ export function TextbookRail() {
       lang: "Bengali",
       lang_native: "বাংলা",
       title: "নিজের টাকা চেনা",
-      meta: "[ Edition · year · pages ] · PDF",
+      meta: "In translation",
     },
     {
       id: "hi",
@@ -116,7 +116,7 @@ export function TextbookRail() {
       lang: "Hindi",
       lang_native: "हिन्दी",
       title: "अपना पैसा जानना",
-      meta: "[ Edition · year · pages ] · PDF",
+      meta: "In translation",
     },
     {
       id: "en",
@@ -124,7 +124,7 @@ export function TextbookRail() {
       lang: "English",
       lang_native: "English",
       title: "Knowing Your Money",
-      meta: "[ Edition · year · pages ] · PDF",
+      meta: "24 pages · PDF",
     },
   ];
 

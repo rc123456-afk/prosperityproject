@@ -121,7 +121,7 @@ export const copy = {
         "Three editions — Bengali, Hindi, English. Each routes to the resources page.",
       heading: "*Knowing Your Money,* in the language of the room.",
       intro:
-        "Every student receives the textbook in her own script — [ N ] pages, typeset for reading aloud, with module-by-module worksheets at the back. All three editions are freely downloadable.",
+        "Every student receives the textbook in her own script — 24 pages, typeset for reading aloud, with module-by-module worksheets at the back. The English edition is free to download now; the Bengali and Hindi editions are in translation.",
       linkLabel: "All resources",
       note: "Print copies are distributed in workshops — not available by post.",
     },
@@ -209,9 +209,9 @@ export const copy = {
     },
     textbook: {
       sectionLabel: "The textbook",
-      sectionHint: "[ N ] pages. Three editions, freely downloadable.",
+      sectionHint: "24 pages. English available now; Bengali and Hindi in translation.",
       body: [
-        "*Knowing Your Money* is a [ N ]-page textbook covering all ten modules — the book the cohorts use, typeset for reading aloud, with worksheets and a glossary of Indian banking terms in every edition. Three editions are in circulation, each freely downloadable below.",
+        "*Knowing Your Money* is a 24-page textbook covering all ten modules — the book the cohorts use, typeset for reading aloud, with worksheets and a glossary of Indian banking terms in every edition. The English edition is free to download below; the Bengali and Hindi editions are in translation.",
         "Households can use it as a guide; partner organisations can teach from it directly. We ask only that it be passed on intact — cover and credits attached — and that anyone running a formal cohort lets us know.",
       ],
       note:
