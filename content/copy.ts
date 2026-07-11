@@ -306,7 +306,7 @@ export const copy = {
       kicker: "Impact",
       headline: "What's been built.",
       standfirst:
-        "We count what we can, honestly, and we say where the counting stops. The numbers below are placeholders until the first annual report is published.",
+        "We count what we can, honestly, and we say where the counting stops. Our first year's figures are being compiled — they'll be published, in full, with the first annual report.",
     },
     lead: {
       sectionLabel: "In short",
@@ -389,23 +389,19 @@ export const copy = {
 
     founder: {
       sectionLabel: "The founder",
-      sectionHint: "First-person. To be written by Rehaan.",
-      // PLACEHOLDER — this page is yours to write. The bracketed lines below are
-      // a suggested skeleton (one paragraph per line), not final copy. Replace
-      // each one with your own words, or ask Claude to help draft from notes.
+      sectionHint: "In his own words.",
       story: [
-        "[ PLACEHOLDER — Rehaan to write the founder's story. The lines below are a suggested skeleton, not final copy. ]",
-        "[ Open with Shampa — who looked after you from the time you were born — and how you came to understand, over years, how little room the financial system had left her: no account fully her own, nowhere safe for what she saved. ]",
-        "[ The turn: deciding to really understand it, and interviewing her over weeks — the questions you'd never thought to ask, and what the answers revealed (a complete system missing only access, not knowledge). ]",
-        "[ How that became a curriculum, and the first two workshops in Baruipur — what facilitating taught you, and what surprised you in the room. ]",
-        "[ Why Bandhan matters, why the CRP model matters (the work staying in the community), and where you want this to go next. Keep it first-person and personal. ]",
+        "Shampa has looked after me since I was born. It took me years to see how hard her financial life had been. A scam took a chunk of her savings once. Her bank account caused her problems she could never fully explain. She worked constantly and had little to show for it. For a long time I noticed these things but never fully acted on them.",
+        "At some point I decided to actually understand it. I asked if I could interview her and we ended up talking over several weeks. I asked things I had never thought to ask before, like where her salary went, why the account was such trouble, who she trusted with money and why. Every answer pointed to the same gap. No school had taught her any of this, and no one else had either. Once I saw that gap I could not stop seeing it, because it was not hers alone. There is a whole layer of knowledge the system assumes you have and never gives you.",
+        "I turned what I learned into a curriculum, ten modules in plain language, and we ran the first two workshops in Baruipur. I went in as the teacher and spent most of the time learning. The women were kind to a stranger and curious about everything, sometimes a bit shy being in a new situation but they asked questions that really intrigued me. What held them back was never ability. Most had little experience with phones and apps, and the government schools they went to, when they got to go at all, never taught a word about money.",
+        "The Prosperity Project exists because these women are smart and hardworking, and the only limit on them is information they were never given. That is something we can fix. We also train Community Resource Persons, women from the community itself, to run the workshops on their own, so the teaching continues without me and every group can train the next.",
       ],
     },
 
     mission: {
       sectionLabel: "Vision & mission",
       text:
-        "[ Suggested — refine in your own words: The Prosperity Project exists so that people navigating finance without formal access have the tools, and the confidence, to navigate it on their own terms. ]",
+        "I want this to reach more districts in India, then more states, and one day other countries, so no one suffers from a lack of financial knowledge again.",
     },
 
     organizations: {

@@ -53,14 +53,7 @@ export function FounderStory() {
           <div>
             <div className="founder__body">
               {copy.about.founder.story.map((para, i) => (
-                <p key={i}>
-                  {renderInline(para)}
-                  {i === copy.about.founder.story.length - 1 && (
-                    <span className="ph-stamp" style={{ marginLeft: 12 }}>
-                      [ PLACEHOLDER PROSE ]
-                    </span>
-                  )}
-                </p>
+                <p key={i}>{renderInline(para)}</p>
               ))}
             </div>
 

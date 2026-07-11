@@ -114,14 +114,11 @@ function Numbers() {
           <SectionMarker index="03" label={c.numbers.sectionLabel} />
         </div>
         <p className="number-prose">
-          Across <span className="ph">[ YEAR ]</span>,{" "}
-          <span className="num">[ N ]</span> students completed all ten modules
-          of <em>Knowing Your Money</em> across <span className="num">[ N ]</span>{" "}
-          villages in <span className="ph ph--ink">[ DISTRICTS ]</span>.{" "}
-          <span className="num">[ N%&nbsp;]</span> opened a savings account
-          during Module&nbsp;04. <span className="num">[ N ]</span> graduates
-          have returned as facilitators under the&nbsp;CRP&nbsp;Model. The next
-          cohort begins in <span className="ph">[ MONTH&nbsp;YEAR ]</span>.
+          We&rsquo;re compiling the figures from our first year — students who
+          completed all ten modules of <em>Knowing Your Money</em>, savings
+          accounts opened, and facilitators trained under the CRP&nbsp;Model.
+          They&rsquo;ll be published, in full, with our first annual report.{" "}
+          <span className="num">Coming&nbsp;soon.</span>
         </p>
         <div
           style={{
@@ -133,19 +130,6 @@ function Numbers() {
           }}
         >
           <TertiaryLink href="/impact">Full impact report</TertiaryLink>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 10,
-              textTransform: "uppercase",
-              letterSpacing: "0.16em",
-              color: "var(--ink-55)",
-            }}
-          >
-            Final 2025 figures audited by{" "}
-            <span style={{ color: "var(--ink-70)" }}>[ AUDITOR ]</span> · January
-            2026
-          </span>
         </div>
       </div>
     </section>
