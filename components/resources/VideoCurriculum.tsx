@@ -34,7 +34,7 @@ const PLACEHOLDER_YT = "aqz-KE-bpKQ"; // Big Buck Bunny — neutral stand-in
 const MODULE_VIDEO_IDS: Record<string, Record<LangId, string>> = {
   "01": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
   "02": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "sr7YbJTwiuU" },
   "04": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
   "05": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
   "06": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
@@ -135,11 +135,13 @@ function VideoRow({
                 loading="lazy"
               />
             </div>
-            <p className="vid-row__caption">
-              <span className="vid-row__caption-stamp">[ VIDEO COMING ]</span>{" "}
-              The recording for Module {module.num} in {langMeta(openLang).label}{" "}
-              will play here once its video link is added.
-            </p>
+            {videos[openLang] === PLACEHOLDER_YT && (
+              <p className="vid-row__caption">
+                <span className="vid-row__caption-stamp">[ VIDEO COMING ]</span>{" "}
+                The recording for Module {module.num} in {langMeta(openLang).label}{" "}
+                will play here once its video link is added.
+              </p>
+            )}
           </div>
         )}
       </div>
