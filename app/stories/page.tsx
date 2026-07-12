@@ -5,6 +5,7 @@ import {
   StorySection,
   StoryPullQuote,
   VideoTestimonials,
+  WorkspacePhotos,
 } from "@/components/stories/sections";
 
 export const metadata: Metadata = {
@@ -17,11 +18,12 @@ export default function Stories() {
   return (
     <>
       <StoriesHero />
-      <ConsentNote />
+      <VideoTestimonials />
       <StorySection kind="crp" />
       <StoryPullQuote />
       <StorySection kind="beneficiary" />
-      <VideoTestimonials />
+      <WorkspacePhotos />
+      <ConsentNote />
     </>
   );
 }

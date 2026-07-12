@@ -36,7 +36,7 @@
    ================================================================ */
 .stories-page { }
 
-.story-set { display: flex; flex-direction: column; gap: clamp(84px, 9vw, 132px); }
+.story-set { display: flex; flex-direction: column; gap: clamp(56px, 6vw, 88px); }
 
 .story { position: relative; }
 
@@ -83,8 +83,6 @@
   gap: clamp(40px, 5vw, 76px);
   align-items: end;
 }
-.story__lead--flip { grid-template-columns: 1fr minmax(0, 326px); }
-.story__lead--flip .story__portrait { order: 2; }
 .story__portrait { margin: 0; }
 
 .story__quote-wrap { padding-bottom: clamp(4px, 1vw, 16px); }
@@ -126,12 +124,11 @@
   text-wrap: pretty;
 }
 
-/* Detail + group photos: offset, magazine-like (not a tidy 2-up) */
-.story__photos {
+/* Workspace strip: three photo slots under the stories */
+.stories-workspace {
   display: grid;
-  grid-template-columns: 1fr 1.7fr;
+  grid-template-columns: 1.6fr 1fr 1fr;
   gap: clamp(20px, 2.4vw, 32px);
-  margin-top: clamp(36px, 4vw, 56px);
   align-items: end;
 }
 
@@ -182,17 +179,42 @@
 .story-videos {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: clamp(28px, 3vw, 40px);
 }
-.story-videos--single { grid-template-columns: 1fr; max-width: 44rem; }
-.story-video figcaption {
-  margin-top: 14px;
-  font-family: var(--font-mono); font-size: 11px;
+/* Interview embeds — source-agnostic (YouTube iframe or self-hosted <video>) */
+.story-video__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--ink);
+}
+.story-video__embed {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0; display: block;
+}
+.story-video__cap {
+  margin-top: 16px;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.story-video__label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--marigold-deep);
+}
+.story-video__context {
+  font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+  text-transform: none; letter-spacing: 0;
+  color: var(--ink);
+  max-width: 34rem; text-wrap: pretty;
+}
+.story-video__meta {
+  font-family: var(--font-mono); font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.14em;
   color: var(--ink-55);
-  line-height: 1.5;
 }
-.story-video figcaption .stamp { color: var(--marigold-deep); margin-right: 6px; }
 
 /* ================================================================
    GALLERY — photo dump, mixed widths
@@ -582,11 +604,9 @@
   .photo-dump__item--small { flex: 1 1 calc(50% - 14px); }
 }
 @media (max-width: 720px) {
-  .story__lead,
-  .story__lead--flip { grid-template-columns: 1fr; gap: 28px; }
-  .story__lead--flip .story__portrait { order: 0; }
+  .story__lead { grid-template-columns: 1fr; gap: 28px; }
   .story__portrait { max-width: 340px; }
-  .story__photos { grid-template-columns: 1fr; gap: 16px; }
+  .stories-workspace { grid-template-columns: 1fr; gap: 16px; }
   .story__head { grid-template-columns: 1fr; gap: 10px; margin-bottom: 28px; }
   .photo-dump { gap: 18px; }
   .photo-dump__item--wide,

@@ -242,7 +242,7 @@ export const copy = {
         "Students who finished the curriculum, and the Community Resource Persons who came back to teach it. In their own words.",
     },
     consentNote:
-      "Names are used with permission. Some subjects requested anonymity and are pictured by their hands or workspace.",
+      "Names, photographs, and film are used with permission. Where a subject prefers not to be named, she isn't.",
     crp: {
       sectionLabel: "Community Resource Persons",
       sectionHint: "Students first, facilitators second.",
@@ -253,7 +253,7 @@ export const copy = {
       sectionLabel: "Students",
       sectionHint: "Women who finished all ten modules.",
       intro:
-        "Most students simply take the curriculum home and put it to work. Two on what changed:",
+        "Most students simply take the curriculum home and put it to work. One on what changed:",
     },
     // Each person: the English quote and the short story under it. These are
     // blanked to placeholders until real, consented names/quotes are added.
@@ -272,11 +272,6 @@ export const copy = {
         body:
           "[ Her story — what changed for her household after the ten modules. ]",
       },
-      anonymous: {
-        quoteEn: "[ Quote — in her own words ]",
-        body:
-          "[ Her story — told on her terms, name and face withheld by request. ]",
-      },
     },
     pullQuote: {
       mark: "From a workshop in Baruipur",
@@ -286,9 +281,14 @@ export const copy = {
       citeMeta: "Community Resource Person · Baruipur",
     },
     videos: {
-      sectionLabel: "Video testimonials",
+      sectionLabel: "Interviews",
       intro:
-        "Two short testimonials, filmed at workshops. Subtitled in English.",
+        "Four interviews, filmed at workshops in Baruipur. Spoken in Bengali; English subtitles and short summaries to follow.",
+      meta: "Baruipur · Bengali · English subtitles to follow",
+    },
+    workspace: {
+      sectionLabel: "The workspace",
+      sectionHint: "The rooms and tables where the stories above happen.",
     },
   },
 
