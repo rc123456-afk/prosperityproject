@@ -32,16 +32,16 @@ type LangId = (typeof VIDEO_LANGS)[number]["id"];
 const PLACEHOLDER_YT = "aqz-KE-bpKQ"; // Big Buck Bunny — neutral stand-in
 
 const MODULE_VIDEO_IDS: Record<string, Record<LangId, string>> = {
-  "01": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "02": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "sr7YbJTwiuU" },
-  "04": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "05": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "06": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "07": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "08": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "09": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
-  "10": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT },
+  "01": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "YQ-X4ivwi9E" }, // Your Money Your Name
+  "02": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "KKei515ubVk" }, // Budgeting
+  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "sr7YbJTwiuU" }, // Getting Paid What You're Worth
+  "04": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "kr6U6T3POBU" }, // Compound Interest
+  "05": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "_A5e71xR9N8" }, // Safe Places for Your Money
+  "06": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "3PnA97AbRAc" }, // Scam Shield
+  "07": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "7WSQhEWlf0g" }, // Debt
+  "08": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "FzSyONEz-4s" }, // Your First Real Investment
+  "09": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "tfA0nFSYu0c" }, // Digital Payments
+  "10": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT }, // Module 10 — not yet on the channel
 };
 
 function videoIdsFor(num: string): Record<LangId, string> {
