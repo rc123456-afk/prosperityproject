@@ -246,10 +246,10 @@ type StoryVideoSpec = {
 };
 
 const STORY_VIDEOS: StoryVideoSpec[] = [
-  { tone: "warm", label: "Interview 01", context: "[ What she speaks about — a short summary lands with the translation ]" },
-  { tone: "green", label: "Interview 02", context: "[ What she speaks about — a short summary lands with the translation ]" },
-  { tone: "ledger", label: "Interview 03", context: "[ What she speaks about — a short summary lands with the translation ]" },
-  { tone: "cool", label: "Interview 04", context: "[ What she speaks about — a short summary lands with the translation ]" },
+  { tone: "warm", label: "Interview 01", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "HseT88DHYwo" },
+  { tone: "green", label: "Interview 02", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "Lh3Qb8OBKa8" },
+  { tone: "ledger", label: "Interview 03", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "Oa7JATommV0" },
+  { tone: "cool", label: "Interview 04", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "vksZ_QKBAQI" },
 ];
 
 function StoryVideo({ v }: { v: StoryVideoSpec }) {

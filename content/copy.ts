@@ -229,7 +229,7 @@ export const copy = {
       line1:
         "Free for educational use — household, classroom, or community. Pass it on intact.",
       line2:
-        "Organisations adopting the curriculum into a formal programme — schools, NGOs, government departments, livelihood missions — should write to **[ adopt@ — email coming soon ]**. We will send you the facilitator's edition, a brief licence, and an invitation to a one-day onboarding.",
+        "Organisations adopting the curriculum into a formal programme — schools, NGOs, government departments, livelihood missions — should write to **[team.prosperityproject@gmail.com](mailto:team.prosperityproject@gmail.com)**. We will send you the facilitator's edition and an invitation to a one-day onboarding.",
     },
   },
 
@@ -350,26 +350,26 @@ export const copy = {
       sectionHint: "For everything else.",
       body:
         "Questions about the curriculum, the workshops, or the project — write to us. No form; a real person reads this inbox.",
-      email: "hello@[ domain ]",
+      email: "team.prosperityproject@gmail.com",
     },
     getInvolved: {
       sectionLabel: "Get involved",
       sectionHint: "Two ways the work travels further.",
       runLabel: "Run a workshop",
       runBody:
-        "Organisations, CSR teams, college societies, and Resident Welfare Associations can teach Knowing Your Money directly. We'll send the facilitator's edition, a short licence, and a one-day onboarding — so a workshop in your community is run the way it's meant to be.",
-      runEmail: "adopt@[ domain ]",
+        "Organisations, CSR teams, college societies, and Resident Welfare Associations can teach Knowing Your Money directly. We'll send the facilitator's edition and a one-day onboarding — so a workshop in your community is run the way it's meant to be.",
+      runEmail: "team.prosperityproject@gmail.com",
       partnerLabel: "Partner with us",
       partnerBody:
         "NGOs, foundations, and institutions wanting to partner formally — the way Bandhan delivers the work across West Bengal — should write here. The model is simple: you bring the halls, the trust, and the relationships; we bring the curriculum and the training.",
-      partnerEmail: "partner@[ domain ]",
+      partnerEmail: "team.prosperityproject@gmail.com",
     },
     press: {
       sectionLabel: "Press",
       sectionHint: "Journalists welcome.",
       body:
         "We welcome press enquiries and are glad to arrange interviews, photographs with consent, and workshop visits. For a media kit or to speak with the founder, write to us.",
-      email: "press@[ domain ]",
+      email: "team.prosperityproject@gmail.com",
     },
     elsewhere: {
       sectionLabel: "Elsewhere",
