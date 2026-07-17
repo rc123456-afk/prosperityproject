@@ -44,7 +44,7 @@ export function Footer() {
         <div className="site-footer__legal">
           <span>© 2026 The Prosperity Project</span>
           <span>
-            <span>hello@[ domain ]</span>
+            <a href="mailto:team.prosperityproject@gmail.com">team.prosperityproject@gmail.com</a>
             <span className="sep">·</span>
             <Link href="/about#partners">In partnership with Bandhan-Konnagar</Link>
             <span className="sep">·</span>

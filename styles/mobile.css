@@ -1,0 +1,200 @@
+/* mobile.css — phone-only additions (≤880px and below).
+   Loaded LAST (after app.css) so equal-specificity rules win over the
+   ≤880 block already in site.css.
+
+   CONTRACT: every rule in this file must either
+   (1) live inside a max-width media query at 880px or narrower, or
+   (2) target classes that exist only in mobile-only markup
+       (.nav__menu-btn, .nav-overlay*), whose base state is display:none.
+   Desktop (>880px) must be byte-identical with this file deleted. */
+
+/* ------------------------------------------------------------------ *
+ * NEW mobile-only elements — base state (the only rules that resolve
+ * on desktop, and they hide elements that don't exist in the >880 DOM).
+ * ------------------------------------------------------------------ */
+.nav__menu-btn { display: none; }
+.nav-overlay { display: none; }
+
+/* ------------------------------------------------------------------ *
+ * ≤880px — MOBILE NAV. Appears at exactly the width site.css:1654-1655
+ * hides the desktop links, so no viewport is left without navigation.
+ * ------------------------------------------------------------------ */
+@media (max-width: 880px) {
+  /* .nav__inner is already `auto auto` here (site.css:1653); split its two
+     remaining children (wordmark, menu button) to the edges. */
+  .nav__inner { justify-content: space-between; }
+
+  .nav__menu-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;                 /* comfortable tap target */
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+  }
+
+  /* Full-screen paper overlay. Sibling of <nav> (nav's backdrop-filter
+     would otherwise trap position:fixed). Sits at z-index 49 — one below
+     the sticky masthead (z-50) — so wordmark + Close stay on top. */
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    background: var(--paper);
+    padding: 92px var(--gutter) 48px;   /* clears the ~62px masthead */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  html.nav-open,
+  html.nav-open body { overflow: hidden; }   /* scroll lock while open */
+
+  .nav-overlay__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--ink-30);
+  }
+  .nav-overlay__links li { border-bottom: 1px solid var(--ink-15); }
+
+  .nav-overlay__link {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 16px 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 48;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-overlay__link:hover { color: var(--ink); text-decoration: none; }
+  .nav-overlay__link[data-active="true"] { color: var(--marigold-deep); }
+
+  .nav-overlay__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--marigold-deep);
+  }
+
+  .nav-overlay__lang {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .nav-overlay__lang-label {
+    margin-right: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-55);
+  }
+  .nav-overlay__lang button {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    padding: 8px 0;
+    line-height: 1;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--ink-55);
+  }
+  .nav-overlay__lang button[data-active="true"] {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    font-weight: 500;
+  }
+  .nav-overlay__lang button[data-script="deva"] {
+    font-family: var(--font-deva);
+    font-size: 17px;
+    letter-spacing: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * ≤600px — PRIMARY PHONE TIER. Typography floors, layout collapses,
+ * and density. Clamp floors are calibrated to be continuous with the
+ * desktop rule at the 600/601 boundary (no visible jump).
+ * ------------------------------------------------------------------ */
+@media (max-width: 600px) {
+  /* -- Headline floors (601px desktop value == 600px mobile cap) -- */
+  .curr-hero__headline    { font-size: clamp(40px, 11.5vw, 64px); }
+  .about-hero__head       { font-size: clamp(36px, 10vw, 52px); }
+  .translation-gate__head { font-size: clamp(34px, 10vw, 48px); }
+  .hero__headline         { font-size: clamp(34px, 9.6vw, 40px); }
+  .story__index           { font-size: clamp(40px, 10vw, 52px); }
+
+  /* -- Contact email: unbreakable token overflows the column. !important
+        is needed only to beat the inline style at contact/sections.tsx:85;
+        it lives inside this ≤600 query so it cannot reach desktop. -- */
+  .contact-email {
+    font-size: clamp(15px, 5vw, 20px) !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* -- Original-language quotes -- */
+  .story__quote-orig { font-size: 21px; max-width: none; }
+  .stories__original { font-size: 19px; }
+
+  /* -- Founder dropcap: 5.4em floats half the column on a phone -- */
+  .founder__body > p:first-of-type::first-letter {
+    font-size: 3.4em;
+    padding: 6px 10px 0 0;
+  }
+
+  /* -- Density: tighten desktop rhythm (token override, additive) -- */
+  :root {
+    --space-section: 64px;   /* was 96 */
+    --space-page: 112px;     /* was 192 */
+    --space-block: 40px;     /* was 48 */
+  }
+  .pullquote-section { padding-top: 72px; padding-bottom: 72px; }
+  .translation-gate { padding-top: 72px; padding-bottom: 96px; }
+  .curr-hero, .about-hero { padding-top: 56px; }
+  .gallery-hero { padding-top: 48px; }
+  .cohorts, .workshops, .stories { gap: 40px; }
+  .impact-subs { gap: 48px; }
+  .story-set { gap: 44px; }
+  .hero__inner {
+    min-height: 70vh;
+    min-height: 70svh;                 /* avoid mobile URL-bar jump */
+    padding: 80px var(--gutter) 64px;
+  }
+
+  /* -- Impact annual reports: stack year / title / status -- */
+  .report-row { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+  .report-row__status { white-space: normal; }
+
+  /* -- Homepage gallery strip: single column, uniform height. minmax(0,1fr)
+        + min-width:0 keep each photo inside the track (a bare 1fr keeps an
+        implicit min-content minimum that lets the photo overflow at 320px).
+        Second selector matches the 2-class specificity of site.css:518-522. -- */
+  .gallery { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .gallery .photo,
+  .gallery .photo[data-aspect] { height: 230px; width: 100%; min-width: 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * ≤480px — TINY-PHONE TIER. Just reclaim a little side gutter; the ≤600
+ * rules are already calibrated for a 320px content width.
+ * ------------------------------------------------------------------ */
+@media (max-width: 480px) {
+  :root { --gutter: 20px; }
+}

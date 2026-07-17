@@ -41,7 +41,7 @@ export const copy = {
     whatThisIs: {
       sectionLabel: "What this is",
       body:
-        "The Prosperity Project teaches practical money skills — bank accounts, budgeting, debt, savings, scam protection, digital payments, emergency planning — to people the financial system has historically ignored. The flagship curriculum, *Knowing Your Money*, is ten modules grounded in real interviews, taught to women in **West Bengal** — delivered with **Bandhan-Konnagar** and supported by **Bandhan Bank Ltd**.",
+        "The Prosperity Project teaches practical money skills — bank accounts, budgeting, debt, savings, scam protection, digital payments, emergency planning — to people the financial system has historically ignored. The flagship curriculum, *Knowing Your Money*, is ten modules grounded in real interviews, taught to women in **West Bengal** — delivered by **Rehaan Chowdhary** and supported by **Bandhan Bank Ltd**.",
     },
     whereWeWork: {
       sectionLabel: "Where we work",
