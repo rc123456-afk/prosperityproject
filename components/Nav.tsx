@@ -33,6 +33,10 @@ const NAV_LINKS: { id: string; label: string; href: string }[] = [
   { id: "contact", label: "Contact", href: "/contact" },
 ];
 
+// Mobile overlay leads with Home — the wordmark is the only way back on
+// desktop, but it's easy to miss inside the phone menu.
+const MOBILE_LINKS = [{ id: "home", label: "Home", href: "/" }, ...NAV_LINKS];
+
 function currentId(pathname: string): string {
   if (pathname.startsWith("/curriculum")) return "curriculum";
   if (pathname.startsWith("/workshops")) return "workshops";
@@ -138,7 +142,7 @@ export function Nav() {
       {open && (
         <div className="nav-overlay" id="mobile-menu">
           <ul className="nav-overlay__links">
-            {NAV_LINKS.map((link, i) => (
+            {MOBILE_LINKS.map((link, i) => (
               <li key={link.id}>
                 <Link
                   href={link.href}
