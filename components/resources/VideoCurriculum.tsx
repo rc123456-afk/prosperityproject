@@ -25,31 +25,31 @@ type LangId = (typeof VIDEO_LANGS)[number]["id"];
    the ID is  "dQw4w9WgXcQ"  (also the last path segment of a youtu.be link).
 
    To set Module 02's Hindi video, replace its `hi` value with the real ID.
-   Any slot still left as PLACEHOLDER_YT plays the neutral placeholder, so you
-   can fill these in gradually, in any order — every row stays usable.
+   Any slot still left as COMING shows a "Video coming soon" panel instead of a
+   player, so you can fill these in gradually, in any order — every row stays usable.
 
    `hi` = Hindi (हिं) · `bn` = Bengali (বাং) · `en` = English (EN)            */
-const PLACEHOLDER_YT = "aqz-KE-bpKQ"; // Big Buck Bunny — neutral stand-in
+const COMING = "coming-soon"; // sentinel — no video uploaded for this slot yet
 
 const MODULE_VIDEO_IDS: Record<string, Record<LangId, string>> = {
-  "01": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "YQ-X4ivwi9E" }, // Your Money Your Name
-  "02": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "KKei515ubVk" }, // Budgeting
-  "03": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "sr7YbJTwiuU" }, // Getting Paid What You're Worth
-  "04": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "kr6U6T3POBU" }, // Compound Interest
-  "05": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "_A5e71xR9N8" }, // Safe Places for Your Money
-  "06": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "3PnA97AbRAc" }, // Scam Shield
-  "07": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "7WSQhEWlf0g" }, // Debt
-  "08": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "FzSyONEz-4s" }, // Your First Real Investment
-  "09": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: "tfA0nFSYu0c" }, // Digital Payments
-  "10": { hi: PLACEHOLDER_YT, bn: PLACEHOLDER_YT, en: PLACEHOLDER_YT }, // Module 10 — not yet on the channel
+  "01": { hi: COMING, bn: COMING, en: "YQ-X4ivwi9E" }, // Your Money Your Name
+  "02": { hi: COMING, bn: COMING, en: "KKei515ubVk" }, // Budgeting
+  "03": { hi: COMING, bn: COMING, en: "sr7YbJTwiuU" }, // Getting Paid What You're Worth
+  "04": { hi: COMING, bn: COMING, en: "kr6U6T3POBU" }, // Compound Interest
+  "05": { hi: COMING, bn: COMING, en: "_A5e71xR9N8" }, // Safe Places for Your Money
+  "06": { hi: COMING, bn: COMING, en: "3PnA97AbRAc" }, // Scam Shield
+  "07": { hi: COMING, bn: COMING, en: "7WSQhEWlf0g" }, // Debt
+  "08": { hi: COMING, bn: COMING, en: "FzSyONEz-4s" }, // Your First Real Investment
+  "09": { hi: COMING, bn: COMING, en: "tfA0nFSYu0c" }, // Digital Payments
+  "10": { hi: COMING, bn: COMING, en: COMING }, // Module 10 — not yet on the channel
 };
 
 function videoIdsFor(num: string): Record<LangId, string> {
   return (
     MODULE_VIDEO_IDS[num] ?? {
-      hi: PLACEHOLDER_YT,
-      bn: PLACEHOLDER_YT,
-      en: PLACEHOLDER_YT,
+      hi: COMING,
+      bn: COMING,
+      en: COMING,
     }
   );
 }
@@ -126,22 +126,24 @@ function VideoRow({
               </button>
             </div>
             <div className="vid-row__frame">
-              <iframe
-                key={`${module.num}-${openLang}`}
-                src={`https://www.youtube-nocookie.com/embed/${videos[openLang]}?rel=0&autoplay=1&modestbranding=1`}
-                title={`Module ${module.num} — ${module.title} (${langMeta(openLang).label})`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              />
+              {videos[openLang] === COMING ? (
+                <div className="vid-row__coming">
+                  <span className="vid-row__coming-mark" aria-hidden="true">▶</span>
+                  <span className="vid-row__coming-text">
+                    {langMeta(openLang).label} recording coming soon
+                  </span>
+                </div>
+              ) : (
+                <iframe
+                  key={`${module.num}-${openLang}`}
+                  src={`https://www.youtube-nocookie.com/embed/${videos[openLang]}?rel=0&autoplay=1&modestbranding=1`}
+                  title={`Module ${module.num} — ${module.title} (${langMeta(openLang).label})`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              )}
             </div>
-            {videos[openLang] === PLACEHOLDER_YT && (
-              <p className="vid-row__caption">
-                <span className="vid-row__caption-stamp">[ VIDEO COMING ]</span>{" "}
-                The recording for Module {module.num} in {langMeta(openLang).label}{" "}
-                will play here once its video link is added.
-              </p>
-            )}
           </div>
         )}
       </div>

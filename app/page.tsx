@@ -9,7 +9,6 @@ import {
   Figure,
   SectionMarker,
   TertiaryLink,
-  PlaceholderStamp,
 } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
@@ -197,14 +196,13 @@ function StoriesPreview() {
           <Figure
             aspect="portrait"
             tone="ledger"
-            src="/photos/home/rekha.jpg"
-            alt="A graduate of the Knowing Your Money curriculum"
+            src="/photos/home/shankari.jpg"
+            alt="Shankari Purkait Mondal, a Community Resource Person, at a workshop in Baruipur"
           />
 
           <div>
             <blockquote className="stories__quote">
               &ldquo;{c.storiesPreview.quote}&rdquo;
-              <PlaceholderStamp>QUOTE · TRANSLATION</PlaceholderStamp>
             </blockquote>
             <p className="stories__original">{c.storiesPreview.original}</p>
             <p className="stories__cite">

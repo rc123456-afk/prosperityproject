@@ -55,15 +55,15 @@ export const copy = {
     },
     numbers: {
       sectionLabel: "The work, in numbers",
-      // The sentence below keeps its number placeholders ([ N ], [ YEAR ]) in
-      // code so they stay styled; drop the real figures in there when ready.
+      // The band renders an honest "figures coming with the first annual report"
+      // line (see the Numbers component); no figures are invented here.
     },
     workshopsPreview: {
       sectionLabel: "How a workshop runs",
       heading:
         "Ten modules, fifty women, one room the community already trusts — and follow-up that continues after.",
       body:
-        "We work with partners who already have a hall, a livelihood programme, or a self-help group running. A cohort of [ fifty or more ] women works through the ten modules of *Knowing Your Money* together; what follows is shaped around them — follow-up sessions, several over video call, that return to whatever a student still needs, with her progress tracked along the way. Facilitators are drawn from the same community, many of them former students. Sessions run in Bengali and Hindi.",
+        "We work with partners who already have a hall, a livelihood programme, or a self-help group running. A cohort of fifty or more women works through the ten modules of *Knowing Your Money* together; what follows is shaped around them — follow-up sessions, several over video call, that return to whatever a student still needs, with her progress tracked along the way. Facilitators are drawn from the same community, many of them former students. Sessions run in Bengali and Hindi.",
       crpLabel: "A method",
       crpTitle: "The CRP Model",
       crpBody:
@@ -73,11 +73,11 @@ export const copy = {
     storiesPreview: {
       sectionLabel: "Stories from the cohort",
       quote:
-        "[ A line from a graduate — in her own words ]",
+        "People have to be able to face a financial situation. They have to have money of their own.",
       original:
-        "[ The same line, in Bengali ]",
-      citeName: "[ Name ]",
-      citeMeta: "Module 02 graduate",
+        "মানুষকে আর্থিক পরিস্থিতির মোকাবেলা করতে হবে, তাদের কাছে টাকা থাকতে হবে।",
+      citeName: "Shankari Purkait Mondal",
+      citeMeta: "Community Resource Person, Baruipur",
       citeLang: "spoken in Bengali",
       linkLabel: "Read more stories",
     },
@@ -251,9 +251,9 @@ export const copy = {
     },
     beneficiary: {
       sectionLabel: "Students",
-      sectionHint: "Women who finished all ten modules.",
+      sectionHint: "What she took from the session, and carries to others.",
       intro:
-        "Most students simply take the curriculum home and put it to work. One on what changed:",
+        "Some students carry what they learn straight back to the women around them. One of them:",
     },
     // Each person: the English quote and the short story under it. These are
     // blanked to placeholders until real, consented names/quotes are added.
@@ -262,33 +262,31 @@ export const copy = {
     people: {
       crp1: {
         quoteEn:
-          "[ Quote — in her own words ]",
+          "People have to be able to face a financial situation. They have to have money of their own.",
         body:
-          "[ Her story — who she is, what the curriculum changed for her, and why she came back to teach it. ]",
+          "Shankari came through the program as a participant and now carries it forward for the women around her. Her conviction is plain: no woman should fall behind for want of money of her own. After Rehaan's session she gave her blessing for the work to reach further, so that more women learn what she is now ready to teach.",
       },
       student1: {
         quoteEn:
-          "[ Quote — in her own words ]",
+          "Learning has no age.",
         body:
-          "[ Her story — what changed for her household after the ten modules. ]",
+          "Lakshmi took the session wanting to bring what she learned back to her family and to the women around her. Her takeaway was as much about learning itself as about money: that there is much to learn even from the young, and every reason to pass it on.",
       },
     },
     pullQuote: {
       mark: "From a workshop in Baruipur",
+      orig:
+        "সব মা যেন অর্থের অভাবে পিছিয়ে না পড়ে।",
       text:
-        "[ A line from the room — in her own words ]",
-      cite: "[ Name ]",
-      citeMeta: "Community Resource Person · Baruipur",
+        "So that no mother falls behind for want of money.",
+      cite: "Shankari Purkait Mondal",
+      citeMeta: "Community Resource Person, Baruipur",
     },
     videos: {
       sectionLabel: "Interviews",
       intro:
-        "Four interviews, filmed at workshops in Baruipur. Spoken in Bengali; English subtitles and short summaries to follow.",
-      meta: "Baruipur · Bengali · English subtitles to follow",
-    },
-    workspace: {
-      sectionLabel: "The workspace",
-      sectionHint: "The rooms and tables where the stories above happen.",
+        "Four interviews, filmed at a workshop in Baruipur. Spoken in Bengali.",
+      meta: "Baruipur · Bengali",
     },
   },
 

@@ -47,13 +47,13 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
     intro: c.crp.intro,
     stories: [
       {
-        name: "[ Name ]",
+        name: "Shankari Purkait Mondal",
         roleAccent: "Community Resource Person",
         role: "Baruipur, West Bengal",
         portrait: { tone: "warm", tag: "A facilitator, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "A Community Resource Person at a workshop" },
-        quoteOrig: "[ Original-language quote ]",
+        quoteOrig: "মানুষকে আর্থিক পরিস্থিতির মোকাবেলা করতে হবে, তাদের কাছে টাকা থাকতে হবে।",
         quoteEn: c.people.crp1.quoteEn,
-        citeName: "[ Name ]",
+        citeName: "Shankari Purkait Mondal",
         citeMeta: "spoken in Bengali",
         body: c.people.crp1.body,
       },
@@ -66,13 +66,13 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
     intro: c.beneficiary.intro,
     stories: [
       {
-        name: "[ Name ]",
-        roleAccent: "Graduate",
+        name: "Lakshmi Mondal",
+        roleAccent: "Community Resource Person",
         role: "Baruipur, West Bengal",
-        portrait: { tone: "ledger", tag: "A graduate, with her household notebook", stamp: "PHOTO · STUDENT", src: "/photos/stories/rekha-portrait.jpg", alt: "A graduate of the Knowing Your Money curriculum" },
-        quoteOrig: "[ Original-language quote ]",
+        portrait: { tone: "ledger", tag: "A facilitator, back among the women she teaches", stamp: "PHOTO · CRP", src: "/photos/stories/lakshmi-portrait.png", alt: "Lakshmi Mondal, a Community Resource Person, at a workshop in Baruipur" },
+        quoteOrig: "শেখার কোনো বয়স হয় না।",
         quoteEn: c.people.student1.quoteEn,
-        citeName: "[ Name ]",
+        citeName: "Lakshmi Mondal",
         citeMeta: "spoken in Bengali",
         body: c.people.student1.body,
       },
@@ -103,41 +103,6 @@ export function ConsentNote() {
             <SectionMarker index="—" label="A note on consent" />
           </div>
           <p className="consent-note">{renderInline(c.consentNote)}</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- THE WORKSPACE (photo slots — add src/alt as photos land) ---------- */
-const WORKSPACE_PHOTOS: PhotoSpec[] = [
-  { tone: "warm", aspect: "landscape", tag: "the workshop hall", stamp: "PHOTO · WORKSPACE" },
-  { tone: "ledger", aspect: "square", tag: "worksheets · notebooks · hands", stamp: "PHOTO · WORKSPACE" },
-  { tone: "green", aspect: "square", tag: "the room between sessions", stamp: "PHOTO · WORKSPACE" },
-];
-
-export function WorkspacePhotos() {
-  return (
-    <section className="section">
-      <div className="container">
-        <div className="curr-origin__grid">
-          <div className="curr-origin__label">
-            <SectionMarker index="04" label={c.workspace.sectionLabel} />
-            <p className="curr-modules__hint">{c.workspace.sectionHint}</p>
-          </div>
-          <div className="stories-workspace">
-            {WORKSPACE_PHOTOS.map((p, i) => (
-              <Photo
-                key={i}
-                aspect={p.aspect}
-                tone={p.tone}
-                tag={p.tag}
-                stamp={p.stamp}
-                src={p.src}
-                alt={p.alt}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -222,6 +187,7 @@ export function StoryPullQuote() {
       <div className="container">
         <figure className="pullquote">
           <p className="pullquote__mark">{q.mark}</p>
+          <p className="pullquote__orig">{q.orig}</p>
           <blockquote className="pullquote__text">&ldquo;{q.text}&rdquo;</blockquote>
           <figcaption className="pullquote__cite">
             {q.cite} &nbsp;·&nbsp; <span className="accent">{q.citeMeta}</span>
@@ -246,10 +212,10 @@ type StoryVideoSpec = {
 };
 
 const STORY_VIDEOS: StoryVideoSpec[] = [
-  { tone: "warm", label: "Interview 01", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "HseT88DHYwo" },
-  { tone: "green", label: "Interview 02", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "Lh3Qb8OBKa8" },
-  { tone: "ledger", label: "Interview 03", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "Oa7JATommV0" },
-  { tone: "cool", label: "Interview 04", context: "[ What she speaks about — a short summary lands with the translation ]", youtubeId: "vksZ_QKBAQI" },
+  { tone: "warm", label: "Interview 01", context: "On how much a single session opened up for her, with thanks to Rehaan for teaching so much so young.", youtubeId: "HseT88DHYwo" },
+  { tone: "green", label: "Interview 02", context: "Shankari on why every woman needs money of her own to stand on, and her blessing for Rehaan to carry the work further.", youtubeId: "Lh3Qb8OBKa8" },
+  { tone: "ledger", label: "Interview 03", context: "Lakshmi on carrying what she learned to the women around her, and her reminder that learning has no age, with thanks to Rehaan.", youtubeId: "Oa7JATommV0" },
+  { tone: "cool", label: "Interview 04", context: "Suparna on walking away knowing far more than she came in with, and her thanks to Rehaan for the session.", youtubeId: "vksZ_QKBAQI" },
 ];
 
 function StoryVideo({ v }: { v: StoryVideoSpec }) {

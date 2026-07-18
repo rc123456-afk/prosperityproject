@@ -8,14 +8,9 @@ import { copy } from "@/content/copy";
 
 const c = copy.resources;
 const HERO = {
-  heroTag: "textbook · classroom · Baruipur",
-  heroStamp: "PHOTO · RESOURCES",
   heroTone: "ledger" as const,
-  heroMeta: "Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]",
-  photoTag: "textbook · [ edition ]",
-  photoStamp: "PHOTO · TEXTBOOK",
-  photoMeta: "[ Edition · year ] · [ PHOTOGRAPHER ]",
 };
+const TEXTBOOK_META = "Edition 1 · 2025/2026";
 
 /* ---------- HERO ---------- */
 export function ResourcesHero() {
@@ -35,7 +30,6 @@ export function ResourcesHero() {
           priority
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">{HERO.heroMeta}</p>
       </div>
     </section>
   );
@@ -92,6 +86,7 @@ export function TextbookDownloads() {
             <div className="res-textbook__body">
               <RichText items={c.textbook.body} />
             </div>
+            <p className="res-textbook__edition">{TEXTBOOK_META}</p>
 
             <div className="res-textbook__split">
               <Photo

@@ -12,7 +12,6 @@ const HERO = {
   heroTag: "workshop · Module 02 · Baruipur, West Bengal",
   heroStamp: "PHOTO · WORKSHOP · WOMEN",
   heroTone: "warm" as const,
-  heroMeta: "Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]",
 };
 const ROMAN = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x."];
 
@@ -34,7 +33,6 @@ export function CurriculumHero() {
           priority
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">{HERO.heroMeta}</p>
       </div>
     </section>
   );

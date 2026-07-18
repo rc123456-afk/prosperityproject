@@ -33,9 +33,6 @@ export function WorkshopsHero() {
           priority
           style={{ marginTop: 64 }}
         />
-        <p className="curr-hero__credit">
-          Baruipur · [ YEAR ] · [ PHOTOGRAPHER ]
-        </p>
       </div>
     </section>
   );
@@ -218,7 +215,7 @@ export function CRPModel() {
             </div>
 
             <div className="ws-crp__stat">
-              <div className="ws-crp__figure">[ N% ]</div>
+              <div className="ws-crp__figure">60%</div>
               <div className="ws-crp__stat-label">{c.crp.statLabel}</div>
             </div>
 
@@ -245,11 +242,6 @@ const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; src: string; alt: string }[] = 
   { aspect: "landscape", tone: "brick", src: "/photos/workshops/room-5.jpg", alt: "Passing the microphone during the session" },
   { aspect: "square", tone: "dusk", src: "/photos/workshops/room-6.jpg", alt: "Notes and worksheets on the table" },
 ];
-const ROOM_CLIPS = [
-  { tag: "clip · [ TIME ] · Bengali · Module 03", stamp: "VIDEO · ROOM" },
-  { tag: "clip · [ TIME ] · Bengali · Module 06", stamp: "VIDEO · ROOM" },
-];
-
 export function InTheRoom() {
   return (
     <section className="section section--alt ws-room">
@@ -271,23 +263,6 @@ export function InTheRoom() {
                   src={p.src}
                   alt={p.alt}
                 />
-              ))}
-            </div>
-
-            <div className="ws-room__clips">
-              {ROOM_CLIPS.map((clip, i) => (
-                <div key={i} className="ws-clip">
-                  <Photo
-                    aspect="landscape"
-                    tone="cool"
-                    tag={clip.tag}
-                    stamp={clip.stamp}
-                  >
-                    <span className="ws-clip__play" aria-hidden="true">
-                      ▶
-                    </span>
-                  </Photo>
-                </div>
               ))}
             </div>
 
