@@ -55,7 +55,7 @@ const TEXTBOOK_EDITIONS = [
     lang_native: "हिन्दी",
     title: "पैसा पहचान",
     meta: "23 pages · PDF",
-    size: "492 KB",
+    size: "446 KB",
     file: "/downloads/knowing-your-money-hi.pdf",
     available: true,
   },
