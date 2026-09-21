@@ -317,7 +317,10 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   right: var(--gutter); bottom: 32px;
   font-family: var(--font-mono); font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.16em;
-  color: rgba(242,235,220,0.55);
+  /* The scrim only darkens the left of the hero, so this sits over whatever
+     the photo happens to be doing. Lift the contrast and carry a shadow. */
+  color: rgba(242,235,220,0.78);
+  text-shadow: 0 1px 3px rgba(13,9,5,0.75);
   text-align: right;
   max-width: 60%;
 }
@@ -342,40 +345,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 }
 .section-head .marker--inverse { color: var(--marigold); }
 .section-head .head { max-width: 26ch; }
-
-/* Two cohorts */
-.cohorts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 88px;
-  padding-top: 8px;
-}
-.cohort__body {
-  margin-top: 28px;
-  display: grid;
-  gap: 0;
-}
-.cohort__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--ink-15);
-}
-.cohort__body .cohort__title { margin-top: 24px; }
-.cohort__body .cohort__copy { margin-top: 20px; }
-.cohort__body .cohort__links { margin-top: 28px; }
-.cohort__copy strong { font-weight: 600; }
-.cohort__region {
-  font-family: var(--font-mono); font-size: 11px;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  color: var(--ink-55);
-}
-.cohort__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.1; letter-spacing: -0.015em; margin: 0; text-wrap: balance; font-variation-settings: "opsz" 48; }
-.cohort__copy { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); max-width: 32rem; margin: 0; }
-.cohort__links { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 
 /* Workshops preview */
 .workshops {
@@ -454,25 +423,15 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   align-items: end;
   /* heights are set per-photo to vary aspect */
 }
-.gallery .photo { height: 320px; }
+/* width/min-width let the fr track decide the width; without them the
+   aspect-ratio from data-aspect wins and the last cell overflows the page.
+   (mobile.css does the same at <=600px.) */
+.gallery .photo { height: 320px; width: 100%; min-width: 0; }
 .gallery .photo[data-aspect="portrait"]  { height: 380px; }
 .gallery .photo[data-aspect="landscape"] { height: 280px; }
 .gallery .photo[data-aspect="square"]    { height: 310px; }
 .gallery .photo[data-aspect="cinema"]    { height: 240px; }
 .gallery .photo[data-aspect="tall"]      { height: 420px; }
-
-/* Number prose */
-.number-prose {
-  font-family: var(--font-body);
-  font-size: clamp(22px, 1.8vw, 28px);
-  line-height: 1.5;
-  color: var(--ink);
-  max-width: 50rem;
-  text-wrap: pretty;
-  margin: 0;
-}
-.number-prose .num { color: var(--marigold-deep); font-feature-settings: "tnum","lnum"; font-family: var(--font-mono); font-size: 0.92em; }
-.number-prose em { font-style: italic; }
 
 /* Tiny scroll cue under hero */
 .scroll-cue {
@@ -1185,15 +1144,15 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .ws-changed__body em { font-style: italic; }
 
 /* ---- BANDHAN PARTNERSHIP (ink band) ---- */
-.ws-bandhan { padding-top: var(--space-section); padding-bottom: var(--space-section); }
-.ws-bandhan .curr-origin__grid { gap: 64px; }
-.ws-bandhan__marker {
+.ws-partners { padding-top: var(--space-section); padding-bottom: var(--space-section); }
+.ws-partners .curr-origin__grid { gap: 64px; }
+.ws-partners__marker {
   font-family: var(--font-mono); font-size: 12px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.14em;
   color: var(--marigold);
   margin: 0;
 }
-.ws-bandhan__hint {
+.ws-partners__hint {
   font-family: var(--font-mono); font-size: 11px;
   text-transform: uppercase; letter-spacing: 0.14em;
   color: rgba(242,235,220,0.55);
@@ -1201,7 +1160,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   max-width: 18rem;
   line-height: 1.5;
 }
-.ws-bandhan__head {
+.ws-partners__head {
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(40px, 4.6vw, 64px);
   line-height: 1.04;
@@ -1212,7 +1171,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   max-width: 22ch;
   text-wrap: balance;
 }
-.ws-bandhan__body p {
+.ws-partners__body p {
   font-family: var(--font-body);
   font-size: clamp(18px, 1.3vw, 21px);
   line-height: 1.65;
@@ -1221,9 +1180,9 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   max-width: 38rem;
   text-wrap: pretty;
 }
-.ws-bandhan__body p:last-child { margin: 0; }
-.ws-bandhan__body strong { font-weight: 600; color: var(--paper); }
-.ws-bandhan__links {
+.ws-partners__body p:last-child { margin: 0; }
+.ws-partners__body strong { font-weight: 600; color: var(--paper); }
+.ws-partners__links {
   margin-top: 40px;
   display: flex; flex-direction: column; gap: 14px; align-items: flex-start;
 }
@@ -1611,10 +1570,145 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   .nav__inner { grid-template-columns: auto auto; gap: 16px; }
   .nav__links { display: none; }
   .nav__right { display: none; }
-  .cohorts, .workshops, .stories { grid-template-columns: 1fr; gap: 56px; }
+  .workshops, .stories, .founder-short, .curr-preview { grid-template-columns: 1fr; gap: 56px; }
   .gallery { grid-template-columns: 1fr 1fr; gap: 16px; }
   .gallery .photo { height: 260px; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .hero__inner { min-height: 70vh; padding: 96px var(--gutter) 80px; }
   .crp-callout { grid-template-columns: 1fr; gap: 14px; }
+}
+
+
+/* ============================================================================
+   HOMEPAGE §02 WHY I BUILT IT — the short founder story.
+   ========================================================================== */
+.founder-short {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 72px;
+  align-items: start;
+}
+.founder-short__body p {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.35vw, 21px);
+  line-height: 1.66;
+  color: var(--ink);
+  margin: 0 0 var(--s-5) 0;
+  max-width: 36rem;
+  text-wrap: pretty;
+}
+.founder-short__body p:last-child { margin-bottom: 0; }
+.founder-short__body strong { font-weight: 600; }
+.founder-short__body em { font-style: italic; }
+.founder-short__byline {
+  margin: 32px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink-15);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--ink-55);
+  max-width: 36rem;
+}
+.founder-short__byline .accent { color: var(--marigold-deep); }
+
+/* ============================================================================
+   HOMEPAGE §03 THE CURRICULUM
+   ========================================================================== */
+.curr-preview {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 72px;
+  align-items: start;
+}
+.curr-preview__body {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.35vw, 21px);
+  line-height: 1.66;
+  color: var(--ink);
+  margin: 0;
+  max-width: 36rem;
+  text-wrap: pretty;
+}
+.curr-preview__body strong { font-weight: 600; }
+.curr-preview__body em { font-style: italic; }
+.curr-preview__aside {
+  border-top: 1px solid var(--ink-30);
+  padding-top: 24px;
+}
+.curr-preview__note {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.45;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 60;
+  margin: 0;
+  text-wrap: pretty;
+}
+.curr-preview__note strong { font-style: normal; font-weight: 600; }
+.curr-preview__links {
+  margin-top: 28px;
+  display: flex; flex-direction: column; gap: 14px; align-items: flex-start;
+}
+
+/* ============================================================================
+   HOMEPAGE §05 WHERE IT RUNS — one compact card per programme. Driven by
+   copy.programmes, the same list /programmes renders in full.
+   ========================================================================== */
+.places {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  border-top: 1px solid var(--ink-30);
+  padding-top: 32px;
+}
+.place { display: grid; align-content: start; }
+.place__region {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--ink-55);
+}
+.place__name {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(21px, 1.9vw, 27px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+  margin: 14px 0 0;
+  text-wrap: balance;
+}
+.place__partner {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--marigold-deep);
+  margin: 10px 0 0;
+}
+.place__copy {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 16px 0 0;
+  text-wrap: pretty;
+}
+.place__copy strong { font-weight: 600; }
+.places__note {
+  margin: 40px 0 0;
+  font-family: var(--font-mono); font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-55);
+  max-width: 40rem;
+}
+.places__links {
+  margin-top: 24px;
+  display: flex; gap: 32px; flex-wrap: wrap; align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .places { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 600px) {
+  .places { grid-template-columns: 1fr; gap: 36px; }
+  .founder-short, .curr-preview { gap: 40px; }
+  .places__links { flex-direction: column; align-items: flex-start; gap: 14px; }
 }

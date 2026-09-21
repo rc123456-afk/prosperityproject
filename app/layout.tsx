@@ -18,7 +18,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "The Prosperity Project",
   description:
-    "The Prosperity Project — practical financial literacy, taught in Bengali, Hindi, and English, delivered with Bandhan-Konnagar and supported by Bandhan Bank Ltd.",
+    "The Prosperity Project — practical financial literacy for women in West Bengal and Maharashtra, taught in Bengali, Hindi, Marathi and English, with Bandhan-Konnagar and Indo Count Industries.",
 };
 
 // Explicit viewport (matches Next 14's default output). Do not add

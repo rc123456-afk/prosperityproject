@@ -259,12 +259,44 @@
   text-wrap: pretty;
 }
 
+.photo-dump__group + .photo-dump__group { margin-top: 24px; }
+.photo-dump__group-head {
+  padding-bottom: 18px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--ink-30);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.photo-dump__group-label {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--marigold-deep);
+  margin: 0;
+}
+.photo-dump__group-note {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.13em;
+  color: var(--ink-55);
+  margin: 0;
+}
+.photo-dump__consent {
+  font-family: var(--font-mono); font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-55);
+  max-width: 34rem;
+  margin: 0;
+  padding-bottom: var(--space-page);
+}
+
 .photo-dump {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 28px;
-  padding-bottom: var(--space-page);
+  padding-bottom: 56px;
 }
 .photo-dump__item { margin: 0; }
 .photo-dump__item--full   { flex: 1 1 100%; }
@@ -621,4 +653,111 @@
   .photo-dump__item--half,
   .photo-dump__item--third,
   .photo-dump__item--small { flex: 1 1 100%; }
+}
+
+
+/* ============================================================================
+   PROGRAMMES — every programme renders through one component, so the two with
+   photographs and the two without share a layout. An entry with no photos just
+   ends after its words; there is deliberately no empty-panel state here.
+   ========================================================================== */
+.prog-list .container > .prog + .prog {
+  margin-top: 96px;
+  padding-top: 96px;
+  border-top: 1px solid var(--ink-15);
+}
+.prog__grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.prog__aside { position: sticky; top: 108px; }
+.prog__kind {
+  margin: 18px 0 0;
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--ink-55);
+  line-height: 1.6;
+}
+.prog__kind-tag {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink);
+  border: 1px solid var(--ink-30);
+  padding: 3px 8px;
+  justify-self: start;
+  width: fit-content;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+.prog__place {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 72, "SOFT" 25;
+  margin: 0;
+  text-wrap: balance;
+}
+.prog__meta {
+  margin: 16px 0 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ink-15);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--marigold-deep);
+}
+.prog__body p {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.66;
+  color: var(--ink);
+  margin: 0 0 var(--s-5) 0;
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+.prog__body p:last-child { margin-bottom: 0; }
+.prog__body strong { font-weight: 600; }
+.prog__body em { font-style: italic; }
+.prog__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: end;
+  margin-top: 40px;
+}
+
+.prog-closing {
+  font-family: var(--font-body);
+  font-size: clamp(19px, 1.5vw, 24px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  max-width: 40rem;
+  text-wrap: pretty;
+}
+.prog-closing strong { font-weight: 600; }
+.prog-closing__note {
+  margin: 28px 0 0;
+  font-family: var(--font-mono); font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-55);
+  max-width: 34rem;
+}
+.prog-closing__links {
+  margin-top: 36px;
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .prog__grid { grid-template-columns: 1fr; gap: 28px; }
+  .prog__aside { position: static; }
+  .prog__photos { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .prog__photos { grid-template-columns: 1fr; }
+  .prog-list .container > .prog + .prog { margin-top: 64px; padding-top: 64px; }
+  .prog-closing__links { flex-direction: column; gap: 14px; }
 }

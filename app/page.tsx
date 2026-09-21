@@ -1,9 +1,14 @@
-/* Homepage — the seven regions:
-   01 Hero · 02 What this is · 03 Where we work · 04 Numbers ·
-   05 Workshops · 06 Stories · 07 Gallery. (Nav + Footer come from the layout.)
-   Ported from the Claude Design Homepage.jsx. */
+/* Homepage — the whole story in one scroll, in this order:
+     Hero · photo band ·
+     01 What this is · 02 Why I built it · 03 The curriculum ·
+     04 How a workshop runs · 05 Where it runs · 06 Stories · 07 Gallery.
+   The arc is deliberate: the person, then the problem, then what he built,
+   then how it is taught, then how far it has reached, then the proof.
+   §05 is driven by copy.programmes — the same list /programmes renders — so
+   the two can never disagree. (Nav + Footer come from the layout.) */
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Photo,
   Figure,
@@ -40,12 +45,40 @@ function Hero() {
       </div>
       <div className="hero__credit">
         A Knowing Your Money workshop <span className="sep">·</span> West Bengal
+        <span className="sep">·</span> Maharashtra
       </div>
     </section>
   );
 }
 
-/* ---------- 02 · WHAT THIS IS ---------- */
+/* ---------- FRONTIER BAND ----------
+   Full-bleed photo strip directly under the hero, alternating between the
+   places the work runs. Escapes .container deliberately: it is the one
+   edge-to-edge element on the page. Scrolls horizontally on a phone. */
+function FrontierBand() {
+  return (
+    <section className="frontier" aria-label="Where the work runs">
+      <div className="frontier__strip">
+        {c.frontier.cells.map((cell) => (
+          <figure className="frontier__cell" key={cell.src}>
+            <div className="frontier__photo">
+              <Image
+                src={cell.src}
+                alt={cell.alt}
+                fill
+                sizes="(max-width: 880px) 62vw, 20vw"
+                style={{ objectFit: "cover", objectPosition: cell.objectPosition }}
+              />
+            </div>
+            <figcaption className="frontier__label">{cell.place}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 01 · WHAT THIS IS ---------- */
 function WhatThisIs() {
   return (
     <section className="section">
@@ -64,37 +97,67 @@ function WhatThisIs() {
   );
 }
 
-/* ---------- 03 · WHERE WE WORK ---------- */
-function WhereWeWork() {
+/* ---------- 02 · WHY I BUILT IT ----------
+   The short version of the founder's story, in his own voice. The full one is
+   on /about; both are driven from copy so they cannot drift apart. */
+function WhyIBuiltIt() {
+  const f = c.founderShort;
   return (
     <section className="section section--alt">
       <div className="container">
-        <div className="section-head">
-          <SectionMarker index="02" label={c.whereWeWork.sectionLabel} />
-          <h2 className="h2 head" style={{ maxWidth: "22ch" }}>
-            {c.whereWeWork.heading}
-          </h2>
+        <div className="section-head" style={{ marginBottom: 48 }}>
+          <SectionMarker index="02" label={f.sectionLabel} />
         </div>
-
-        <div className="cohorts">
+        <div className="founder-short">
+          <div>
+            <div className="founder-short__body">
+              {f.story.map((para, i) => (
+                <p key={i}>{renderInline(para)}</p>
+              ))}
+            </div>
+            <p className="founder-short__byline">
+              {f.bylineName} &nbsp;·&nbsp;{" "}
+              <span className="accent">{f.bylineRole}</span>
+            </p>
+            <div style={{ marginTop: 28 }}>
+              <TertiaryLink href="/about">{f.linkLabel}</TertiaryLink>
+            </div>
+          </div>
           <Photo
             aspect="portrait"
             tone="warm"
-            src="/photos/home/where.jpg"
-            alt="A participant in West Bengal during a workshop"
+            src={f.photo.src}
+            alt={f.photo.alt}
+            objectPosition={f.photo.objectPosition}
           />
-          <div className="cohort__body">
-            <div className="cohort__row">
-              <span className="cohort__region">{c.whereWeWork.region}</span>
-            </div>
-            <h3 className="cohort__title">{c.whereWeWork.cardTitle}</h3>
-            <p className="cohort__copy">{renderInline(c.whereWeWork.cardCopy)}</p>
-            <div className="cohort__links">
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 03 · THE CURRICULUM ---------- */
+function CurriculumPreview() {
+  const cp = c.curriculumPreview;
+  return (
+    <section className="section">
+      <div className="container">
+        <div className="section-head">
+          <SectionMarker index="03" label={cp.sectionLabel} />
+          <h2 className="h2 head" style={{ maxWidth: "24ch" }}>
+            {renderInline(cp.heading)}
+          </h2>
+        </div>
+        <div className="curr-preview">
+          <p className="curr-preview__body">{renderInline(cp.body)}</p>
+          <div className="curr-preview__aside">
+            <p className="curr-preview__note">{renderInline(cp.note)}</p>
+            <div className="curr-preview__links">
               <TertiaryLink href="/curriculum">
-                {c.whereWeWork.curriculumLinkLabel}
+                {cp.curriculumLinkLabel}
               </TertiaryLink>
-              <TertiaryLink href="/stories">
-                {c.whereWeWork.storiesLinkLabel}
+              <TertiaryLink href="/resources">
+                {cp.resourcesLinkLabel}
               </TertiaryLink>
             </div>
           </div>
@@ -104,38 +167,44 @@ function WhereWeWork() {
   );
 }
 
-/* ---------- 04 · NUMBERS ---------- */
-function Numbers() {
+/* ---------- 05 · WHERE IT RUNS ----------
+   All four programmes, driven from the shared copy.programmes list so this
+   can never disagree with /programmes. */
+function WhereItRuns() {
+  const p = copy.programmes;
   return (
-    <section className="section">
+    <section className="section section--alt">
       <div className="container">
-        <div className="section-head" style={{ marginBottom: 48 }}>
-          <SectionMarker index="03" label={c.numbers.sectionLabel} />
+        <div className="section-head">
+          <SectionMarker index="05" label={p.sectionLabel} />
+          <h2 className="h2 head" style={{ maxWidth: "22ch" }}>
+            {p.heading}
+          </h2>
         </div>
-        <p className="number-prose">
-          We&rsquo;re compiling the figures from our first year — students who
-          completed all ten modules of <em>Knowing Your Money</em>, savings
-          accounts opened, and facilitators trained under the CRP&nbsp;Model.
-          They&rsquo;ll be published, in full, with our first annual report.{" "}
-          <span className="num">Coming&nbsp;soon.</span>
-        </p>
-        <div
-          style={{
-            marginTop: 40,
-            display: "flex",
-            alignItems: "center",
-            gap: 28,
-            flexWrap: "wrap",
-          }}
-        >
-          <TertiaryLink href="/impact">Full impact report</TertiaryLink>
+
+        <div className="places">
+          {p.items.map((prog) => (
+            <article className="place" key={prog.id}>
+              <span className="place__region">{prog.region}</span>
+              <h3 className="place__name">{prog.city}</h3>
+              <p className="place__partner">{prog.partner}</p>
+              <p className="place__copy">{renderInline(prog.summary)}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="places__note">{p.figuresNote}</p>
+
+        <div className="places__links">
+          <TertiaryLink href="/programmes">{p.linkLabel}</TertiaryLink>
+          <TertiaryLink href="/impact">How we measure it</TertiaryLink>
         </div>
       </div>
     </section>
   );
 }
 
-/* ---------- 05 · WORKSHOPS PREVIEW ---------- */
+/* ---------- 04 · HOW A WORKSHOP RUNS ---------- */
 function WorkshopsPreview() {
   return (
     <section className="section">
@@ -183,13 +252,13 @@ function WorkshopsPreview() {
   );
 }
 
-/* ---------- 06 · STORIES PREVIEW ---------- */
+/* ---------- 06 · STORIES ---------- */
 function StoriesPreview() {
   return (
     <section className="section section--alt">
       <div className="container">
         <div className="section-head" style={{ marginBottom: 56 }}>
-          <SectionMarker index="05" label={c.storiesPreview.sectionLabel} />
+          <SectionMarker index="06" label={c.storiesPreview.sectionLabel} />
         </div>
 
         <div className="stories">
@@ -224,16 +293,16 @@ function StoriesPreview() {
   );
 }
 
-/* ---------- 07 · GALLERY PREVIEW ---------- */
+/* ---------- 07 · GALLERY ---------- */
 function GalleryPreview() {
   // Five photos, varied aspect ratios. Heights are set in CSS per data-aspect
   // so the strip has visual rhythm without competing with content.
   const shots = [
     { aspect: "portrait", tone: "warm", src: "/photos/gallery/g-portrait-smiling.jpg", alt: "A participant speaks into the microphone" },
-    { aspect: "landscape", tone: "green", src: "/photos/gallery/g-passing-the-mic.jpg", alt: "Passing the microphone to a participant" },
+    { aspect: "landscape", tone: "green", src: "/photos/kolhapur/k-crouching.jpg", alt: "The founder crouching to talk with participants in Kolhapur" },
     { aspect: "square", tone: "ledger", src: "/photos/gallery/g-the-worksheet.jpg", alt: "Working through the budget worksheet" },
     { aspect: "tall", tone: "cool", src: "/photos/gallery/g-portrait-orange.jpg", alt: "A participant during the session" },
-    { aspect: "landscape", tone: "brick", src: "/photos/gallery/g-the-cohort.jpg", alt: "The cohort together" },
+    { aspect: "landscape", tone: "brick", src: "/photos/kolhapur/k-certificates-staff.jpg", alt: "A Kolhapur group with their certificates at the end of a workshop" },
   ] as const;
 
   return (
@@ -251,7 +320,7 @@ function GalleryPreview() {
           }}
         >
           <div className="stack-4">
-            <SectionMarker index="06" label={c.galleryPreview.sectionLabel} />
+            <SectionMarker index="07" label={c.galleryPreview.sectionLabel} />
             <h2 className="h2" style={{ maxWidth: "22ch" }}>
               {c.galleryPreview.heading}
             </h2>
@@ -280,10 +349,12 @@ export default function Homepage() {
   return (
     <>
       <Hero />
+      <FrontierBand />
       <WhatThisIs />
-      <WhereWeWork />
-      <Numbers />
+      <WhyIBuiltIt />
+      <CurriculumPreview />
       <WorkshopsPreview />
+      <WhereItRuns />
       <StoriesPreview />
       <GalleryPreview />
     </>

@@ -7,6 +7,7 @@ import { copy } from "@/content/copy";
 const LINKS: { label: string; href: string }[] = [
   { label: "Curriculum", href: "/curriculum" },
   { label: "Workshops", href: "/workshops" },
+  { label: "Programmes", href: "/programmes" },
   { label: "Resources", href: "/resources" },
   { label: "Stories", href: "/stories" },
   { label: "Gallery", href: "/gallery" },
@@ -46,7 +47,7 @@ export function Footer() {
           <span>
             <a href="mailto:team.prosperityproject@gmail.com">team.prosperityproject@gmail.com</a>
             <span className="sep">·</span>
-            <Link href="/about#partners">In partnership with Bandhan-Konnagar</Link>
+            <Link href="/about#partners">In partnership with Bandhan-Konnagar and Indo Count Industries</Link>
             <span className="sep">·</span>
             <Link href="/privacy">Privacy</Link>
           </span>

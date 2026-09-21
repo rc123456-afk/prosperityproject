@@ -155,3 +155,50 @@
   background-size: cover;
   background-position: center 44%;
 }
+
+
+/* ============================================================================
+   FRONTIER BAND — full-bleed photo strip under the homepage hero.
+   Alternates between the places the work runs. Desktop: one row of equal
+   cells, edge to edge. Phone: a horizontally scrolling filmstrip, so five
+   photos stay legible without stacking into a five-screen column.
+   ========================================================================== */
+.frontier { background: var(--ink); padding: 0; }
+.frontier__strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+.frontier__cell { margin: 0; position: relative; }
+.frontier__photo {
+  position: relative;
+  height: clamp(240px, 24vw, 360px);
+  background: var(--ink-70, #2a1d10);
+  overflow: hidden;
+}
+.frontier__photo img { display: block; }
+.frontier__label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 28px 14px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(13,9,5,0.82) 0%, rgba(13,9,5,0.0) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 880px) {
+  .frontier__strip {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .frontier__cell { flex: 0 0 62%; scroll-snap-align: start; }
+  .frontier__photo { height: 260px; }
+}

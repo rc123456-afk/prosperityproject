@@ -169,7 +169,7 @@
   .translation-gate { padding-top: 72px; padding-bottom: 96px; }
   .curr-hero, .about-hero { padding-top: 56px; }
   .gallery-hero { padding-top: 48px; }
-  .cohorts, .workshops, .stories { gap: 40px; }
+  .workshops, .stories { gap: 40px; }
   .impact-subs { gap: 48px; }
   .story-set { gap: 44px; }
   .hero__inner {

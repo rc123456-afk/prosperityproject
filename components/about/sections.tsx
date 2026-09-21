@@ -107,15 +107,25 @@ export function VisionMission() {
 }
 
 /* ---------- ORGANIZATIONS — flexible vertical list ---------- */
-const ORGANIZATIONS = [
-  {
-    name: copy.about.organizations.partnerName,
-    role: copy.about.organizations.partnerRole,
-    body: copy.about.organizations.partnerBody,
-    photo: { tone: "green" as const, src: "/photos/about/partner.jpg", alt: "A Bandhan-Konnagar workshop hall during a session" },
-    link: { label: copy.about.organizations.partnerLinkLabel, href: "#partners" },
-  },
+/* Photos are matched to organisations by index into copy.about.organizations
+   .items. Leave an entry undefined and that organisation renders text-only
+   through the .org--no-photo branch below — which is what the two online
+   partners do until photographs arrive. */
+const ORG_PHOTOS: ({ tone: "green" | "warm"; src: string; alt: string } | undefined)[] = [
+  { tone: "green", src: "/photos/about/partner.jpg", alt: "A Bandhan-Konnagar workshop hall during a session" },
+  { tone: "warm", src: "/photos/kolhapur/k-with-partners.jpg", alt: "The founder with the Indo Count team at their training centre in Kolhapur" },
+  undefined,
+  undefined,
 ];
+
+const ORGANIZATIONS = copy.about.organizations.items.map((o, i) => ({
+  name: o.name,
+  role: o.role,
+  body: o.body,
+  photo: ORG_PHOTOS[i],
+  // Point at /workshops, not back at the section the reader is already in.
+  link: "linkLabel" in o && o.linkLabel ? { label: o.linkLabel, href: "/workshops" } : undefined,
+}));
 
 export function Organizations() {
   return (

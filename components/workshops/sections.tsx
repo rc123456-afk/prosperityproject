@@ -1,6 +1,8 @@
-/* Workshops — all seven sections.
+/* Workshops — how a workshop actually runs. Method only.
    Hero · Format · Three pillars · CRP Model · In the room · What changed ·
-   Bandhan partnership. Ported from WorkshopsPage.jsx + WorkshopsCRP.jsx.
+   Partnerships.
+   WHERE it has run lives on /programmes, driven by copy.programmes — do not
+   re-add a places section here, that split is what made the site repeat itself.
    All presentational (server components). Copy lives in content/copy.ts. */
 
 import Link from "next/link";
@@ -302,27 +304,27 @@ export function WhatChanged() {
 }
 
 /* ================================================================
-   07 BANDHAN PARTNERSHIP
+   07 PARTNERSHIPS
    ================================================================ */
-export function BandhanPartnership() {
+export function Partnerships() {
   return (
-    <section className="section section--ink ws-bandhan">
+    <section className="section section--ink ws-partners">
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <p className="ws-bandhan__marker">
-              § 06 &nbsp;·&nbsp; {c.bandhan.sectionLabel}
+            <p className="ws-partners__marker">
+              § 06 &nbsp;·&nbsp; {c.partners.sectionLabel}
             </p>
-            <p className="ws-bandhan__hint">{c.bandhan.sectionHint}</p>
+            <p className="ws-partners__hint">{c.partners.sectionHint}</p>
           </div>
           <div>
-            <h2 className="ws-bandhan__head">{c.bandhan.heading}</h2>
-            <div className="ws-bandhan__body">
-              <RichText items={c.bandhan.body} />
+            <h2 className="ws-partners__head">{c.partners.heading}</h2>
+            <div className="ws-partners__body">
+              <RichText items={c.partners.body} />
             </div>
-            <div className="ws-bandhan__links">
-              <Link href="/about#partners" className="tertiary tertiary--inverse">
-                {c.bandhan.linkLabel} <span aria-hidden="true">→</span>
+            <div className="ws-partners__links">
+              <Link href="/programmes" className="tertiary tertiary--inverse">
+                {c.partners.linkLabel} <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

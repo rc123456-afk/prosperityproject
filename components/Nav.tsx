@@ -25,6 +25,7 @@ import { copy } from "@/content/copy";
 const NAV_LINKS: { id: string; label: string; href: string }[] = [
   { id: "curriculum", label: "Curriculum", href: "/curriculum" },
   { id: "workshops", label: "Workshops", href: "/workshops" },
+  { id: "programmes", label: "Programmes", href: "/programmes" },
   { id: "resources", label: "Resources", href: "/resources" },
   { id: "stories", label: "Stories", href: "/stories" },
   { id: "gallery", label: "Gallery", href: "/gallery" },
@@ -40,6 +41,7 @@ const MOBILE_LINKS = [{ id: "home", label: "Home", href: "/" }, ...NAV_LINKS];
 function currentId(pathname: string): string {
   if (pathname.startsWith("/curriculum")) return "curriculum";
   if (pathname.startsWith("/workshops")) return "workshops";
+  if (pathname.startsWith("/programmes")) return "programmes";
   if (pathname.startsWith("/resources")) return "resources";
   if (pathname.startsWith("/stories")) return "stories";
   if (pathname.startsWith("/gallery")) return "gallery";

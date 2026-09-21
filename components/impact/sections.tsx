@@ -49,7 +49,7 @@ const IMPACT_SUBS: { num: string; label: string; head: string; note: string }[] 
     num: "02",
     label: "Reach",
     head: "Reach",
-    note: "Where the work runs, and who it reaches — communities named, cohorts active, and facilitators teaching.",
+    note: "The work runs in West Bengal and Maharashtra, in person, and twice so far online. How many that reaches — cohorts active, students through the full curriculum, and facilitators teaching — is being counted now.",
   },
   {
     num: "03",
