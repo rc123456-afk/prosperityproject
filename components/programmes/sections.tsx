@@ -2,7 +2,7 @@
 
    Every programme renders through the SAME component, so the two with
    photographs and the two without get identical structural treatment. The only
-   difference is that an entry with no photos simply ends after its words —
+   difference is that an entry with no photos simply ends after its words,
    never an empty grey panel, which is what made them read as unfinished.
 
    All content lives in copy.programmes.items. Server components. */
@@ -11,10 +11,9 @@ import Link from "next/link";
 import { Photo, Figure, SectionMarker } from "@/components/primitives";
 import { RichText, renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
+import { programmeHeading, type Programme } from "@/lib/programmes";
 
 const c = copy.programmes;
-
-type Programme = (typeof c.items)[number];
 
 /* Mode · language · when · scale — in that fixed order, with the empty ones
    dropped. The reader learns the shape of this line once and then reads it the
@@ -53,7 +52,7 @@ function ProgrammeSection({ prog, index }: { prog: Programme; index: string }) {
         </div>
 
         <div className="prog__main">
-          <h2 className="prog__place">{prog.city}</h2>
+          <h2 className="prog__place">{programmeHeading(prog).text}</h2>
           <p className="prog__meta">{metaLine(prog)}</p>
 
           <div className="prog__body">
@@ -63,7 +62,11 @@ function ProgrammeSection({ prog, index }: { prog: Programme; index: string }) {
           {prog.photos.length > 0 && (
             <div className="prog__photos">
               {prog.photos.map((photo) => (
-                <Photo key={photo.src} {...photo} />
+                <Photo
+                  key={photo.src}
+                  {...photo}
+                  sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 300px"
+                />
               ))}
             </div>
           )}
@@ -75,6 +78,7 @@ function ProgrammeSection({ prog, index }: { prog: Programme; index: string }) {
               src={prog.closer.src}
               alt={prog.closer.alt}
               description={prog.closer.description}
+              sizes="(max-width: 1024px) 100vw, 900px"
               style={{ marginTop: 24 }}
             />
           )}
@@ -106,14 +110,14 @@ export function ProgrammesClosing() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label="What holds across them" />
+            <SectionMarker
+              index={String(c.items.length + 1).padStart(2, "0")}
+              label={c.closing.sectionLabel}
+              as="h2"
+            />
           </div>
           <div>
-            <p className="prog-closing">
-              {renderInline(
-                "A textile mill, a self-help group hall, an infrastructure developer and a grassroots nonprofit want different things from a workshop. The **ten modules have held up in all four** — which is the strongest argument that this travels."
-              )}
-            </p>
+            <p className="prog-closing">{renderInline(c.closing.text)}</p>
             <p className="prog-closing__note">{c.figuresNote}</p>
             <div className="prog-closing__links">
               <Link className="tertiary" href="/workshops">

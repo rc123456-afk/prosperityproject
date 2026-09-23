@@ -29,6 +29,7 @@ export function AboutHero() {
               alt="Rehaan Chowdhary, the founder, speaking at a workshop"
               objectPosition="center 28%"
               priority
+              sizes="(max-width: 1024px) 100vw, 480px"
             />
           </div>
         </div>
@@ -63,6 +64,7 @@ export function FounderStory() {
                 tone="ledger"
                 src="/photos/about/hall.jpg"
                 alt="The cohort gathered at a workshop hall"
+                sizes="(max-width: 1024px) 100vw, 660px"
               />
             </figure>
 
@@ -72,6 +74,7 @@ export function FounderStory() {
                 tone="warm"
                 src="/photos/about/walk.jpg"
                 alt="A wide view of a workshop session in progress"
+                sizes="(max-width: 1024px) 100vw, 900px"
               />
             </figure>
 
@@ -81,6 +84,7 @@ export function FounderStory() {
                 tone="cool"
                 src="/photos/about/notebook.jpg"
                 alt="Worksheets and the printed booklet on the workshop table"
+                sizes="(max-width: 1024px) 100vw, 660px"
               />
             </figure>
           </div>
@@ -133,7 +137,7 @@ export function Organizations() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="03" label={copy.about.organizations.sectionLabel} />
+            <SectionMarker index="03" label={copy.about.organizations.sectionLabel} as="h2" />
             <p className="curr-modules__hint">
               {copy.about.organizations.sectionHint}
             </p>
@@ -160,6 +164,7 @@ export function Organizations() {
                       tone={o.photo.tone}
                       src={o.photo.src}
                       alt={o.photo.alt}
+                      sizes="(max-width: 1024px) 100vw, 400px"
                     />
                   )}
                 </article>

@@ -9,9 +9,10 @@ import {
 } from "@/components/impact/sections";
 
 export const metadata: Metadata = {
-  title: "Impact — The Prosperity Project",
+  title: "Reporting",
   description:
-    "We count what we can, honestly, and we say where the counting stops. Reach, outcomes, methodology, and the annual report — numbers as a floor, not a verdict.",
+    "We count what we can, honestly, and we say where the counting stops: reach, outcomes, methodology and the annual report, with numbers as a floor, not a verdict.",
+  alternates: { canonical: "/reporting" },
 };
 
 export default function ImpactPage() {

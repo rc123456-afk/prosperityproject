@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Photo, SectionMarker } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
+import { TEXTBOOK_EDITIONS } from "@/lib/textbooks";
 
 const c = copy.curriculum;
 const HERO = {
@@ -28,9 +29,11 @@ export function CurriculumHero() {
         <Photo
           aspect="cinema"
           tone={HERO.heroTone}
-          src="/photos/curriculum/hero.jpg"
-          alt="A facilitator presenting the day's lesson to the cohort"
+          src="/photos/kolhapur/k-title-slide.jpg"
+          alt="A participant in Kolhapur speaking beside the Knowing Your Money title slide"
+          objectPosition="65% center"
           priority
+          sizes="(max-width: 1440px) 100vw, 1340px"
           style={{ marginTop: 64 }}
         />
       </div>
@@ -54,15 +57,6 @@ export function CurriculumOrigin() {
                 {c.origin.linkLabel} <span aria-hidden="true">→</span>
               </Link>
             </p>
-            <div className="curr-origin__slot">
-              <span className="curr-origin__slot-icon" aria-hidden="true">
-                [ ]
-              </span>
-              <span className="curr-origin__slot-label">
-                {c.origin.interviewSlot}
-              </span>
-              <span className="curr-origin__slot-meta">PDF · forthcoming</span>
-            </div>
           </div>
         </div>
       </div>
@@ -99,33 +93,6 @@ export function CurriculumPremise() {
 
 /* ---------- TEXTBOOK ROUTING ---------- */
 export function TextbookRail() {
-  const editions = [
-    {
-      id: "bn",
-      script: "বাং",
-      lang: "Bengali",
-      lang_native: "বাংলা",
-      title: "নিজের টাকা চেনা",
-      meta: "In translation",
-    },
-    {
-      id: "hi",
-      script: "हिं",
-      lang: "Hindi",
-      lang_native: "हिन्दी",
-      title: "अपना पैसा जानना",
-      meta: "In translation",
-    },
-    {
-      id: "en",
-      script: "EN",
-      lang: "English",
-      lang_native: "English",
-      title: "Knowing Your Money",
-      meta: "24 pages · PDF",
-    },
-  ];
-
   return (
     <section className="section curr-textbook">
       <div className="container">
@@ -144,7 +111,7 @@ export function TextbookRail() {
             </p>
 
             <ul className="textbook-list">
-              {editions.map((e) => (
+              {TEXTBOOK_EDITIONS.map((e) => (
                 <li key={e.id} className="textbook-row">
                   <Link
                     href={`/resources#textbook-${e.id}`}
@@ -153,17 +120,20 @@ export function TextbookRail() {
                   >
                     <span
                       className={`textbook-row__script textbook-row__script--${e.id}`}
+                      lang={e.id}
                     >
                       {e.script}
                     </span>
                     <span className="textbook-row__body">
                       <span className="textbook-row__lang">
                         {e.lang}{" "}
-                        <span className="textbook-row__native">
+                        <span className="textbook-row__native" lang={e.id}>
                           / {e.lang_native}
                         </span>
                       </span>
-                      <span className="textbook-row__title">{e.title}</span>
+                      <span className="textbook-row__title" lang={e.id}>
+                        {e.title}
+                      </span>
                       <span className="textbook-row__meta">{e.meta}</span>
                     </span>
                     <span className="textbook-row__action" aria-hidden="true">

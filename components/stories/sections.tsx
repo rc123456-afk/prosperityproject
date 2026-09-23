@@ -6,6 +6,7 @@
 import { Photo, SectionMarker } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
+import { InterviewPlayer } from "./InterviewPlayer";
 
 const c = copy.stories;
 
@@ -50,7 +51,7 @@ const STORY_DATA: { crp: StoryBlock; beneficiary: StoryBlock } = {
         name: "Shankari Purkait Mondal",
         roleAccent: "Community Resource Person",
         role: "Baruipur, West Bengal",
-        portrait: { tone: "warm", tag: "A facilitator, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "A Community Resource Person at a workshop" },
+        portrait: { tone: "warm", tag: "A facilitator, in the hall where she now teaches", stamp: "PHOTO · CRP", src: "/photos/stories/anjali-portrait.jpg", alt: "Shankari Purkait Mondal, a Community Resource Person, at a workshop in Baruipur" },
         quoteOrig: "মানুষকে আর্থিক পরিস্থিতির মোকাবেলা করতে হবে, তাদের কাছে টাকা থাকতে হবে।",
         quoteEn: c.people.crp1.quoteEn,
         citeName: "Shankari Purkait Mondal",
@@ -100,7 +101,7 @@ export function ConsentNote() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label="A note on consent" />
+            <SectionMarker index="04" label="A note on consent" />
           </div>
           <p className="consent-note">{renderInline(c.consentNote)}</p>
         </div>
@@ -134,10 +135,13 @@ function Story({ s, index }: { s: StoryItem; index: string }) {
             alt={s.portrait.alt}
             tag={s.portrait.tag}
             stamp={s.portrait.stamp}
+            sizes="(max-width: 720px) 100vw, 340px"
           />
         </figure>
         <div className="story__quote-wrap">
-          <p className="story__quote-orig">{s.quoteOrig}</p>
+          <p className="story__quote-orig" lang="bn">
+            {s.quoteOrig}
+          </p>
           <p className="story__quote-en">{renderInline(s.quoteEn)}</p>
           <span className="story__cite">
             {s.citeName} &nbsp;·&nbsp;{" "}
@@ -160,7 +164,7 @@ export function StorySection({ kind }: { kind: "crp" | "beneficiary" }) {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index={data.marker} label={data.label} />
+            <SectionMarker index={data.marker} label={data.label} as="h2" />
             <p className="curr-modules__hint">{data.hint}</p>
           </div>
           <div>
@@ -187,7 +191,9 @@ export function StoryPullQuote() {
       <div className="container">
         <figure className="pullquote">
           <p className="pullquote__mark">{q.mark}</p>
-          <p className="pullquote__orig">{q.orig}</p>
+          <p className="pullquote__orig" lang="bn">
+            {q.orig}
+          </p>
           <blockquote className="pullquote__text">&ldquo;{q.text}&rdquo;</blockquote>
           <figcaption className="pullquote__cite">
             {q.cite} &nbsp;·&nbsp; <span className="accent">{q.citeMeta}</span>
@@ -200,38 +206,39 @@ export function StoryPullQuote() {
 
 /* ---------- INTERVIEW VIDEOS ----------
    Source-agnostic and NOT tied to Google Drive. Each slot plays from either:
-     • youtubeId — an unlisted YouTube video id (preferred), or
-     • src       — a web-compressed self-hosted file in /public/videos/
-   With neither set, a neutral placeholder renders. Fill in as videos land. */
+     • youtubeId: an unlisted YouTube video id (preferred), shown as a
+       click-to-play poster so YouTube only loads when someone asks for it, or
+     • src: a web-compressed self-hosted file in /public/videos/
+   With neither set, a neutral placeholder renders. Fill in as videos land.
+   `speaker` names the player for screen readers; leave it generic where the
+   woman prefers not to be named. */
 type StoryVideoSpec = {
   tone: "warm" | "cool" | "green" | "ledger" | "dusk";
   label: string;
+  speaker: string;
   context: string;
   youtubeId?: string;
   src?: string;
 };
 
 const STORY_VIDEOS: StoryVideoSpec[] = [
-  { tone: "warm", label: "Interview 01", context: "On how much a single session opened up for her, with thanks to Rehaan for teaching so much so young.", youtubeId: "HseT88DHYwo" },
-  { tone: "green", label: "Interview 02", context: "Shankari on why every woman needs money of her own to stand on, and her blessing for Rehaan to carry the work further.", youtubeId: "Lh3Qb8OBKa8" },
-  { tone: "ledger", label: "Interview 03", context: "Lakshmi on carrying what she learned to the women around her, and her reminder that learning has no age, with thanks to Rehaan.", youtubeId: "Oa7JATommV0" },
-  { tone: "cool", label: "Interview 04", context: "Suparna on walking away knowing far more than she came in with, and her thanks to Rehaan for the session.", youtubeId: "vksZ_QKBAQI" },
+  { tone: "warm", label: "Interview 01", speaker: "a participant", context: "On how much a single session opened up for her.", youtubeId: "HseT88DHYwo" },
+  { tone: "green", label: "Interview 02", speaker: "Shankari Purkait Mondal", context: "Shankari on why every woman needs money of her own to stand on, and why the work should reach further.", youtubeId: "Lh3Qb8OBKa8" },
+  { tone: "ledger", label: "Interview 03", speaker: "Lakshmi Mondal", context: "Lakshmi on carrying what she learned to the women around her, and her reminder that learning has no age.", youtubeId: "Oa7JATommV0" },
+  { tone: "cool", label: "Interview 04", speaker: "Suparna", context: "Suparna on walking away knowing far more than she came in with.", youtubeId: "vksZ_QKBAQI" },
 ];
 
-function StoryVideo({ v }: { v: StoryVideoSpec }) {
+function StoryVideo({ v, first }: { v: StoryVideoSpec; first: boolean }) {
+  const title = `${v.label}, with ${v.speaker} (Baruipur, in Bengali)`;
   return (
     <figure className="story-video">
       {v.youtubeId ? (
-        <div className="story-video__frame">
-          <iframe
-            className="story-video__embed"
-            src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
-            title={v.label}
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
+        <InterviewPlayer
+          youtubeId={v.youtubeId}
+          title={title}
+          playLabel={c.videos.playLabel}
+          priority={first}
+        />
       ) : v.src ? (
         <div className="story-video__frame">
           <video
@@ -271,7 +278,7 @@ export function VideoTestimonials() {
           <div>
             <div className="story-videos">
               {STORY_VIDEOS.map((v, i) => (
-                <StoryVideo key={i} v={v} />
+                <StoryVideo key={i} v={v} first={i === 0} />
               ))}
             </div>
           </div>

@@ -33,6 +33,16 @@ type GalleryPhoto = {
   meta?: string;
 };
 
+// How wide each slot renders, so phones and thumbnails don't download
+// full-width files. Below 720px every slot is full width (pages.css).
+const SIZES: Record<Width, string> = {
+  full: "(max-width: 1440px) 100vw, 1340px",
+  wide: "(max-width: 720px) 100vw, 66vw",
+  half: "(max-width: 720px) 100vw, 50vw",
+  third: "(max-width: 720px) 100vw, 33vw",
+  small: "(max-width: 720px) 100vw, 25vw",
+};
+
 type GalleryGroup = {
   id: string;
   label: string;
@@ -46,14 +56,14 @@ type GalleryGroup = {
 const BARUIPUR_PHOTOS: GalleryPhoto[] = [
   { width: "full",  aspect: "cinema",    tone: "warm",   tag: "workshop in session",  src: "/photos/gallery/g-workshop-room.jpg",       alt: "Women seated around long tables at a Knowing Your Money workshop", desc: "A Knowing Your Money workshop in session." },
   { width: "half",  aspect: "landscape", tone: "ledger", tag: "the worksheet",        src: "/photos/gallery/g-the-worksheet.jpg",       alt: "Participants writing in their budget worksheets",                  desc: "Working through the budget worksheet." },
-  { width: "half",  aspect: "landscape", tone: "green",  tag: "budgeting module",     src: "/photos/gallery/g-module-budgeting.jpg",    alt: "The budgeting module on screen — needs, wants and savings",        desc: "The budgeting module — needs, wants, savings." },
+  { width: "half",  aspect: "landscape", tone: "green",  tag: "budgeting module",     src: "/photos/gallery/g-module-budgeting.jpg",    alt: "The budgeting module on screen: needs, wants and savings",         desc: "The budgeting module: needs, wants, savings." },
   { width: "small", aspect: "portrait",  tone: "warm",   tag: "a participant",        src: "/photos/gallery/g-portrait-smiling.jpg",    alt: "A participant smiling as she speaks into the microphone" },
   { width: "third", aspect: "landscape", tone: "cool",   tag: "three participants",   src: "/photos/gallery/g-three-women.jpg",         alt: "Three participants seated together at the workshop" },
   { width: "half",  aspect: "landscape", tone: "warm",   tag: "passing the mic",      src: "/photos/gallery/g-passing-the-mic.jpg",     alt: "A facilitator passing the microphone to a participant as others applaud", desc: "Passing the microphone to a participant." },
   { width: "wide",  aspect: "cinema",    tone: "warm",   tag: "the cohort",           src: "/photos/gallery/g-the-cohort.jpg",          alt: "The full cohort gathered together at a workshop",                  desc: "The cohort together." },
   { width: "third", aspect: "landscape", tone: "green",  tag: "a participant speaks", src: "/photos/gallery/g-a-participant-speaks.jpg", alt: "A participant standing to speak during the session" },
   { width: "third", aspect: "square",    tone: "ledger", tag: "note-taking",          src: "/photos/gallery/g-notes-detail.jpg",        alt: "Participants writing notes under the programme banner" },
-  { width: "half",  aspect: "landscape", tone: "brick",  tag: "scam-shield",          src: "/photos/gallery/g-module-scamshield.jpg",   alt: "The scam-shield module on screen, on spotting fraud",              desc: "Spotting fraud — the scam-shield module." },
+  { width: "half",  aspect: "landscape", tone: "brick",  tag: "scam-shield",          src: "/photos/gallery/g-module-scamshield.jpg",   alt: "The scam-shield module on screen, on spotting fraud",              desc: "Spotting fraud in the scam-shield module." },
   { width: "small", aspect: "portrait",  tone: "warm",   tag: "a participant",        src: "/photos/gallery/g-portrait-orange.jpg",     alt: "Portrait of a participant in a bright orange and red sari" },
   { width: "half",  aspect: "landscape", tone: "green",  tag: "taking notes",         src: "/photos/gallery/g-taking-notes.jpg",        alt: "A row of participants taking notes during the session",            desc: "Taking notes." },
   { width: "wide",  aspect: "landscape", tone: "cool",   tag: "heads down",           src: "/photos/gallery/g-heads-down.jpg",          alt: "Participants writing in their worksheets during a session" },
@@ -65,8 +75,8 @@ const BARUIPUR_PHOTOS: GalleryPhoto[] = [
 
 const KOLHAPUR_PHOTOS: GalleryPhoto[] = [
   { width: "full",  aspect: "cinema",    tone: "warm",   tag: "the room",             src: "/photos/kolhapur/k-room-wide.jpg",          alt: "The founder addressing rows of participants seated at desks",      desc: "The room, mid-module." },
-  { width: "half",  aspect: "landscape", tone: "warm",   tag: "the opening",          src: "/photos/kolhapur/k-title-slide.jpg",        alt: "A participant standing beside the projected title slide at the start of a session", desc: "The workshop opens — the title slide, in Marathi." },
-  { width: "half",  aspect: "landscape", tone: "cool",   tag: "module one",           src: "/photos/kolhapur/k-slide-marathi.jpg",      alt: "Module one, Your Money Your Name, projected in Marathi",           desc: "Module one — *Your Money, Your Name* — in Marathi." },
+  { width: "half",  aspect: "landscape", tone: "warm",   tag: "the opening",          src: "/photos/kolhapur/k-title-slide.jpg",        alt: "A participant standing beside the projected title slide at the start of a session", desc: "The workshop opens with the title slide, in Marathi." },
+  { width: "half",  aspect: "landscape", tone: "cool",   tag: "module one",           src: "/photos/kolhapur/k-slide-marathi.jpg",      alt: "Module one, Your Money Your Name, projected in Marathi",           desc: "Module one, *Your Money, Your Name*, in Marathi." },
   { width: "half",  aspect: "landscape", tone: "green",  tag: "module five",          src: "/photos/kolhapur/k-slide-money.jpg",        alt: "A slide comparing long-term savings schemes, in Marathi",          desc: "Where money can safely sit, and what it becomes." },
   { width: "small", aspect: "portrait",  tone: "brick",  tag: "a participant",        src: "/photos/kolhapur/k-portrait-maroon.jpg",    alt: "A participant standing to speak during the session" },
   { width: "third", aspect: "landscape", tone: "warm",   tag: "hands up",             src: "/photos/kolhapur/k-hands-up.jpg",           alt: "Participants raising their hands to answer during a session",      desc: "Hands up." },
@@ -78,7 +88,7 @@ const KOLHAPUR_PHOTOS: GalleryPhoto[] = [
   { width: "half",  aspect: "landscape", tone: "warm",   tag: "the facilitator",      src: "/photos/kolhapur/k-at-the-desk.jpg",        alt: "A facilitator leaning in to help a participant at her desk" },
   { width: "small", aspect: "portrait",  tone: "cool",   tag: "a participant",        src: "/photos/kolhapur/k-portrait-desk.jpg",      alt: "A participant at her desk, listening" },
   { width: "half",  aspect: "landscape", tone: "green",  tag: "outside the unit",     src: "/photos/kolhapur/k-group-tob-unit.jpg",     alt: "A group with their certificates outside the unit where they work", desc: "Outside the unit where many of them work." },
-  { width: "wide",  aspect: "landscape", tone: "cool",   tag: "the stitching floor",  src: "/photos/kolhapur/k-stitching-floor.jpg",     alt: "A wide view of the mill's stitching line",                         desc: "The stitching floor — where most of the room works." },
+  { width: "wide",  aspect: "landscape", tone: "cool",   tag: "the stitching floor",  src: "/photos/kolhapur/k-stitching-floor.jpg",     alt: "A wide view of the mill's stitching line",                         desc: "The stitching floor, where most of the room works." },
   { width: "wide",  aspect: "landscape", tone: "dusk",   tag: "between the desks",    src: "/photos/kolhapur/k-walking-desks.jpg",      alt: "The founder walking between the desks during an exercise" },
   { width: "third", aspect: "landscape", tone: "warm",   tag: "the handover",         src: "/photos/kolhapur/k-certificate.jpg",        alt: "A participant receiving her certificate of participation",         desc: "A certificate of participation, handed over in the room." },
   { width: "full",  aspect: "cinema",    tone: "warm",   tag: "certificates",         src: "/photos/kolhapur/k-certificates-wide.jpg",  alt: "A large group of participants holding their certificates",         desc: "The end of a sitting, certificates in hand." },
@@ -103,7 +113,7 @@ export function PhotoDump() {
   return (
     <section>
       <div className="container">
-        {GALLERY_GROUPS.map((g) => (
+        {GALLERY_GROUPS.map((g, gi) => (
           <div className="photo-dump__group" key={g.id} id={g.id}>
             <div className="photo-dump__group-head">
               <h2 className="photo-dump__group-label">{g.label}</h2>
@@ -112,7 +122,8 @@ export function PhotoDump() {
             <div className="photo-dump">
               {g.photos.map((p, i) => (
                 <figure key={i} className={`photo-dump__item photo-dump__item--${p.width}`}>
-                  <Photo aspect={p.aspect} tone={p.tone} src={p.src} alt={p.alt} tag={p.tag} stamp={false} />
+                  {/* The first full-width frame is the page's largest paint. */}
+                  <Photo aspect={p.aspect} tone={p.tone} src={p.src} alt={p.alt} tag={p.tag} stamp={false} priority={gi === 0 && i === 0} sizes={SIZES[p.width]} />
                   {(p.desc || p.meta) && (
                     <figcaption>
                       {p.desc && <span className="desc">{renderInline(p.desc)}</span>}

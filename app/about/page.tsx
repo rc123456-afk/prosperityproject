@@ -8,9 +8,10 @@ import {
 } from "@/components/about/sections";
 
 export const metadata: Metadata = {
-  title: "About — The Prosperity Project",
+  title: "About",
   description:
-    "Why this exists. The founder's story, the vision and mission, and the organisations the work is built with — Bandhan-Konnagar in West Bengal, Indo Count Industries in Maharashtra.",
+    "Why this exists: the founder's story, the vision and mission, and the organisations the work is built with, from Bandhan-Konnagar in West Bengal to Indo Count Industries in Maharashtra.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

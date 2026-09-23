@@ -1,6 +1,7 @@
-/* Impact — placeholder build. Numbers live as editorial sentences with
-   bracketed slots, never as tiles. Annual report list is extensible.
-   Ported verbatim from ImpactPage.jsx. Server components. */
+/* Reporting (served at /reporting; formerly "Impact"). Numbers live as
+   editorial sentences, never as tiles, and every figure is "Coming soon"
+   until the first annual report. Annual report list is extensible.
+   Server components. */
 
 import { SectionMarker } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
@@ -32,9 +33,9 @@ export function ImpactLead() {
             <p className="curr-modules__hint">{c.lead.sectionHint}</p>
           </div>
           <p className="impact-lead">
-            The figures from our first year — workshops run, students who
+            The figures from our first year (workshops run, students who
             completed the full <em>Knowing Your Money</em> curriculum, and
-            savings accounts opened — will be published with the first annual
+            savings accounts opened) will be published with the first annual
             report. <span className="impact-soon">Coming soon</span>
           </p>
         </div>
@@ -49,19 +50,19 @@ const IMPACT_SUBS: { num: string; label: string; head: string; note: string }[] 
     num: "02",
     label: "Reach",
     head: "Reach",
-    note: "The work runs in West Bengal and Maharashtra, in person, and twice so far online. How many that reaches — cohorts active, students through the full curriculum, and facilitators teaching — is being counted now.",
+    note: "The work runs in West Bengal and Maharashtra, in person, and twice so far online. How many that reaches (cohorts active, students through the full curriculum, and facilitators teaching) is being counted now.",
   },
   {
     num: "03",
     label: "Outcomes",
     head: "Outcomes",
-    note: "What changed for students after the ten modules — completion, accounts opened, and what holds months later.",
+    note: "What changed for students after the ten modules: completion, accounts opened, and what holds months later.",
   },
   {
     num: "04",
     label: "Methodology",
     head: "Methodology",
-    note: "How outcomes are measured — what is counted, by whom, and where the counting honestly stops.",
+    note: "How outcomes are measured: what is counted, by whom, and where the counting honestly stops.",
   },
 ];
 
@@ -71,13 +72,12 @@ export function ImpactSubsections() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label={c.subs.sectionLabel} />
+            <SectionMarker index="02" label={c.subs.sectionLabel} />
             <p className="curr-modules__hint">{c.subs.sectionHint}</p>
           </div>
           <div className="impact-subs">
             {IMPACT_SUBS.map((s) => (
               <div key={s.num}>
-                <p className="impact-sub__num">{s.label}</p>
                 <h2 className="impact-sub__head">{s.head}</h2>
                 <div className="impact-sub__body">
                   <p>
@@ -121,7 +121,7 @@ export function AnnualReports() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="05" label={c.reports.sectionLabel} />
+            <SectionMarker index="03" label={c.reports.sectionLabel} as="h2" />
             <p className="curr-modules__hint">{c.reports.sectionHint}</p>
           </div>
           <div>
@@ -152,7 +152,7 @@ export function ImpactClosing() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="—" label={c.closing.sectionLabel} />
+            <SectionMarker index="04" label={c.closing.sectionLabel} />
           </div>
           <p className="impact-closing">
             <em>{renderInline(c.closing.text)}</em>

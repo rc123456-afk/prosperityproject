@@ -1,7 +1,6 @@
-/* Contact — all outward connection on one page: one inbox per reason, two
-   get-involved paths, press, and social. Ported verbatim from ContactPage.jsx.
-   Server components; mailto + social links stay plain anchors.
-   Copy lives in content/copy.ts. */
+/* Contact: all outward connection on one page. One inbox, two get-involved
+   paths, press, and social. Server components; mailto + social links stay
+   plain anchors. Copy lives in content/copy.ts. */
 
 import { SectionMarker } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
@@ -66,7 +65,7 @@ export function GetInvolved() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label={c.getInvolved.sectionLabel} />
+            <SectionMarker index="02" label={c.getInvolved.sectionLabel} as="h2" />
             <p className="curr-modules__hint">{c.getInvolved.sectionHint}</p>
           </div>
           <div>
@@ -120,7 +119,14 @@ export function PressContact() {
   );
 }
 
+/* Only profiles with a real URL in copy.contact.elsewhere are shown; with
+   none set, the whole section stays hidden rather than showing dead links. */
 export function Elsewhere() {
+  const links = [
+    { label: c.elsewhere.instagramLabel, href: c.elsewhere.instagramUrl },
+    { label: c.elsewhere.linkedinLabel, href: c.elsewhere.linkedinUrl },
+  ].filter((l) => l.href);
+  if (links.length === 0) return null;
   return (
     <section className="section section--alt">
       <div className="container">
@@ -129,14 +135,17 @@ export function Elsewhere() {
             <SectionMarker index="04" label={c.elsewhere.sectionLabel} />
           </div>
           <div className="elsewhere-links">
-            <a className="elsewhere-link" href="#" target="_blank" rel="noopener">
-              {c.elsewhere.instagramLabel}{" "}
-              <span className="arrow" aria-hidden="true">↗</span>
-            </a>
-            <a className="elsewhere-link" href="#" target="_blank" rel="noopener">
-              {c.elsewhere.linkedinLabel}{" "}
-              <span className="arrow" aria-hidden="true">↗</span>
-            </a>
+            {links.map((l) => (
+              <a
+                key={l.label}
+                className="elsewhere-link"
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {l.label} <span className="arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

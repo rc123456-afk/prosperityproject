@@ -9,6 +9,31 @@
 .photo--img::after { display: none; }
 .photo--img img { object-fit: cover; }
 
+/* ---- SKIP LINK ----
+   The first thing a keyboard user tabs to on every page. Parked above the
+   viewport until focused, then it sits over the sticky nav. The margin on
+   #main stops the jump from tucking the page's first line under the nav. */
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: var(--gutter);
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus,
+.skip-link:hover { transform: none; color: var(--paper); }
+#main { scroll-margin-top: 80px; }
+#main:focus { outline: none; }
+
 /* ---- CONDENSED FOOTER ----
    A slimmer take on the ported .footer: brand signature + a compact link row +
    a slim legal strip. Same ink/paper/mono/marigold language, far less height. */
@@ -142,19 +167,112 @@
   max-width: 40rem;
   text-wrap: pretty;
 }
+.translation-gate__book {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 28px 0 0;
+  max-width: 40rem;
+}
+.translation-gate__book a { font-family: var(--font-deva); font-size: 1.1em; }
+.translation-gate__actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
 
 /* ---- HOMEPAGE HERO IMAGE ----
-   Lay the real workshop photo under a warm dark gradient so the hero shows a
-   real scene while the headline stays legible. Overrides the placeholder
-   gradient in site.css; the grain (.hero__photo::after) and the left scrim
-   (.hero__scrim) still layer on top. */
-.hero__photo {
-  background-image:
-    linear-gradient(100deg, rgba(14, 9, 5, 0.9) 0%, rgba(14, 9, 5, 0.72) 24%, rgba(20, 13, 8, 0.42) 46%, rgba(28, 18, 10, 0.1) 66%, rgba(28, 18, 10, 0.0) 88%),
-    url("/photos/home/hero-bg.jpg");
-  background-size: cover;
-  background-position: center 44%;
+   The workshop photo is a preloaded next/image inside .hero__photo (see
+   app/page.tsx), so phones get a small modern-format file instead of the
+   2000px original. The warm dark gradient sits on top of it in ::before, the
+   grain in ::after, and the left scrim (.hero__scrim) above both. The bottom
+   of the scrim is darkened too so the caption reads over any part of the
+   photo. */
+.hero__photo { background: var(--ink); }
+.hero__photo::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg, rgba(14, 9, 5, 0.9) 0%, rgba(14, 9, 5, 0.72) 24%, rgba(20, 13, 8, 0.42) 46%, rgba(28, 18, 10, 0.1) 66%, rgba(28, 18, 10, 0.0) 88%);
 }
+.hero__photo::after { z-index: 1; }
+.hero__scrim {
+  background:
+    linear-gradient(to top, rgba(13, 9, 5, 0.62) 0%, rgba(13, 9, 5, 0.0) 26%),
+    linear-gradient(95deg, rgba(13, 9, 5, 0.72) 0%, rgba(13, 9, 5, 0.5) 30%, rgba(13, 9, 5, 0.2) 52%, rgba(13, 9, 5, 0.0) 74%);
+}
+.hero__credit { margin: 0; color: rgba(242, 235, 220, 0.86); }
+
+
+/* ---- FOCUS + SELECTION ----
+   The designed focus ring in tokens.css is scoped to a `.tpp` wrapper the
+   app never uses, so it never applied. These are the same rules, site-wide.
+   On dark bands the ring switches to the brighter marigold to stay visible. */
+:focus-visible {
+  outline: 2px solid var(--marigold-deep);
+  outline-offset: 2px;
+}
+.hero :focus-visible,
+.frontier :focus-visible,
+.section--ink :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--marigold);
+}
+::selection { background: var(--marigold); color: var(--ink); }
+
+
+/* ---- TAP TARGETS ----
+   Small mono links grow to a 24px-tall hit area without changing how they
+   look: the padding is invisible and the negative margin keeps the layout. */
+.tertiary,
+.pillar__mod-link,
+.site-footer a {
+  display: inline-block;
+  padding-block: 4px;
+  margin-block: -4px;
+}
+
+
+/* ---- INTERVIEW VIDEO POSTERS ----
+   Each interview shows its YouTube thumbnail and a play button; the player
+   (and YouTube's scripts) only loads when someone presses play. */
+.story-video__poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 0;
+  background: var(--ink);
+  cursor: pointer;
+  overflow: hidden;
+}
+.story-video__poster img { object-fit: cover; opacity: 0.88; transition: opacity var(--dur-fast) var(--ease-out); }
+.story-video__poster:hover img,
+.story-video__poster:focus-visible img { opacity: 1; }
+.story-video__play {
+  position: absolute; left: 50%; top: 50%; z-index: 1;
+  transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px;
+  background: rgba(13, 9, 5, 0.82);
+  color: var(--paper);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+.story-video__play-icon { color: var(--marigold); font-size: 14px; line-height: 1; }
+
+
+/* ---- PLAIN PAGES (privacy, not found) ---- */
+.plain-page__sections { display: grid; gap: 48px; max-width: 40rem; }
+.plain-page__heading {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(22px, 2vw, 28px); line-height: 1.15;
+  letter-spacing: -0.01em; color: var(--ink);
+  font-variation-settings: "opsz" 36;
+  margin: 0 0 12px;
+}
+.plain-page__body {
+  font-family: var(--font-body); font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.66; color: var(--ink); margin: 0; text-wrap: pretty;
+}
+.plain-page__links { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 20px 32px; }
 
 
 /* ============================================================================

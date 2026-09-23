@@ -2,8 +2,8 @@
    The Prosperity Project — Design Tokens
    Colors, type, spacing, and semantic style variables.
    Single source of truth — import this on every page.
-   Fonts are imported once in app/globals.css (Google Fonts @import, identical
-   to the Claude Design output).
+   Fonts are self-hosted with next/font in app/layout.tsx, which exposes each
+   family as a variable (--font-fraunces etc.) that the stacks below build on.
    ========================================================================== */
 
 :root {
@@ -17,11 +17,11 @@
   --marigold:     #C88A2E;   /* Marigold — accent, used sparingly */
 
   /* Derived (do not introduce new hues — only opacity / darkening of the above) */
-  --marigold-deep:   #9F6A14;             /* Marigold darkened — body-link AA accessibility on cream */
+  --marigold-deep:   #855A15;             /* Marigold darkened — 5.1:1 on paper, 4.6:1 on paper-deep (WCAG AA) */
   --paper-deep:      #E8DFCB;             /* Paper one step darker — alternating sections */
   --ink-90:          rgba(31, 26, 23, 0.90);
   --ink-70:          rgba(31, 26, 23, 0.70);  /* secondary text */
-  --ink-55:          rgba(31, 26, 23, 0.55);  /* tertiary text, captions on paper */
+  --ink-55:          rgba(31, 26, 23, 0.64);  /* tertiary text, captions on paper. Named for its old 55%; 64% passes AA on both papers */
   --ink-30:          rgba(31, 26, 23, 0.30);  /* hairline dividers */
   --ink-15:          rgba(31, 26, 23, 0.15);  /* subtle dividers */
   --ink-08:          rgba(31, 26, 23, 0.08);  /* hover wash on paper */
@@ -45,10 +45,13 @@
      TYPE — four families, deliberate roles.
      ---------------------------------------------------------------------- */
 
-  --font-display:    'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body:       'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-deva:       'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
-  --font-mono:       'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* The Tiro faces sit in every stack so Devanagari and Bengali text always
+     gets a matching serif, whichever family the element asks for. */
+  --font-scripts:    var(--font-tiro-deva), var(--font-tiro-bangla), 'Noto Serif Devanagari', 'Noto Serif Bengali';
+  --font-display:    var(--font-fraunces), var(--font-scripts), Georgia, 'Times New Roman', serif;
+  --font-body:       var(--font-source-serif), var(--font-scripts), Georgia, 'Times New Roman', serif;
+  --font-deva:       var(--font-scripts), serif;
+  --font-mono:       var(--font-jetbrains), 'SFMono-Regular', Menlo, Consolas, var(--font-scripts), monospace;
 
   /* Display optical sizing — Fraunces is variable; lean editorial */
   --display-opsz-xl: 144;

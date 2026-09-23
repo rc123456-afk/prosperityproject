@@ -7,6 +7,7 @@
    §05 is driven by copy.programmes — the same list /programmes renders — so
    the two can never disagree. (Nav + Footer come from the layout.) */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,6 +18,11 @@ import {
 } from "@/components/primitives";
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
+import { programmeHeading } from "@/lib/programmes";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const c = copy.home;
 
@@ -24,7 +30,18 @@ const c = copy.home;
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero__photo" aria-hidden="true" />
+      {/* The photo is the page's largest paint, so it is preloaded and served
+          at the size the screen needs. Gradient and grain sit on top in CSS. */}
+      <div className="hero__photo" aria-hidden="true">
+        <Image
+          src="/photos/home/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center 44%" }}
+        />
+      </div>
       <div className="hero__scrim" aria-hidden="true" />
       <div className="hero__inner">
         {c.hero.kicker && (
@@ -43,10 +60,7 @@ function Hero() {
           </Link>
         </div>
       </div>
-      <div className="hero__credit">
-        A Knowing Your Money workshop <span className="sep">·</span> West Bengal
-        <span className="sep">·</span> Maharashtra
-      </div>
+      <p className="hero__credit">{c.hero.credit}</p>
     </section>
   );
 }
@@ -58,7 +72,13 @@ function Hero() {
 function FrontierBand() {
   return (
     <section className="frontier" aria-label="Where the work runs">
-      <div className="frontier__strip">
+      {/* Focusable so keyboard users can scroll it sideways on a phone. */}
+      <div
+        className="frontier__strip"
+        tabIndex={0}
+        role="region"
+        aria-label="Photographs from Kolhapur and Baruipur"
+      >
         {c.frontier.cells.map((cell) => (
           <figure className="frontier__cell" key={cell.src}>
             <div className="frontier__photo">
@@ -129,6 +149,7 @@ function WhyIBuiltIt() {
             src={f.photo.src}
             alt={f.photo.alt}
             objectPosition={f.photo.objectPosition}
+            sizes="(max-width: 880px) 100vw, 480px"
           />
         </div>
       </div>
@@ -183,21 +204,26 @@ function WhereItRuns() {
         </div>
 
         <div className="places">
-          {p.items.map((prog) => (
-            <article className="place" key={prog.id}>
-              <span className="place__region">{prog.region}</span>
-              <h3 className="place__name">{prog.city}</h3>
-              <p className="place__partner">{prog.partner}</p>
-              <p className="place__copy">{renderInline(prog.summary)}</p>
-            </article>
-          ))}
+          {p.items.map((prog) => {
+            const heading = programmeHeading(prog);
+            return (
+              <article className="place" key={prog.id}>
+                <span className="place__region">{prog.region}</span>
+                <h3 className="place__name">{heading.text}</h3>
+                {!heading.includesPartner && (
+                  <p className="place__partner">{prog.partner}</p>
+                )}
+                <p className="place__copy">{renderInline(prog.summary)}</p>
+              </article>
+            );
+          })}
         </div>
 
         <p className="places__note">{p.figuresNote}</p>
 
         <div className="places__links">
           <TertiaryLink href="/programmes">{p.linkLabel}</TertiaryLink>
-          <TertiaryLink href="/impact">How we measure it</TertiaryLink>
+          <TertiaryLink href="/reporting">How we measure it</TertiaryLink>
         </div>
       </div>
     </section>
@@ -213,9 +239,10 @@ function WorkshopsPreview() {
           <Figure
             aspect="landscape"
             tone="green"
-            src="/photos/home/workshops.jpg"
-            alt="A facilitator leading the cohort through a module"
-            description="A facilitator leads the cohort through a module, the curriculum on screen behind."
+            src="/photos/kolhapur/k-cohort-desks.jpg"
+            alt="Women at their desks working through a module at Indo Count's training centre in Kolhapur"
+            description="A group works through a module at Indo Count's training centre, Kolhapur."
+            sizes="(max-width: 880px) 100vw, 600px"
           />
 
           <div>
@@ -267,13 +294,16 @@ function StoriesPreview() {
             tone="ledger"
             src="/photos/home/shankari.jpg"
             alt="Shankari Purkait Mondal, a Community Resource Person, at a workshop in Baruipur"
+            sizes="(max-width: 880px) 100vw, 520px"
           />
 
           <div>
             <blockquote className="stories__quote">
               &ldquo;{c.storiesPreview.quote}&rdquo;
             </blockquote>
-            <p className="stories__original">{c.storiesPreview.original}</p>
+            <p className="stories__original" lang="bn">
+              {c.storiesPreview.original}
+            </p>
             <p className="stories__cite">
               {c.storiesPreview.citeName} &nbsp;·&nbsp; {c.storiesPreview.citeMeta}{" "}
               &nbsp;·&nbsp;{" "}
@@ -295,14 +325,17 @@ function StoriesPreview() {
 
 /* ---------- 07 · GALLERY ---------- */
 function GalleryPreview() {
-  // Five photos, varied aspect ratios. Heights are set in CSS per data-aspect
-  // so the strip has visual rhythm without competing with content.
+  // Five photos, alternating Kolhapur and Baruipur, none repeated from the band
+  // under the hero or the portrait in §06. Heights are set in CSS per
+  // data-aspect so the strip has rhythm. Every source is a 3:2 landscape, so
+  // portrait crops are anchored on the person; never use `tall` on these.
+  // On phones every cell becomes a short landscape crop.
   const shots = [
-    { aspect: "portrait", tone: "warm", src: "/photos/gallery/g-portrait-smiling.jpg", alt: "A participant speaks into the microphone" },
-    { aspect: "landscape", tone: "green", src: "/photos/kolhapur/k-crouching.jpg", alt: "The founder crouching to talk with participants in Kolhapur" },
-    { aspect: "square", tone: "ledger", src: "/photos/gallery/g-the-worksheet.jpg", alt: "Working through the budget worksheet" },
-    { aspect: "tall", tone: "cool", src: "/photos/gallery/g-portrait-orange.jpg", alt: "A participant during the session" },
-    { aspect: "landscape", tone: "brick", src: "/photos/kolhapur/k-certificates-staff.jpg", alt: "A Kolhapur group with their certificates at the end of a workshop" },
+    { aspect: "portrait", tone: "warm", src: "/photos/kolhapur/k-portrait-desk.jpg", alt: "A participant in Kolhapur at her desk, listening", objectPosition: "38% center" },
+    { aspect: "landscape", tone: "green", src: "/photos/gallery/g-three-women.jpg", alt: "Three participants seated together at a workshop in Baruipur", objectPosition: "center 40%" },
+    { aspect: "square", tone: "ledger", src: "/photos/kolhapur/k-certificates-row.jpg", alt: "Participants in Kolhapur standing in a row with their certificates", objectPosition: "center 30%" },
+    { aspect: "portrait", tone: "cool", src: "/photos/gallery/g-a-participant-speaks.jpg", alt: "A participant in Baruipur standing to speak into the microphone", objectPosition: "48% 30%" },
+    { aspect: "landscape", tone: "brick", src: "/photos/kolhapur/k-crouching.jpg", alt: "The founder crouching to talk with participants in Kolhapur", objectPosition: "center" },
   ] as const;
 
   return (
@@ -336,6 +369,8 @@ function GalleryPreview() {
               tone={s.tone}
               src={s.src}
               alt={s.alt}
+              objectPosition={s.objectPosition}
+              sizes="(max-width: 600px) 100vw, (max-width: 880px) 50vw, 20vw"
               stamp={false}
             />
           ))}

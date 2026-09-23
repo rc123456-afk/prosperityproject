@@ -7,6 +7,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SectionMarker } from "@/components/primitives";
 import { WOMEN_MODULES, type Module } from "@/lib/modules";
+import { copy } from "@/content/copy";
 
 function ModuleRow({
   module,
@@ -62,7 +63,7 @@ export function ModuleList() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label="The ten modules" />
+            <SectionMarker index="02" label="The ten modules" as="h2" />
             <p className="curr-modules__hint">
               Click a row to open the longer description.
             </p>
@@ -79,8 +80,7 @@ export function ModuleList() {
               ))}
             </ul>
             <p className="curr-modules__close">
-              Ten modules. A cohort of fifty or more. One textbook in every
-              student&rsquo;s hand, and follow-up that continues after.
+              {copy.curriculum.premise.modulesClose}
             </p>
           </div>
         </div>

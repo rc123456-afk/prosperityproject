@@ -1546,39 +1546,6 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   .vid-row__caption { grid-column: 1; }
 }
 
-/* RESPONSIVE — keep editorial breakpoints lightweight */
-@media (max-width: 1280px) {
-  .nav__inner { gap: 24px; }
-  .nav__links { gap: 20px; }
-  .nav__link { font-size: 11px; letter-spacing: 0.12em; }
-}
-@media (max-width: 1100px) {
-  .nav__inner { gap: 18px; }
-  .nav__links { gap: 14px; }
-  .nav__link { font-size: 10.5px; letter-spacing: 0.10em; }
-  .nav__lang { padding-left: 14px; gap: 10px; }
-}
-@media (max-width: 1024px) {
-  .footer__grid { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
-  .nav__wordmark { font-size: 18px; }
-}
-@media (max-width: 960px) {
-  .nav__lang { display: none; }
-}
-@media (max-width: 880px) {
-  :root { --gutter: 24px; }
-  .nav__inner { grid-template-columns: auto auto; gap: 16px; }
-  .nav__links { display: none; }
-  .nav__right { display: none; }
-  .workshops, .stories, .founder-short, .curr-preview { grid-template-columns: 1fr; gap: 56px; }
-  .gallery { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .gallery .photo { height: 260px; }
-  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .hero__inner { min-height: 70vh; padding: 96px var(--gutter) 80px; }
-  .crp-callout { grid-template-columns: 1fr; gap: 14px; }
-}
-
-
 /* ============================================================================
    HOMEPAGE §02 WHY I BUILT IT — the short founder story.
    ========================================================================== */
@@ -1649,6 +1616,43 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   margin-top: 28px;
   display: flex; flex-direction: column; gap: 14px; align-items: flex-start;
 }
+
+/* RESPONSIVE — keep editorial breakpoints lightweight */
+@media (max-width: 1280px) {
+  .nav__inner { gap: 24px; }
+  .nav__links { gap: 20px; }
+  .nav__link { font-size: 11px; letter-spacing: 0.12em; }
+}
+@media (max-width: 1100px) {
+  .nav__inner { gap: 18px; }
+  .nav__links { gap: 14px; }
+  .nav__link { font-size: 10.5px; letter-spacing: 0.10em; }
+  .nav__lang { padding-left: 14px; gap: 10px; }
+}
+@media (max-width: 1024px) {
+  .footer__grid { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
+  .nav__wordmark { font-size: 18px; }
+}
+@media (max-width: 960px) {
+  .nav__lang { display: none; }
+  /* Nine links must still fit on one row down to 881px, where the phone
+     menu takes over. */
+  .nav__links { gap: 10px; }
+  .nav__link { letter-spacing: 0.06em; }
+}
+@media (max-width: 880px) {
+  :root { --gutter: 24px; }
+  .nav__inner { grid-template-columns: auto auto; gap: 16px; }
+  .nav__links { display: none; }
+  .nav__right { display: none; }
+  .workshops, .stories, .founder-short, .curr-preview { grid-template-columns: 1fr; gap: 56px; }
+  .gallery { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gallery .photo { height: 260px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .hero__inner { min-height: 70vh; padding: 96px var(--gutter) 80px; }
+  .crp-callout { grid-template-columns: 1fr; gap: 14px; }
+}
+
 
 /* ============================================================================
    HOMEPAGE §05 WHERE IT RUNS — one compact card per programme. Driven by

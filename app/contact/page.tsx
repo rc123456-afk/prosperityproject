@@ -8,9 +8,10 @@ import {
 } from "@/components/contact/sections";
 
 export const metadata: Metadata = {
-  title: "Contact — The Prosperity Project",
+  title: "Contact",
   description:
-    "Reach out. One inbox per reason — general questions, running a workshop, partnering with us, and press. A real person reads every inbox.",
+    "Reach out. One inbox for partnerships, press, and anyone who wants to run the curriculum. A real person reads every message.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

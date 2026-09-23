@@ -8,9 +8,10 @@ import {
 } from "@/components/stories/sections";
 
 export const metadata: Metadata = {
-  title: "Stories — The Prosperity Project",
+  title: "Stories",
   description:
     "Students who finished Knowing Your Money, and the Community Resource Persons who came back to teach. Told in their own words, in West Bengal.",
+  alternates: { canonical: "/stories" },
 };
 
 export default function Stories() {

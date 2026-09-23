@@ -30,9 +30,10 @@ export function WorkshopsHero() {
         <Photo
           aspect="cinema"
           tone="warm"
-          src="/photos/workshops/hero.jpg"
-          alt="A wide view of a workshop in session, the cohort seated around the tables"
+          src="/photos/kolhapur/k-session-room.jpg"
+          alt="A workshop in session at Indo Count's training centre in Kolhapur, the group at their desks"
           priority
+          sizes="(max-width: 1440px) 100vw, 1340px"
           style={{ marginTop: 64 }}
         />
       </div>
@@ -139,7 +140,7 @@ export function WorkshopsPillars() {
       <div className="container">
         <div className="curr-origin__grid">
           <div className="curr-origin__label">
-            <SectionMarker index="02" label={c.pillars.sectionLabel} />
+            <SectionMarker index="02" label={c.pillars.sectionLabel} as="h2" />
             <p className="curr-modules__hint">{c.pillars.sectionHint}</p>
           </div>
           <div>
@@ -223,7 +224,11 @@ export function CRPModel() {
 
             <div className="ws-crp__photos" data-count={CRP_PHOTOS.length}>
               {CRP_PHOTOS.map((p, i) => (
-                <Figure key={i} {...p} />
+                <Figure
+                  key={i}
+                  {...p}
+                  sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 320px"
+                />
               ))}
             </div>
           </div>
@@ -236,13 +241,15 @@ export function CRPModel() {
 /* ================================================================
    05 IN THE ROOM
    ================================================================ */
-const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; src: string; alt: string }[] = [
-  { aspect: "portrait", tone: "warm", src: "/photos/workshops/room-1.jpg", alt: "The founder facilitating a session" },
-  { aspect: "landscape", tone: "green", src: "/photos/workshops/room-2.jpg", alt: "The cohort gathered during a session" },
-  { aspect: "square", tone: "ledger", src: "/photos/workshops/room-3.jpg", alt: "Participants working through the worksheet" },
-  { aspect: "portrait", tone: "cool", src: "/photos/workshops/room-4.jpg", alt: "Participants between sessions" },
-  { aspect: "landscape", tone: "brick", src: "/photos/workshops/room-5.jpg", alt: "Passing the microphone during the session" },
-  { aspect: "square", tone: "dusk", src: "/photos/workshops/room-6.jpg", alt: "Notes and worksheets on the table" },
+// Alternates Baruipur and Kolhapur, so the room is never only one place.
+// Kolhapur frames are 3:2 landscapes; portrait crops anchor on the people.
+const ROOM_PHOTOS: { aspect: Aspect; tone: Tone; src: string; alt: string; objectPosition?: string }[] = [
+  { aspect: "portrait", tone: "warm", src: "/photos/workshops/room-1.jpg", alt: "The founder facilitating a session in Baruipur" },
+  { aspect: "landscape", tone: "green", src: "/photos/kolhapur/k-walking-desks.jpg", alt: "The founder walking between the desks during an exercise in Kolhapur" },
+  { aspect: "square", tone: "ledger", src: "/photos/workshops/room-3.jpg", alt: "Participants in Baruipur working through the worksheet" },
+  { aspect: "portrait", tone: "cool", src: "/photos/kolhapur/k-one-to-one.jpg", alt: "The founder answering a participant's question beside her desk in Kolhapur", objectPosition: "42% center" },
+  { aspect: "landscape", tone: "brick", src: "/photos/workshops/room-5.jpg", alt: "Passing the microphone during a session in Baruipur" },
+  { aspect: "square", tone: "dusk", src: "/photos/kolhapur/k-writing.jpg", alt: "Participants in Kolhapur writing notes during a session" },
 ];
 export function InTheRoom() {
   return (
@@ -264,6 +271,8 @@ export function InTheRoom() {
                   tone={p.tone}
                   src={p.src}
                   alt={p.alt}
+                  objectPosition={p.objectPosition}
+                  sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 300px"
                 />
               ))}
             </div>

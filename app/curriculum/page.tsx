@@ -8,9 +8,10 @@ import {
 import { ModuleList } from "@/components/curriculum/ModuleList";
 
 export const metadata: Metadata = {
-  title: "Curriculum — The Prosperity Project",
+  title: "Curriculum",
   description:
-    "Knowing Your Money — a ten-module financial literacy curriculum delivered in Bengali, Hindi and Marathi, in West Bengal and Maharashtra, with Bandhan-Konnagar and Indo Count Industries.",
+    "Knowing Your Money, a ten-module financial literacy curriculum built from real interviews and taught in Bengali, Hindi and Marathi in West Bengal and Maharashtra.",
+  alternates: { canonical: "/curriculum" },
 };
 
 export default function Curriculum() {

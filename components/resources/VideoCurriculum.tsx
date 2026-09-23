@@ -16,6 +16,7 @@ const VIDEO_LANGS = [
   { id: "bn", script: "বাং", label: "Bengali" },
   { id: "en", script: "EN", label: "English" },
 ] as const;
+const PLAYER_ID = (num: string) => `module-${num}-player`;
 type LangId = (typeof VIDEO_LANGS)[number]["id"];
 
 /* ─── REAL VIDEOS GO HERE ──────────────────────────────────────────────────
@@ -83,16 +84,18 @@ function VideoRow({
         </span>
         <span
           className="vid-row__tabs"
-          role="tablist"
-          aria-label={`Language for module ${module.num}`}
+          role="group"
+          aria-label={`Play module ${module.num} in`}
         >
           {VIDEO_LANGS.map((l) => (
             <button
               key={l.id}
               type="button"
-              role="tab"
+              lang={l.id}
               data-script={l.id === "en" ? "latin" : "deva"}
-              aria-selected={openLang === l.id}
+              aria-label={`${l.label}${videos[l.id] === COMING ? " (coming soon)" : ""}`}
+              aria-pressed={openLang === l.id}
+              aria-controls={PLAYER_ID(module.num)}
               className={"vid-tab " + (openLang === l.id ? "is-active" : "")}
               onClick={() => (openLang === l.id ? onClose() : onOpen(l.id))}
               title={`Play in ${l.label}`}
@@ -103,7 +106,11 @@ function VideoRow({
         </span>
       </div>
 
-      <div className="vid-row__player-clip" aria-hidden={!expanded}>
+      <div
+        className="vid-row__player-clip"
+        id={PLAYER_ID(module.num)}
+        aria-hidden={!expanded}
+      >
         {expanded && openLang && (
           <div className="vid-row__player">
             <div className="vid-row__player-meta">
@@ -112,6 +119,7 @@ function VideoRow({
                 <span
                   className="vid-row__player-script"
                   data-script={openLang === "en" ? "latin" : "deva"}
+                  lang={openLang}
                 >
                   {langMeta(openLang).script}
                 </span>
@@ -137,7 +145,7 @@ function VideoRow({
                 <iframe
                   key={`${module.num}-${openLang}`}
                   src={`https://www.youtube-nocookie.com/embed/${videos[openLang]}?rel=0&autoplay=1&modestbranding=1`}
-                  title={`Module ${module.num} — ${module.title} (${langMeta(openLang).label})`}
+                  title={`Module ${module.num}: ${module.title} (${langMeta(openLang).label})`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"

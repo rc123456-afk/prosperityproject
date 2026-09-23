@@ -5,6 +5,7 @@
 import { Photo, SectionMarker } from "@/components/primitives";
 import { renderInline, RichText } from "@/components/Rich";
 import { copy } from "@/content/copy";
+import { TEXTBOOK_EDITIONS } from "@/lib/textbooks";
 
 const c = copy.resources;
 const HERO = {
@@ -28,6 +29,7 @@ export function ResourcesHero() {
           src="/photos/resources/hero.jpg"
           alt="A facilitator presenting the Knowing Your Money curriculum on screen"
           priority
+          sizes="(max-width: 1440px) 100vw, 1340px"
           style={{ marginTop: 64 }}
         />
       </div>
@@ -36,42 +38,6 @@ export function ResourcesHero() {
 }
 
 /* ---------- TEXTBOOK DOWNLOADS ---------- */
-const TEXTBOOK_EDITIONS = [
-  {
-    id: "bn",
-    script: "বাং",
-    lang: "Bengali",
-    lang_native: "বাংলা",
-    title: "টাকার পরিচয়",
-    meta: "23 pages · PDF",
-    size: "466 KB",
-    file: "/downloads/knowing-your-money-bn.pdf",
-    available: true,
-  },
-  {
-    id: "hi",
-    script: "हिं",
-    lang: "Hindi",
-    lang_native: "हिन्दी",
-    title: "पैसा पहचान",
-    meta: "23 pages · PDF",
-    size: "446 KB",
-    file: "/downloads/knowing-your-money-hi.pdf",
-    available: true,
-  },
-  {
-    id: "en",
-    script: "EN",
-    lang: "English",
-    lang_native: "English",
-    title: "Knowing Your Money",
-    meta: "24 pages · PDF",
-    size: "366 KB",
-    file: "/downloads/knowing-your-money-en.pdf",
-    available: true,
-  },
-];
-
 export function TextbookDownloads() {
   return (
     <section className="section curr-origin res-textbook">
@@ -94,6 +60,7 @@ export function TextbookDownloads() {
                 tone="ledger"
                 src="/photos/resources/textbook.jpg"
                 alt="The printed booklet and worksheets on a workshop table"
+                sizes="(max-width: 1024px) 100vw, 900px"
               />
             </div>
 
@@ -103,18 +70,20 @@ export function TextbookDownloads() {
                   <>
                     <span
                       className={`download-card__script download-card__script--${e.id}`}
+                      lang={e.id}
                     >
                       {e.script}
                     </span>
                     <span className="download-card__body">
                       <span className="download-card__lang">
                         {e.lang}{" "}
-                        <span className="download-card__native">
+                        <span className="download-card__native" lang={e.id}>
                           / {e.lang_native}
                         </span>
                       </span>
                       <span
                         className={`download-card__title download-card__title--${e.id}`}
+                        lang={e.id}
                       >
                         {e.title}
                       </span>
@@ -131,11 +100,11 @@ export function TextbookDownloads() {
                     download
                   >
                     {body}
-                    <span className="download-card__action" aria-hidden="true">
+                    <span className="download-card__action">
                       <span className="download-card__action-label">
                         Download · {e.size}
                       </span>
-                      <span className="download-card__arrow">↓</span>
+                      <span className="download-card__arrow" aria-hidden="true">↓</span>
                     </span>
                   </a>
                 ) : (

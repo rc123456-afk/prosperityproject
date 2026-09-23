@@ -11,7 +11,7 @@ const LINKS: { label: string; href: string }[] = [
   { label: "Resources", href: "/resources" },
   { label: "Stories", href: "/stories" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Impact", href: "/impact" },
+  { label: "Reporting", href: "/reporting" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -22,11 +22,13 @@ export function Footer() {
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__brand">
-            <p className="site-footer__deva">{copy.site.footerDevaLine}</p>
+            <p className="site-footer__deva" lang="hi">
+              {copy.site.footerDevaLine}
+            </p>
             <p className="site-footer__roman">{copy.site.footerRomanLine}</p>
             <p
               className="site-footer__roman"
-              style={{ marginTop: 10, opacity: 0.7, fontStyle: "italic" }}
+              style={{ marginTop: 10, fontStyle: "italic" }}
             >
               {copy.site.tagline}
             </p>

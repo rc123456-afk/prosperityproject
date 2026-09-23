@@ -125,6 +125,7 @@ export function Figure({
   alt,
   objectPosition,
   priority,
+  sizes,
   description,
   meta,
   style,
@@ -137,6 +138,7 @@ export function Figure({
   alt?: string;
   objectPosition?: string;
   priority?: boolean;
+  sizes?: string;
   description?: ReactNode;
   meta?: ReactNode;
   style?: CSSProperties;
@@ -152,24 +154,29 @@ export function Figure({
         alt={alt}
         objectPosition={objectPosition}
         priority={priority}
+        sizes={sizes}
       />
       <Caption description={description} meta={meta} />
     </figure>
   );
 }
 
-/* SectionMarker — wide editorial section label: § 02 · TWO CONTEXTS */
+/* SectionMarker — wide editorial section label: § 02 · TWO CONTEXTS
+   Renders a <p> by default. Pass as="h2" when the marker is the only title a
+   section has, so the page outline doesn't jump from h1 straight to h3. */
 export function SectionMarker({
   index,
   label,
   inverse,
+  as: Tag = "p",
 }: {
   index: ReactNode;
   label: ReactNode;
   inverse?: boolean;
+  as?: "p" | "h2";
 }) {
   return (
-    <p
+    <Tag
       className={`section-head__marker ${inverse ? "marker--inverse" : ""}`}
       style={{
         fontFamily: "var(--font-mono)",
@@ -182,7 +189,7 @@ export function SectionMarker({
       }}
     >
       § {index} &nbsp;·&nbsp; {label}
-    </p>
+    </Tag>
   );
 }
 

@@ -2,8 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // Placeholder photos are CSS gradients for now; real <Image> sources drop in later.
-    remotePatterns: [],
+    // YouTube thumbnails for the click-to-play interview posters on /stories.
+    remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" }],
+  },
+  async redirects() {
+    return [
+      // The page was called Impact; links to the old address keep working.
+      { source: "/impact", destination: "/reporting", permanent: true },
+    ];
   },
 };
 

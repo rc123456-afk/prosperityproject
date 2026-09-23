@@ -4,10 +4,18 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 
 export type Lang = "EN" | "HI" | "BN";
 
-export const LANGS: { id: Lang; label: string; script: "latin" | "deva" }[] = [
-  { id: "EN", label: "EN", script: "latin" },
-  { id: "HI", label: "हिं", script: "deva" },
-  { id: "BN", label: "বাং", script: "deva" },
+// `script` drives styling (both Indic scripts share the Tiro treatment);
+// `htmlLang` + `name` are for screen readers and correct text shaping.
+export const LANGS: {
+  id: Lang;
+  label: string;
+  script: "latin" | "deva";
+  htmlLang: string;
+  name: string;
+}[] = [
+  { id: "EN", label: "EN", script: "latin", htmlLang: "en", name: "English" },
+  { id: "HI", label: "हिं", script: "deva", htmlLang: "hi", name: "Hindi" },
+  { id: "BN", label: "বাং", script: "deva", htmlLang: "bn", name: "Bengali" },
 ];
 
 type LanguageContextValue = {
