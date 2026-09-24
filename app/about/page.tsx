@@ -4,7 +4,6 @@ import {
   FounderStory,
   VisionMission,
   Organizations,
-  PressSlot,
 } from "@/components/about/sections";
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function AboutPage() {
       <FounderStory />
       <VisionMission />
       <Organizations />
-      <PressSlot />
     </>
   );
 }

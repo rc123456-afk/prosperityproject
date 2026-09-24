@@ -1,6 +1,6 @@
 /* About — the founder's story and organizational origin. Ported verbatim from
-   AboutPage.jsx. Server components. PressSlot keeps the architecture in place
-   but renders nothing until PRESS_ITEMS is populated. */
+   AboutPage.jsx. Server components. (Press coverage lives on the homepage,
+   driven by copy.press.) */
 
 import { Photo, SectionMarker } from "@/components/primitives";
 import { SmartLink } from "@/components/SmartLink";
@@ -171,36 +171,6 @@ export function Organizations() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- PRESS SLOT — architecture in place, not visibly rendered ---------- */
-type PressItem = { outlet: string; title: string; date: string; href: string };
-const PRESS_ITEMS: PressItem[] = [
-  /* populate to surface a press strip */
-];
-
-export function PressSlot() {
-  if (PRESS_ITEMS.length === 0) return null;
-  return (
-    <section className="section press-slot" id="press">
-      <div className="container">
-        <div className="curr-origin__grid">
-          <div className="curr-origin__label">
-            <SectionMarker index="04" label="Press" />
-          </div>
-          <ul className="reports-list">
-            {PRESS_ITEMS.map((p, i) => (
-              <li className="report-row" key={i}>
-                <span className="report-row__year">{p.date}</span>
-                <span className="report-row__title">{p.title}</span>
-                <span className="report-row__status">{p.outlet}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

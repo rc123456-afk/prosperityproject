@@ -542,9 +542,6 @@
 }
 .org__link { margin: 22px 0 0; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; }
 
-/* Press slot — architecture present, not visibly rendered */
-.press-slot { display: none; }
-
 /* ================================================================
    CONTACT
    ================================================================ */

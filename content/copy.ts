@@ -177,6 +177,51 @@ export const copy = {
     ],
   },
 
+  /* -------------------------------------------------------------------- PRESS
+     Newspaper and online coverage. This one list feeds the "In the press"
+     band on the homepage and the "As covered in ..." line in the hero that
+     points to it. Add an article by adding an entry, newest first. Remove
+     them all and both disappear.
+
+     Each entry:
+       outlet/edition/date/language  joined into one line above the headline.
+                      Leave any of them "" and it is simply left out.
+       headline       in English. If the article is in another language,
+                      translate the printed headline faithfully: it is the
+                      paper's headline, not ours.
+       original       the headline as printed, in its own script. "" if the
+                      article is in English.
+       summary        ONE sentence, in our words, on what it covered
+       clipping       a copy of the article under /public/press/. Keep one for
+                      every entry (a screenshot works for a web article): it
+                      is what readers open, and it outlives the paper's link.
+       href           the article at the source. E-paper links expire
+                      (Lokmat's after about a year). When it stops opening,
+                      set it to "" and the clipping stays.                    */
+  press: {
+    label: "In the press",
+    heroLead: "As covered in",
+    clippingLinkLabel: "Read the clipping",
+    sourceLinkLead: "Original on",
+    items: [
+      {
+        id: "lokmat-kolhapur-2026-09",
+        outlet: "Lokmat",
+        edition: "Kolhapur edition",
+        date: "16 September 2026",
+        language: "Marathi",
+        headline:
+          "Lessons in financial literacy for 200 women in Kolhapur, from Rehaan Chowdhary's The Prosperity Project",
+        original:
+          "रेहान चौधरी यांच्या द प्रॉस्पेरिटी प्रोजेक्टतर्फे कोल्हापुरातील 200 महिलांना आर्थिक साक्षरतेचे धडे",
+        summary:
+          "On the workshops at Indo Count: what the sessions covered, from household budgets to an emergency fund, and how the curriculum reached Kolhapur from Baruipur and Asansol.",
+        clipping: "/press/lokmat-kolhapur-2026-09-16.jpg",
+        href: "https://epaper.lokmat.com/articlepage.php?articleid=LOK_HKHK_20260916_3_2",
+      },
+    ],
+  },
+
   /* ----------------------------------------------------------------- HOMEPAGE */
   home: {
     hero: {

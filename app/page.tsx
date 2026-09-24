@@ -1,13 +1,17 @@
 /* Homepage — the whole story in one scroll, in this order:
      Hero · photo band ·
      01 What this is · 02 Why I built it · 03 The curriculum ·
-     04 How a workshop runs · 05 Where it runs · 06 Stories · 07 Gallery.
+     04 How a workshop runs · 05 Where it runs · In the press ·
+     06 Stories · 07 Gallery.
    The arc is deliberate: the person, then the problem, then what he built,
    then how it is taught, then how far it has reached, then the proof.
    §05 is driven by copy.programmes — the same list /programmes renders — so
-   the two can never disagree. (Nav + Footer come from the layout.) */
+   the two can never disagree. The press band is un-numbered and driven by
+   copy.press, as is the hero line that points to it. (Nav + Footer come from
+   the layout.) */
 
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -25,6 +29,30 @@ export const metadata: Metadata = {
 };
 
 const c = copy.home;
+
+/* Press coverage, typed here so an emptied list (which infers as never[])
+   still type-checks: the band and the hero line then simply disappear. */
+type PressItem = {
+  id: string;
+  outlet: string;
+  edition: string;
+  date: string;
+  language: string;
+  headline: string;
+  original: string;
+  summary: string;
+  clipping: string;
+  href: string;
+};
+const PRESS: PressItem[] = copy.press.items;
+
+// "Lokmat" now; "Lokmat, X and Y" once more outlets are added.
+const PRESS_OUTLETS = new Intl.ListFormat("en-GB", { type: "conjunction" }).format(
+  Array.from(new Set(PRESS.map((p) => p.outlet).filter(Boolean))),
+);
+
+// The article's language, for the lang attribute on the printed headline.
+const LANG_CODES: Record<string, string> = { Marathi: "mr", Bengali: "bn", Hindi: "hi" };
 
 /* ---------- 01 · HERO ---------- */
 function Hero() {
@@ -58,6 +86,11 @@ function Hero() {
           <Link href="/curriculum" className="btn btn--primary">
             {c.hero.ctaLabel} <span aria-hidden="true">→</span>
           </Link>
+          {PRESS.length > 0 && (
+            <a href="#press" className="tertiary tertiary--inverse hero__press">
+              {copy.press.heroLead} {PRESS_OUTLETS} <span aria-hidden="true">↓</span>
+            </a>
+          )}
         </div>
       </div>
       <p className="hero__credit">{c.hero.credit}</p>
@@ -230,6 +263,109 @@ function WhereItRuns() {
   );
 }
 
+/* ---------- IN THE PRESS ----------
+   Un-numbered, like the photo band: coverage is a note in the margin of the
+   story, not a chapter of it. Each entry opens the site's own copy of the
+   clipping first, because e-paper links expire; the source link sits beside
+   it for anyone who wants to check. */
+function InThePress() {
+  const p = copy.press;
+  if (PRESS.length === 0) return null;
+  return (
+    <section className="section press" id="press">
+      <div className="container">
+        <div className="curr-origin__grid">
+          <div className="curr-origin__label">
+            <SectionMarker label={p.label} as="h2" />
+          </div>
+          <ul className="press__list">
+            {PRESS.map((item) => {
+              const meta = [item.edition, item.date, item.language].filter(Boolean);
+              return (
+                <li
+                  className={`press-item${item.clipping ? "" : " press-item--text"}`}
+                  key={item.id}
+                >
+                  {item.clipping && (
+                    // The same link as "Read the clipping" below, so it is
+                    // hidden from screen readers and skipped by the keyboard.
+                    <a
+                      className="press-item__clip"
+                      href={item.clipping}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                    >
+                      <Image
+                        src={item.clipping}
+                        alt=""
+                        fill
+                        sizes="(max-width: 600px) 112px, 132px"
+                        style={{ objectFit: "cover", objectPosition: "center top" }}
+                      />
+                    </a>
+                  )}
+                  <div>
+                    {/* Each part wraps as a whole (never "16 / September"),
+                        and the dot stays at the end of a line. */}
+                    <p className="press-item__meta">
+                      {item.outlet && (
+                        <span className="press-item__outlet">{item.outlet}</span>
+                      )}
+                      {meta.map((part, i) => (
+                        <Fragment key={part}>
+                          {(item.outlet || i > 0) && " · "}
+                          <span>{part}</span>
+                        </Fragment>
+                      ))}
+                    </p>
+                    <h3 className="press-item__headline">
+                      &ldquo;{item.headline}&rdquo;
+                    </h3>
+                    {item.original && (
+                      <p className="press-item__original" lang={LANG_CODES[item.language]}>
+                        {item.original}
+                      </p>
+                    )}
+                    {item.summary && (
+                      <p className="press-item__summary">{renderInline(item.summary)}</p>
+                    )}
+                    {(item.clipping || item.href) && (
+                      <div className="press-item__links">
+                        {item.clipping && (
+                          <a
+                            className="tertiary"
+                            href={item.clipping}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {p.clippingLinkLabel} <span aria-hidden="true">→</span>
+                          </a>
+                        )}
+                        {item.href && (
+                          <a
+                            className="tertiary"
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {p.sourceLinkLead} {item.outlet} <span aria-hidden="true">↗</span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- 04 · HOW A WORKSHOP RUNS ---------- */
 function WorkshopsPreview() {
   return (
@@ -390,6 +526,7 @@ export default function Homepage() {
       <CurriculumPreview />
       <WorkshopsPreview />
       <WhereItRuns />
+      <InThePress />
       <StoriesPreview />
       <GalleryPreview />
     </>

@@ -1716,3 +1716,99 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
   .founder-short, .curr-preview { gap: 40px; }
   .places__links { flex-direction: column; align-items: flex-start; gap: 14px; }
 }
+
+
+/* ============================================================================
+   HOMEPAGE · IN THE PRESS — un-numbered band between §05 and §06, driven by
+   copy.press. Plain paper between two alternate-tone sections. One row per
+   article: the clipping on the left, the words on the right, so the band
+   reads the same with one article or several. The clipping is a plain image
+   in a hairline frame, not a Photo: the grain and gradient suit photographs,
+   not newsprint.
+   ========================================================================== */
+.press { scroll-margin-top: 24px; }
+.press__list {
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--ink-30);
+  max-width: 52rem;
+}
+.press-item {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ink-15);
+}
+.press-item--text { grid-template-columns: minmax(0, 1fr); }
+.press-item__clip {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--paper-deep);
+  border: 1px solid var(--ink-15);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.press-item__clip:hover { border-color: var(--ink-30); }
+.press-item__meta {
+  margin: 0;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  line-height: 1.6;
+  color: var(--ink-55);
+}
+.press-item__meta span { white-space: nowrap; }
+.press-item__outlet { color: var(--marigold-deep); }
+.press-item__headline {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+}
+.press-item__original {
+  font-family: var(--font-deva);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-70);
+  margin: 10px 0 0;
+}
+.press-item__summary {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 16px 0 0;
+  max-width: 40rem;
+  text-wrap: pretty;
+}
+.press-item__links {
+  margin-top: 20px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 12px 28px;
+}
+/* Outlet names vary in length; let a long one wrap rather than push the
+   page sideways on a phone. */
+.press-item__links .tertiary { white-space: normal; }
+
+/* The hero line lists every outlet, so it must wrap on a narrow phone. On a
+   phone it also drops below the button, off the scrim and over the bright
+   part of the photo, so it carries the same shadow as .hero__credit. */
+.hero__press {
+  white-space: normal;
+  text-shadow: 0 1px 3px rgba(13, 9, 5, 0.75);
+}
+
+/* Phone: the clipping sits above the words, so the headline gets the full
+   width instead of a narrow column beside it. The nav is taller here, so
+   the jump from the hero lands further down. */
+@media (max-width: 600px) {
+  .press { scroll-margin-top: 56px; }
+  .press-item { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 24px 0; }
+  .press-item__clip { width: 112px; }
+  .press-item__original { font-size: 16px; }
+}

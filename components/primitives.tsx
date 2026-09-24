@@ -163,14 +163,16 @@ export function Figure({
 
 /* SectionMarker — wide editorial section label: § 02 · TWO CONTEXTS
    Renders a <p> by default. Pass as="h2" when the marker is the only title a
-   section has, so the page outline doesn't jump from h1 straight to h3. */
+   section has, so the page outline doesn't jump from h1 straight to h3.
+   Leave out `index` for a band that sits outside the numbered sections: the
+   label keeps the same type, without the § number. */
 export function SectionMarker({
   index,
   label,
   inverse,
   as: Tag = "p",
 }: {
-  index: ReactNode;
+  index?: ReactNode;
   label: ReactNode;
   inverse?: boolean;
   as?: "p" | "h2";
@@ -188,7 +190,8 @@ export function SectionMarker({
         margin: 0,
       }}
     >
-      § {index} &nbsp;·&nbsp; {label}
+      {index != null && <>§ {index} &nbsp;·&nbsp; </>}
+      {label}
     </Tag>
   );
 }
