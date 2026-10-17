@@ -489,6 +489,9 @@
 }
 .rp-table th .rp-cell-sub { white-space: normal; }
 .rp-table--narrow { max-width: 20rem; }
+/* The two S05 tables share column widths so they line up one above the other. */
+.rp-table--gain thead th:nth-child(2) { width: 22%; }
+.rp-table--gain thead th:nth-child(3) { width: 30%; }
 .rp-table--wide { min-width: 38rem; }
 
 /* ---- 02 What was tested + where learners started ---- */

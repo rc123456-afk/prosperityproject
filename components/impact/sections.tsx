@@ -9,6 +9,7 @@ import { renderInline, RichText } from "@/components/Rich";
 import { copy } from "@/content/copy";
 import {
   ALL_COHORTS,
+  ASANSOL_S05,
   BANDS,
   BASELINE,
   COHORTS,
@@ -442,6 +443,46 @@ export function ByQuestion() {
 }
 
 /* ---------- 06 CHECKING THE MEASURE (S05) ---------- */
+/* Gain with and without S05. The first row is the seven-question result,
+   which stays primary, so it is set in bold. */
+function S05Table({
+  caption,
+  rows,
+}: {
+  caption: string;
+  rows: { id: string; label: string; note: string; n: number; gain: string; ci: string }[];
+}) {
+  return (
+    <TableWrap label={caption}>
+      <table className="rp-table rp-table--gain">
+        <caption>{caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Scored on</th>
+            <th scope="col" className="rp-num">Learners</th>
+            <th scope="col" className="rp-num">Gain (95% CI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={r.id} className={i === 0 ? "rp-row--key" : undefined}>
+              <th scope="row">
+                {r.label}
+                <span className="rp-cell-sub">{r.note}</span>
+              </th>
+              <td className="rp-num">{r.n}</td>
+              <td className="rp-num">
+                {r.gain}
+                <span className="rp-cell-sub">{r.ci}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </TableWrap>
+  );
+}
+
 export function CheckingTheMeasure() {
   const s = c.measure;
   return (
@@ -455,36 +496,17 @@ export function CheckingTheMeasure() {
               <RichText items={s.body} />
             </div>
 
-            <TableWrap label={s.tableCaption}>
-              <table className="rp-table">
-                <caption>{s.tableCaption}</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Scored on</th>
-                    <th scope="col" className="rp-num">Learners</th>
-                    <th scope="col" className="rp-num">Gain (95% CI)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {S05_SENSITIVITY.map((r) => (
-                    <tr key={r.id} className={r.id === "primary" ? "rp-row--key" : undefined}>
-                      <th scope="row">
-                        {r.label}
-                        <span className="rp-cell-sub">{r.note}</span>
-                      </th>
-                      <td className="rp-num">{r.n}</td>
-                      <td className="rp-num">
-                        {r.gain}
-                        <span className="rp-cell-sub">{r.ci}</span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </TableWrap>
-
+            <S05Table caption={s.tableCaption} rows={S05_SENSITIVITY} />
             <div className="rp-body">
               <RichText items={s.after} />
+            </div>
+
+            <h3 className="rp-subhead">{s.asansol.heading}</h3>
+            <p className="rp-body-p">{renderInline(s.asansol.body)}</p>
+            <S05Table caption={s.asansol.tableCaption} rows={ASANSOL_S05} />
+            <div className="rp-body">
+              <p>{s.asansol.explain}</p>
+              <p>{s.close}</p>
             </div>
           </div>
         </div>

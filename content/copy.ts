@@ -540,9 +540,9 @@ export const copy = {
       sectionHint: "The report in four numbers.",
       stats: [
         {
-          value: "420",
-          label: "learner records across four programmes",
-          note: "200 from Kolhapur, 70 from Shristi, 110 from FEED and 40 from Bandhan-Konnagar.",
+          value: "400+",
+          label: "learners across four programmes",
+          note: "420 total learner records: 200 from Kolhapur, 70 from Shristi, 110 from FEED and 40 from Bandhan-Konnagar.",
         },
         {
           value: "368",
@@ -657,8 +657,20 @@ export const copy = {
       tableCaption: "Average gain with and without S05, in percentage points, with 95% confidence intervals",
       after: [
         "For the same 368 learners, leaving S05 out moves the gain from 28.73 to 30.30 points. It does not raise every cohort: FEED's goes from 39.83 to 39.56. Six questions also measure a narrower set of concepts, so the seven-question score stays the main result.",
-        "The report recommends piloting S05's wording and translations with learners' own explanations.",
       ],
+      // The original Asansol group (report p.8). Its numbers live in
+      // ASANSOL_S05 in content/report.ts.
+      asansol: {
+        heading: "The original Asansol group",
+        body:
+          "The report ran the same comparison for the original Asansol group: the same 24 learners, 9 from Shristi and 15 from FEED. Their average gain was **3.57 percentage points** across seven questions, and **7.64 points** with S05 removed from both the before and after scores.",
+        tableCaption:
+          "Original Asansol group: average gain for the same 24 learners with and without S05, in percentage points, with 95% confidence intervals",
+        explain:
+          "This tests how the make-up of the assessment affects the result. It does not show that the wording made the difference, or that learning doubled. All 15 FEED learners answered S05 correctly both times, so part of the shift is the same gains counted out of six questions instead of seven. The seven-question results stay primary.",
+      },
+      close:
+        "The report recommends piloting S05's wording and translations with learners' own explanations.",
     },
     next: {
       sectionLabel: "Next round",

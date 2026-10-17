@@ -116,6 +116,14 @@ export const S05_SENSITIVITY = [
   { id: "expanded", label: "Without S05", note: "Wider eligible sample", n: 371, gain: "+30.01", ci: "26.62 to 33.40" },
 ];
 
+/* The original Asansol group, p.8 (text and Figure 6): the same 24 learners,
+   9 from Shristi and 15 from FEED, scored on seven questions and on six.
+   The seven-question result stays primary. */
+export const ASANSOL_S05 = [
+  { id: "seven", label: "All seven questions", note: "9 from Shristi, 15 from FEED", n: 24, gain: "+3.57", ci: "−2.39 to +9.54" },
+  { id: "six", label: "Without S05", note: "Same 24 learners", n: 24, gain: "+7.64", ci: "+2.16 to +13.12" },
+];
+
 /* Table 7, p.9: what was learned and the next delivery decision. The evidence
    lines repeat facts the page has already shown (S05's points to the Shristi
    session described on p.8). */
