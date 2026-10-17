@@ -57,9 +57,9 @@ export const copy = {
     intro:
       "The curriculum was built in West Bengal and was never meant to stay there. It has since been taught in Marathi at a textile mill in Maharashtra, and online into Asansol twice: once through a company and once through a grassroots nonprofit. The partners could hardly be more different, and the same ten modules went into every room.",
     linkLabel: "All four programmes",
-    // Full figures are still being compiled; see the Reporting page.
+    // Points at the published results; the numbers themselves stay on /reporting.
     figuresNote:
-      "Completion, accounts opened, and facilitators trained are being compiled for the first annual report.",
+      "Before-and-after assessment results from all four programmes are on the Reporting page.",
     closing: {
       sectionLabel: "Across all four",
       text:
@@ -519,30 +519,182 @@ export const copy = {
   },
 
   /* --------------------------------------------------------------- REPORTING
-     Lives at /reporting (the old /impact address redirects there).           */
+     Lives at /reporting (the old /impact address redirects there).
+
+     A summary of the October 2026 report, which is the ONLY source for every
+     number on the page. The numbers in charts and tables live in
+     content/report.ts; the ones written into sentences below are copied from
+     the same PDF. Say "learners" (the report has no gender data), never
+     "the same test" (the before and after wording differs), and keep
+     "impact" for the report's own name only.                                 */
   impact: {
     hero: {
       kicker: "Reporting",
-      headline: "What's been built.",
+      headline: "Before and after.",
       standfirst:
-        "We count what we can, honestly, and we say where the counting stops. Our first year's figures are being compiled and will be published, in full, with the first annual report.",
+        "Learners in four programmes answered a short seven-question assessment before the workshops and again after. The October 2026 report sets out what changed, where it didn't, and what the next round should do differently.",
     },
-    lead: {
+    downloadLabel: "Download the full impact report (PDF)",
+    inShort: {
       sectionLabel: "In short",
-      sectionHint: "The first year, in brief.",
+      sectionHint: "The report in four numbers.",
+      stats: [
+        {
+          value: "420",
+          label: "learner records across four programmes",
+          note: "200 from Kolhapur, 70 from Shristi, 110 from FEED and 40 from Bandhan-Konnagar.",
+        },
+        {
+          value: "368",
+          label: "learners with a complete assessment before and after",
+          note: "These complete pairs carry the overall results.",
+        },
+        {
+          value: "+28.73",
+          label: "points, the average change in score",
+          note: "From 51.71% correct before to 80.43% after (95% CI 25.32 to 32.14): 2.01 more correct answers out of seven.",
+        },
+        {
+          value: "71.2%",
+          label: "of those learners improved",
+          note: "262 of 368. Another 52 scored the same, and 54 scored lower.",
+        },
+      ],
+      scope:
+        "These are test scores recorded before and after the workshops. With no comparison group and no delayed follow-up, they cannot show lasting learning, changed financial habits, or how much of the change came from the workshops themselves.",
     },
-    subs: {
-      sectionLabel: "The measure",
-      sectionHint: "Reach · Outcomes · Methodology.",
+    who: {
+      sectionLabel: "Who took part",
+      sectionHint: "Four cohorts, seven questions.",
+      heading: "420 learner records. Every available answer counts.",
+      body: [
+        "The records come from four institutional cohorts: **Indo Count** in Kolhapur, **Shristi Corp** and **FEED** in Asansol, and **Bandhan-Konnagar** in Baruipur. Shristi and FEED were delivered online.",
+        "Learners answered seven scored questions before and after. The 368 who answered all seven both times carry the overall results. The other 52 records still count wherever their answers allow, question by question, and a missing answer is never scored as wrong.",
+      ],
+      tableCaption: "Learner records and complete before-and-after pairs, by cohort",
+      tableNote: "Record totals are not a count of workshops or teaching hours.",
+      testedHeading: "What the seven questions cover",
+      baselineHeading: "Where learners started",
+      baselineNote:
+        "Asked at the start and not scored. These describe where learners began, not results of the programme.",
+      baselineClose:
+        "Bank accounts were already widespread; deposit use was less common. That supports teaching how to use financial tools well, alongside access and safety.",
+    },
+    overall: {
+      sectionLabel: "Overall",
+      sectionHint: "The same 368 learners, before and after.",
+      heading: "A strong average gain, with variation between learners.",
+      body: [
+        "The average score rose from **3.62 to 5.63** out of seven, a gain of **2.01 correct answers** (95% CI +1.77 to +2.25). The median learner gained two.",
+        "Just under three in ten had no increase, and 54 scored lower after than before. An unchanged total can also hide gains on some questions and losses on others.",
+      ],
+      figCaption:
+        "Change in score for each of the 368 learners, after minus before, out of seven. Every gain, tie and decline stays in the calculation.",
+      axisTitle: "Change in score (after minus before, out of 7)",
+      legend: { lower: "Scored lower", none: "No change", higher: "Scored higher" },
+      tableToggle: "Show as a table",
+      summaryLine: "Median change +2 · Observed range −4 to +7",
     },
     pullQuote: {
-      mark: "On what the numbers leave out",
-      text:
-        "A figure can tell you a woman opened an account. It can't tell you she opened it in her own name, and what that cost her to do.",
+      mark: "From the report",
+      text: "A positive mean does not describe every learner.",
+    },
+    byCohort: {
+      sectionLabel: "By cohort",
+      sectionHint: "Where learners started shaped the gain.",
+      heading: "The starting point matters when reading a gain.",
+      intro:
+        "All four cohorts' averages rose. The largest gain came where scores started lowest, and the smallest where they started highest.",
+      figCaption:
+        "Average score before and after for the same learners within each cohort, as percentage correct.",
+      tableCaption: "Gain by cohort in percentage points, with 95% confidence intervals and how many learners moved each way",
+      notes: [
+        "**FEED** started lowest, at 36.08%, and gained the most: **39.83 points** across 99 learners. Eighty improved and six scored lower. More room to rise matters when reading that result.",
+        "**Indo Count** rose from 51.58% to 79.32% across 172 learners, a gain of 27.74 points. It also had 37 learners score lower, 21.5% of its matched pairs. Both shape the overall result.",
+        "**Shristi Corp** rose from 66.10% to 85.71% across 59 learners, a gain of 19.61 points.",
+        "**Bandhan-Konnagar** started highest, at 70.68%, and reached 89.10% across 38 learners, a gain of 18.42 points.",
+      ],
+      caveat:
+        "These differences describe outcomes and starting knowledge. They do not show that one cohort was taught better than another.",
+      bandsHeading: "Starting scores tell different stories",
+      bandsIntro:
+        "The report also grouped the 368 learners by how many questions they answered correctly at the start.",
+      bandsCaption:
+        "Average change by starting score, in percentage points. These bands were created for this analysis.",
+      bandsBody: [
+        "Learners who started on 0 to 2 correct answers gained **3.86 answers** on average. Those who started on 5 to 7 gained **0.20**, and its confidence interval includes zero.",
+        "Part of that is the ceiling. After the workshops, **162 of 368** (44.0%) scored a perfect seven, against 24 (6.5%) before, so high starters had little room left to show. Grouping by starting score also invites regression to the mean, where unusually low or high scores drift toward typical values on a retest. So these bands do not show that the programme works better for one kind of learner.",
+        "The report's practical answer: a short baseline check to vary practice and challenge, and harder applications for learners who already know the basics.",
+      ],
+      bandsTableCaption: "Learners by starting score: average score before and after, out of seven, and how many moved each way",
+    },
+    byQuestion: {
+      sectionLabel: "By question",
+      sectionHint: "Seven concepts, 391 to 399 answers each.",
+      heading: "Interest costs became clearer. Budgeting needs more practice.",
+      intro:
+        "Each question counts every learner with a valid answer both before and after, so partial forms still contribute. All seven rose, and every one also had learners who went from right to wrong.",
+      figCaption:
+        "Share answering correctly, before and after, for each question. Every valid pair is included; samples range from 391 to 399.",
+      notes: [
+        "**Monthly interest costs (S03)** made the largest gain, from 42.11% to 81.70% correct. 173 learners moved from wrong to right, and 15 the other way (399 answered both times).",
+        "**OTP and scam protection (S04)** finished highest, at 88.89% correct.",
+        "**Budgeting (S01)** finished at 68.59%, with 125 of 398 still answering incorrectly, and **UPI payment safety (S07)** at 72.12%, with 109 of 391. Both rose, and both need more practice.",
+      ],
+      tableToggle: "Question by question, in detail",
+      tableCaption:
+        "Matched answers per question: correct before and after, change in percentage points with 95% CI, and learners who moved each way",
+      cohortNote: "The full report also breaks these gains down by cohort.",
+    },
+    measure: {
+      sectionLabel: "Checking the measure",
+      sectionHint: "One question, tested both ways.",
+      heading: "Keep the primary result. Test what the question changes.",
+      body: [
+        "Question S05 asks whether a long, locked Fixed Deposit is the best place for all emergency savings; the expected answer is no. A comprehension concern about it was recorded in the original Shristi session, where correct answers fell from **12 of 12 to 5 of 12**.",
+        "So the report ran the numbers again with S05 removed from both the before and after scores.",
+      ],
+      tableCaption: "Average gain with and without S05, in percentage points, with 95% confidence intervals",
+      after: [
+        "For the same 368 learners, leaving S05 out moves the gain from 28.73 to 30.30 points. It does not raise every cohort: FEED's goes from 39.83 to 39.56. Six questions also measure a narrower set of concepts, so the seven-question score stays the main result.",
+        "The report recommends piloting S05's wording and translations with learners' own explanations.",
+      ],
+    },
+    next: {
+      sectionLabel: "Next round",
+      sectionHint: "Recommendations, not changes already made.",
+      heading: "Turn the patterns into a better next round.",
+      intro:
+        "The findings point to practical changes in teaching and measurement. These are recommendations, not claims about changes already made.",
+      nextLabel: "Next delivery decision",
+      close:
+        "To make the next comparison more informative, the report asks for dates, attendance, language, administration mode and instrument version to be recorded alongside each assessment, and for any comparison group to be planned before delivery.",
+    },
+    scope: {
+      sectionLabel: "Scope",
+      sectionHint: "What the evidence supports.",
+      heading: "What this shows, and what it doesn't.",
+      items: [
+        "**What it shows.** Recorded test performance, before and after, for learners in four cohorts.",
+        "**What it cannot show.** There was no comparison group and no usable delayed follow-up, so these results cannot establish lasting learning, changed financial behaviour, or how much of the change came from the workshops.",
+        "**How far to lean on it.** The assessment is brief, and its before and after wording differs. Confidence intervals assume learners are independent and do not account for shared workshop conditions or measurement bias. Differences between cohorts and between starting-score groups are descriptive.",
+        "**What was checked.** The numbers were checked for internal agreement between recorded answers, scoring and the reporting tables in the spreadsheet. That is not independent verification in the field.",
+      ],
+      methodsToggle: "How the numbers were calculated",
+      methods: [
+        "The reconciled Data Master spreadsheet, holding the project's recorded paper-questionnaire answers, was the sole numerical source: 420 records.",
+        "Each of the seven questions scores one point for an answer that matches the key, for a score from 0 to 7. Missing answers stay missing and are never scored as wrong. Three context questions are not scored.",
+        "Each learner's change is the after score minus the before score, and the average weights every learner equally. A change in percentage points is 100 × the mean change ÷ 7.",
+      ],
+      methodsTableCaption: "Overall statistics for the 368 complete pairs",
+      methodsClose:
+        "These cross-checks support the recorded pattern, not a claim about what produced it. Of the 52 records without a complete pair, 34 had a complete before score, averaging 3.79 out of 7 against 3.62 for the complete pairs. Why answers are missing is not established.",
     },
     reports: {
-      sectionLabel: "Annual reports",
-      sectionHint: "Published yearly. Newest first.",
+      sectionLabel: "The full report",
+      sectionHint: "Every table, the methods and the sources.",
+      body:
+        "The PDF holds every table and chart summarised here, plus the cohort-by-question breakdown, the full methods, and where each number sits in the spreadsheet.",
     },
     closing: {
       sectionLabel: "And the rest",

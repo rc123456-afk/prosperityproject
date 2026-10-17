@@ -126,6 +126,9 @@ export function ProgrammesClosing() {
               <Link className="tertiary" href="/contact">
                 Run one with us <span aria-hidden="true">→</span>
               </Link>
+              <Link className="tertiary" href="/reporting">
+                Read the results <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>

@@ -170,7 +170,6 @@
   .curr-hero, .about-hero { padding-top: 56px; }
   .gallery-hero { padding-top: 48px; }
   .workshops, .stories { gap: 40px; }
-  .impact-subs { gap: 48px; }
   .story-set { gap: 44px; }
   .hero__inner {
     min-height: 70vh;
@@ -178,7 +177,7 @@
     padding: 80px var(--gutter) 64px;
   }
 
-  /* -- Impact annual reports: stack year / title / status -- */
+  /* -- Reporting: stack the report list's date / title / size -- */
   .report-row { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
   .report-row__status { white-space: normal; }
 

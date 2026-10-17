@@ -322,73 +322,521 @@
 }
 
 /* ================================================================
-   IMPACT
+   REPORTING (/reporting): a summary of the October 2026 report.
+   Charts are plain HTML from components/impact/charts.tsx. Colours stay
+   inside the three-colour palette, as in the report's own charts:
+   marigold-deep = after / gains, ink = no change, ink-55 = declines.
    ================================================================ */
-.impact-lead {
-  font-family: var(--font-body);
-  font-size: clamp(22px, 2vw, 30px);
-  line-height: 1.5;
-  color: var(--ink);
-  max-width: 46rem;
-  text-wrap: pretty;
+
+/* The grid's 1fr column keeps a min-content floor, so a wide table would
+   widen the whole page on a phone. Let the column shrink; tables scroll
+   inside their own wrapper instead. */
+.rp-section .curr-origin__grid > * { min-width: 0; }
+
+/* ---- Download (hero and foot of page) ---- */
+.rp-download {
+  margin-top: 40px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 14px 24px;
+}
+.rp-download__btn { white-space: normal; text-align: left; min-height: 48px; }
+.rp-download__arrow { font-size: 15px; line-height: 1; }
+.rp-download__meta {
   margin: 0;
-}
-.impact-lead .slot {
-  font-family: var(--font-mono);
-  font-feature-settings: "tnum","lnum";
-  font-size: 0.86em;
-  color: var(--marigold-deep);
-  white-space: nowrap;
-}
-.impact-lead em { font-style: italic; }
-
-/* "Coming soon" marker — used where verified figures/text will land */
-.impact-soon {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--marigold-deep);
-  white-space: nowrap;
-}
-
-.impact-subs { display: flex; flex-direction: column; gap: 72px; }
-.impact-sub__num {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--marigold-deep);
-  margin: 0 0 14px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
 }
-.impact-sub__head {
+
+/* ---- Type ---- */
+.rp-head {
   font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(28px, 3vw, 42px);
-  line-height: 1.06;
-  letter-spacing: -0.018em;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.016em;
+  font-variation-settings: "opsz" 72, "SOFT" 25;
   color: var(--ink);
-  font-variation-settings: "opsz" 60, "SOFT" 25;
-  margin: 0 0 24px;
+  margin: 0 0 28px;
+  max-width: 22ch;
   text-wrap: balance;
 }
-.impact-sub__body p {
+.rp-subhead {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(23px, 2vw, 29px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 36;
+  color: var(--ink);
+  margin: 72px 0 20px;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.rp-body p,
+.rp-body-p {
   font-family: var(--font-body);
-  font-size: clamp(17px, 1.2vw, 20px);
-  line-height: 1.66;
+  font-size: clamp(17px, 1.2vw, 19px);
+  line-height: 1.65;
   color: var(--ink);
   max-width: 40rem;
   margin: 0 0 var(--s-5);
   text-wrap: pretty;
 }
-.impact-sub__body p:last-child { margin: 0; }
-.impact-sub__body em { font-style: italic; }
-.impact-sub__body strong { font-weight: 600; }
-.impact-sub__body .slot {
-  font-family: var(--font-mono); font-feature-settings: "tnum","lnum";
-  font-size: 0.9em; color: var(--marigold-deep); white-space: nowrap;
+.rp-body p:last-child { margin-bottom: 0; }
+.rp-body + .rp-body-p, .rp-body-p + .rp-body { margin-top: var(--s-5); }
+.rp-body strong, .rp-notes strong { font-weight: 600; }
+.rp-body em, .rp-notes em { font-style: italic; }
+.rp-note {
+  margin: 16px 0 0;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.65;
+  color: var(--ink-70);
+  max-width: 40rem;
+}
+.rp-scope {
+  margin: 32px 0 0;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.7;
+  color: var(--ink-70);
+  max-width: 44rem;
+}
+.rp-report-body { margin-top: 28px; }
+
+/* ---- 01 Stat tiles ---- */
+.rp-stats {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  border-top: 1px solid var(--ink-30);
+}
+.rp-stat { padding: 28px 0 32px; border-bottom: 1px solid var(--ink-15); }
+.rp-stat__value {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(54px, 5.6vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--marigold-deep);
+  font-variation-settings: "opsz" 144;
+  font-feature-settings: "lnum";
+  margin: 0 0 14px;
+}
+.rp-stat__label {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.35;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 60;
+  margin: 0 0 10px;
+  max-width: 22rem;
+}
+.rp-stat__note {
+  font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+  color: var(--ink-70);
+  margin: 0;
+  max-width: 24rem;
+  text-wrap: pretty;
 }
 
-/* Annual reports list — vertical, extensible */
+/* ---- Tables ---- */
+.rp-table-wrap { margin-top: 40px; max-width: 100%; overflow-x: auto; }
+.rp-table {
+  width: 100%; max-width: 44rem;
+  border-collapse: collapse;
+  font-family: var(--font-body); font-size: 16px; line-height: 1.35;
+  color: var(--ink);
+}
+.rp-table caption {
+  caption-side: top; text-align: left;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.55;
+  color: var(--ink-70);
+  padding: 0 0 14px;
+}
+.rp-table th,
+.rp-table td {
+  padding: 12px 14px 12px 0;
+  text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--ink-15);
+}
+.rp-table th:last-child,
+.rp-table td:last-child { padding-right: 0; }
+.rp-table thead th {
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4;
+  color: var(--ink-70);
+  border-bottom: 1px solid var(--ink-30);
+  padding-top: 0;
+  vertical-align: bottom;
+}
+.rp-table tbody th { font-weight: 400; }
+.rp-table .rp-num { text-align: right; }
+.rp-table td.rp-num,
+.rp-table .rp-num-cell,
+.rp-table .rp-mono {
+  font-family: var(--font-mono); font-size: 14px;
+  font-feature-settings: "tnum","lnum";
+  white-space: nowrap;
+}
+.rp-table .rp-mono { font-size: 13px; white-space: normal; }
+.rp-table tfoot th,
+.rp-table tfoot td { font-weight: 600; border-top: 1px solid var(--ink-30); border-bottom: 0; }
+.rp-table .rp-row--key th,
+.rp-table .rp-row--key td { font-weight: 600; }
+.rp-cell-sub {
+  display: block; margin-top: 3px;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 400;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+  white-space: nowrap;
+}
+.rp-table th .rp-cell-sub { white-space: normal; }
+.rp-table--narrow { max-width: 20rem; }
+.rp-table--wide { min-width: 38rem; }
+
+/* ---- 02 What was tested + where learners started ---- */
+.rp-concepts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  border-top: 1px solid var(--ink-15);
+  max-width: 44rem;
+}
+.rp-concepts li {
+  display: flex; gap: 14px; align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ink-15);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.4;
+}
+.rp-code {
+  flex: none;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--marigold-deep);
+  font-feature-settings: "tnum","lnum";
+}
+.rp-baseline {
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--ink-30);
+  max-width: 44rem;
+}
+.rp-baseline li {
+  display: grid; grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 24px; align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ink-15);
+}
+.rp-baseline__share {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--marigold-deep);
+  font-variation-settings: "opsz" 96;
+  font-feature-settings: "lnum";
+}
+.rp-baseline__label { font-family: var(--font-body); font-size: 18px; line-height: 1.4; color: var(--ink); }
+.rp-baseline__count {
+  display: block; margin-top: 4px;
+  font-family: var(--font-mono); font-size: 11.5px;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+}
+.rp-baseline + .rp-note + .rp-body-p { margin-top: 28px; }
+
+/* ---- Figures, legends, captions ---- */
+.rp-figure { margin: 48px 0 0; max-width: 46rem; --rp-surface: var(--paper); }
+.section--alt .rp-figure { --rp-surface: var(--paper-deep); }
+.rp-caption {
+  margin-top: 18px;
+  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.55;
+  color: var(--ink-70);
+  max-width: 40rem;
+}
+.rp-axis-title {
+  margin: 10px 0 0; text-align: center;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-70);
+}
+.rp-legend {
+  list-style: none; margin: 0 0 18px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-70);
+}
+.rp-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.rp-swatch { display: inline-block; flex: none; width: 12px; height: 12px; border-radius: 2px; }
+.rp-swatch--higher { background: var(--marigold-deep); }
+.rp-swatch--none { background: var(--ink); }
+.rp-swatch--lower { background: var(--ink-55); }
+.rp-dot {
+  display: inline-block; flex: none;
+  width: 12px; height: 12px; border-radius: 50%;
+  box-sizing: border-box;
+}
+.rp-dot--pre { background: var(--rp-surface, var(--paper)); border: 2px solid var(--ink); }
+.rp-dot--post { background: var(--marigold-deep); }
+
+/* ---- 03 Histogram: one column per change, -7..+7 ---- */
+.rp-hist__plot {
+  height: 220px; padding-top: 22px;
+  display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 2px;
+  border-bottom: 1px solid var(--ink-30);
+}
+.rp-hist__col { position: relative; }
+.rp-hist__bar {
+  position: absolute; bottom: 0; left: 50%;
+  width: min(24px, 100%);
+  transform: translateX(-50%);
+  border-radius: 4px 4px 0 0;
+}
+.rp-hist__col--higher .rp-hist__bar { background: var(--marigold-deep); }
+.rp-hist__col--none .rp-hist__bar { background: var(--ink); }
+.rp-hist__col--lower .rp-hist__bar { background: var(--ink-55); }
+.rp-hist__count {
+  position: absolute; left: 0; right: 0;
+  margin-bottom: 5px;
+  text-align: center;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1;
+  color: var(--ink);
+  font-feature-settings: "tnum","lnum";
+}
+.rp-hist__axis {
+  display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 2px;
+  margin-top: 8px;
+  text-align: center;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+}
+
+/* ---- 03 Improved / unchanged / declined ---- */
+.rp-split { margin-top: 48px; max-width: 46rem; }
+.rp-split__bar { display: flex; gap: 2px; height: 14px; }
+.rp-split__seg { flex-basis: 0; min-width: 2px; }
+.rp-split__seg:first-child { border-radius: 4px 0 0 4px; }
+.rp-split__seg:last-child { border-radius: 0 4px 4px 0; }
+.rp-split__legend {
+  list-style: none; margin: 16px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 14px 24px;
+}
+.rp-split__legend li {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 10px; align-items: center;
+}
+.rp-split__label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-70);
+}
+.rp-split__value {
+  grid-column: 2;
+  font-family: var(--font-display); font-size: 26px; line-height: 1.1;
+  color: var(--ink);
+  font-feature-settings: "lnum";
+}
+.rp-split__share {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+}
+
+/* ---- 04/05 Dumbbell and 04 band bars: label | track | value ---- */
+.rp-db, .rp-bars { --rp-label: 13.5rem; --rp-value: 4.5rem; }
+.rp-db__head, .rp-db__row, .rp-db__axis,
+.rp-bars__row, .rp-bars__axis {
+  display: grid;
+  grid-template-columns: var(--rp-label) minmax(0, 1fr) var(--rp-value);
+  column-gap: 20px;
+}
+.rp-db__head { align-items: end; margin-bottom: 4px; }
+.rp-db__legend { grid-column: 2; margin: 0; }
+.rp-db__gain-head {
+  grid-column: 3; text-align: right;
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.3;
+  color: var(--ink-70);
+}
+.rp-db__row, .rp-bars__row { align-items: stretch; border-bottom: 1px solid var(--ink-15); }
+.rp-db__head + .rp-db__row { border-top: 1px solid var(--ink-30); }
+.rp-bars__row:first-child { border-top: 1px solid var(--ink-30); }
+.rp-db__label, .rp-bars__label {
+  align-self: center;
+  padding: 12px 0;
+  font-family: var(--font-body); font-size: 16px; line-height: 1.3;
+  color: var(--ink);
+}
+.rp-db__sub {
+  display: block; margin-top: 3px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+}
+/* Hairline gridlines drawn on each track, so they run the full row height. */
+.rp-db__track {
+  position: relative; min-height: 40px;
+  background:
+    linear-gradient(var(--ink-15), var(--ink-15)) 0% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 25% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 50% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 75% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 100% 0 / 1px 100% no-repeat;
+}
+.rp-db--values .rp-db__track { min-height: 52px; }
+.rp-db__line {
+  position: absolute; top: 50%;
+  height: 2px; margin-top: -1px;
+  background: var(--marigold-deep);
+}
+.rp-db__dot {
+  position: absolute; top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px var(--rp-surface, var(--paper));
+}
+.rp-db--values .rp-db__line,
+.rp-db--values .rp-db__dot { top: 64%; }
+.rp-db__val {
+  position: absolute; bottom: calc(100% + 6px); left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: 11px; line-height: 1;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+  white-space: nowrap;
+}
+.rp-db__val--post { color: var(--ink); font-weight: 500; }
+.rp-db__gain, .rp-bars__value {
+  align-self: center; text-align: right;
+  font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+  color: var(--ink);
+  font-feature-settings: "tnum","lnum";
+}
+.rp-db__axis, .rp-bars__axis { padding-top: 8px; }
+.rp-db__ticks, .rp-bars__ticks {
+  grid-column: 2;
+  position: relative; height: 14px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1;
+  color: var(--ink-70);
+  font-feature-settings: "tnum","lnum";
+}
+.rp-db__ticks span, .rp-bars__ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+.rp-db__ticks span:first-child, .rp-bars__ticks span:first-child { transform: none; }
+.rp-db__ticks span:last-child, .rp-bars__ticks span:last-child { transform: translateX(-100%); }
+
+.rp-bars__track {
+  position: relative; min-height: 44px;
+  background:
+    linear-gradient(var(--ink-30), var(--ink-30)) 0% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 33.333% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 66.667% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--ink-15), var(--ink-15)) 100% 0 / 1px 100% no-repeat;
+}
+.rp-bars__bar {
+  position: absolute; left: 0; top: 50%;
+  height: 16px; margin-top: -8px;
+  background: var(--marigold-deep);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ---- Notes beside the charts ---- */
+.rp-notes { margin-top: 40px; max-width: 40rem; border-top: 1px solid var(--ink-15); }
+.rp-notes p {
+  margin: 0; padding: 16px 0;
+  border-bottom: 1px solid var(--ink-15);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.rp-figure + .rp-body,
+.rp-table-wrap + .rp-body { margin-top: 40px; }
+
+/* ---- Show-as-table toggles and the methods drawer ---- */
+.rp-details { margin-top: 14px; }
+.rp-details > summary {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px;
+  cursor: pointer; list-style: none;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--marigold-deep);
+  text-decoration: underline; text-underline-offset: 0.28em; text-decoration-thickness: 1px;
+}
+.rp-details > summary::-webkit-details-marker { display: none; }
+.rp-details > summary::before {
+  content: "+"; display: inline-block; width: 12px;
+  font-size: 15px; text-align: center;
+}
+.rp-details[open] > summary::before { content: "\2212"; }
+.rp-details > summary:hover { color: var(--ink); }
+.rp-details > .rp-table-wrap { margin-top: 12px; }
+.rp-details--methods { margin-top: 48px; padding-top: 8px; border-top: 1px solid var(--ink-30); max-width: 44rem; }
+.rp-details--methods > .rp-body { margin-top: 16px; }
+.rp-details--methods .rp-body p { font-size: 17px; }
+
+/* ---- 07 Lessons: what we learned -> next delivery decision ---- */
+.rp-lessons {
+  list-style: none; margin: 32px 0; padding: 0;
+  border-top: 1px solid var(--ink-30);
+  max-width: 52rem;
+  counter-reset: lesson;
+}
+.rp-lesson {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--ink-15);
+  counter-increment: lesson;
+}
+.rp-lesson__head {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(19px, 1.6vw, 23px); line-height: 1.25;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30;
+  margin: 0 0 10px;
+}
+.rp-lesson__head::before {
+  content: counter(lesson, decimal-leading-zero);
+  display: block; margin-bottom: 8px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--marigold-deep);
+}
+.rp-lesson__evidence {
+  margin: 0;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.6;
+  color: var(--ink-70);
+}
+.rp-lesson__label {
+  margin: 0 0 8px;
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--marigold-deep);
+}
+.rp-lesson__label + p {
+  margin: 0;
+  font-family: var(--font-body); font-size: 17px; line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ---- Phones and small tablets ---- */
+@media (max-width: 720px) {
+  .rp-stats, .rp-concepts { grid-template-columns: 1fr; }
+  .rp-lesson { grid-template-columns: 1fr; }
+  .rp-baseline li { grid-template-columns: 5.25rem minmax(0, 1fr); gap: 16px; }
+  .rp-download__btn { width: 100%; justify-content: space-between; }
+  .rp-hist__plot { height: 190px; }
+  .rp-subhead { margin-top: 56px; }
+
+  /* Charts: label and value share a line, the track runs full width below. */
+  .rp-db__head, .rp-db__row, .rp-db__axis,
+  .rp-bars__row, .rp-bars__axis { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
+  .rp-db__legend { grid-column: 1; }
+  .rp-db__gain-head { grid-column: 2; }
+  .rp-db__label, .rp-bars__label { grid-column: 1; grid-row: 1; align-self: start; padding: 14px 0 0; }
+  .rp-db__gain, .rp-bars__value { grid-column: 2; grid-row: 1; align-self: start; padding: 16px 0 0; }
+  .rp-db__track, .rp-bars__track { grid-column: 1 / -1; grid-row: 2; }
+  .rp-db__ticks, .rp-bars__ticks { grid-column: 1 / -1; }
+}
+
+/* Annual reports list: vertical, extensible */
 .reports-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink-30); max-width: 44rem; }
 .report-row {
   display: grid;
@@ -413,10 +861,10 @@
 .report-row__status {
   font-family: var(--font-mono); font-size: 10px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--ink-55);
+  color: var(--ink-70);
   white-space: nowrap;
+  font-feature-settings: "tnum","lnum";
 }
-.report-row__status--soon { color: var(--marigold-deep); }
 
 .impact-closing {
   font-family: var(--font-display); font-style: italic;

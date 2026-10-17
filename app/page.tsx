@@ -256,7 +256,7 @@ function WhereItRuns() {
 
         <div className="places__links">
           <TertiaryLink href="/programmes">{p.linkLabel}</TertiaryLink>
-          <TertiaryLink href="/reporting">How we measure it</TertiaryLink>
+          <TertiaryLink href="/reporting">Read the results</TertiaryLink>
         </div>
       </div>
     </section>
