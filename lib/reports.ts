@@ -1,4 +1,4 @@
-/* Published reports, newest first. The download buttons on /reporting and the
+/* Published reports, newest first. The download buttons on /impact and the
    report list at the foot of the page both read from here, so the file, its
    size and its page count can never disagree between them.
 

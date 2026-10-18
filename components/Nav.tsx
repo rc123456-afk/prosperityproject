@@ -4,7 +4,7 @@
  * Nav — sticky top nav, reusable across every page.
  *   - Wordmark (left)
  *   - 9 flat links (centre): Curriculum · Workshops · Programmes · Resources ·
- *       Stories · Gallery · Reporting · About · Contact
+ *       Impact · Stories · Gallery · About · Contact
  *   - Language switcher EN · हिं · বাং (right).
  * Ported from the Claude Design Nav.jsx; hrefs are real app routes and the
  * active link is derived from the current pathname.
@@ -27,9 +27,9 @@ const NAV_LINKS: { id: string; label: string; href: string }[] = [
   { id: "workshops", label: "Workshops", href: "/workshops" },
   { id: "programmes", label: "Programmes", href: "/programmes" },
   { id: "resources", label: "Resources", href: "/resources" },
+  { id: "impact", label: "Impact", href: "/impact" },
   { id: "stories", label: "Stories", href: "/stories" },
   { id: "gallery", label: "Gallery", href: "/gallery" },
-  { id: "reporting", label: "Reporting", href: "/reporting" },
   { id: "about", label: "About", href: "/about" },
   { id: "contact", label: "Contact", href: "/contact" },
 ];
@@ -45,7 +45,8 @@ function currentId(pathname: string): string {
   if (pathname.startsWith("/resources")) return "resources";
   if (pathname.startsWith("/stories")) return "stories";
   if (pathname.startsWith("/gallery")) return "gallery";
-  if (pathname.startsWith("/reporting")) return "reporting";
+  // /reporting is the old address and serves the same page.
+  if (pathname.startsWith("/impact") || pathname.startsWith("/reporting")) return "impact";
   if (pathname.startsWith("/about")) return "about";
   if (pathname.startsWith("/contact")) return "contact";
   return "home";

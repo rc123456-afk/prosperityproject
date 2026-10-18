@@ -57,9 +57,9 @@ export const copy = {
     intro:
       "The curriculum was built in West Bengal and was never meant to stay there. It has since been taught in Marathi at a textile mill in Maharashtra, and online into Asansol twice: once through a company and once through a grassroots nonprofit. The partners could hardly be more different, and the same ten modules went into every room.",
     linkLabel: "All four programmes",
-    // Points at the published results; the numbers themselves stay on /reporting.
+    // Points at the published results; the numbers themselves stay on /impact.
     figuresNote:
-      "Before-and-after assessment results from all four programmes are on the Reporting page.",
+      "Before-and-after assessment results from all four programmes are on the Impact page.",
     closing: {
       sectionLabel: "Across all four",
       text:
@@ -304,6 +304,23 @@ export const copy = {
       heading: "The classrooms, the materials, the people in the room.",
       linkLabel: "See the full gallery",
     },
+    // §08, the last section: the headline results, pointing to /impact. Each
+    // number is read from copy.impact.inShort by its id, so the two pages can
+    // never disagree; only the labels are written for this page.
+    impactBand: {
+      sectionLabel: "Impact",
+      heading: "Before the workshops, and after.",
+      body:
+        "Learners in all four programmes answered a short seven-question assessment before the workshops and again after. The October 2026 report sets out what changed, and where it didn't.",
+      stats: [
+        { id: "reach", label: "learners across four programmes" },
+        { id: "gain", label: "points: the average score went from 51.71% to 80.43%" },
+        { id: "improved", label: "of learners with complete before-and-after scores improved" },
+      ],
+      scope:
+        "These are test scores recorded before and after the workshops. They do not show lasting change in behaviour.",
+      linkLabel: "See the full results",
+    },
   },
 
   /* -------------------------------------------------------------- CURRICULUM */
@@ -518,8 +535,8 @@ export const copy = {
       "Workshops, hands, materials and the people in the room, in Baruipur near Kolkata and at a mill in Kolhapur. Grouped by where they were taken, loosely in order.",
   },
 
-  /* --------------------------------------------------------------- REPORTING
-     Lives at /reporting (the old /impact address redirects there).
+  /* ------------------------------------------------------------------ IMPACT
+     Lives at /impact. Its old address, /reporting, serves the same page.
 
      A summary of the October 2026 report, which is the ONLY source for every
      number on the page. The numbers in charts and tables live in
@@ -529,7 +546,7 @@ export const copy = {
      "impact" for the report's own name only.                                 */
   impact: {
     hero: {
-      kicker: "Reporting",
+      kicker: "Impact",
       headline: "Before and after.",
       standfirst:
         "Learners in four programmes answered a short seven-question assessment before the workshops and again after. The October 2026 report sets out what changed, where it didn't, and what the next round should do differently.",
@@ -540,21 +557,25 @@ export const copy = {
       sectionHint: "The report in four numbers.",
       stats: [
         {
+          id: "reach",
           value: "400+",
           label: "learners across four programmes",
           note: "420 total learner records: 200 from Kolhapur, 70 from Shristi, 110 from FEED and 40 from Bandhan-Konnagar.",
         },
         {
+          id: "pairs",
           value: "368",
           label: "learners with a complete assessment before and after",
           note: "These complete pairs carry the overall results.",
         },
         {
+          id: "gain",
           value: "+28.73",
           label: "points, the average change in score",
           note: "From 51.71% correct before to 80.43% after (95% CI 25.32 to 32.14): 2.01 more correct answers out of seven.",
         },
         {
+          id: "improved",
           value: "71.2%",
           label: "of those learners improved",
           note: "262 of 368. Another 52 scored the same, and 54 scored lower.",

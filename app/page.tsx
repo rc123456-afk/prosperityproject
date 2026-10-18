@@ -2,9 +2,10 @@
      Hero · photo band ·
      01 What this is · 02 Why I built it · 03 The curriculum ·
      04 How a workshop runs · 05 Where it runs · In the press ·
-     06 Stories · 07 Gallery.
+     06 Stories · 07 Gallery · 08 Impact.
    The arc is deliberate: the person, then the problem, then what he built,
-   then how it is taught, then how far it has reached, then the proof.
+   then how it is taught, then how far it has reached, then the proof, and
+   last the measured results, with the way into the full report.
    §05 is driven by copy.programmes — the same list /programmes renders — so
    the two can never disagree. The press band is un-numbered and driven by
    copy.press, as is the hero line that points to it. (Nav + Footer come from
@@ -23,6 +24,7 @@ import {
 import { renderInline } from "@/components/Rich";
 import { copy } from "@/content/copy";
 import { programmeHeading } from "@/lib/programmes";
+import { LATEST_REPORT } from "@/lib/reports";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -256,7 +258,7 @@ function WhereItRuns() {
 
         <div className="places__links">
           <TertiaryLink href="/programmes">{p.linkLabel}</TertiaryLink>
-          <TertiaryLink href="/reporting">Read the results</TertiaryLink>
+          <TertiaryLink href="/impact">Read the results</TertiaryLink>
         </div>
       </div>
     </section>
@@ -516,6 +518,58 @@ function GalleryPreview() {
   );
 }
 
+/* ---------- 08 · IMPACT ----------
+   The last section: the headline results from the October 2026 report and a
+   way into /impact. Each number is read from copy.impact.inShort by id, so
+   this can never disagree with the Impact page. */
+const IMPACT_STATS = c.impactBand.stats
+  .map((s) => ({
+    ...s,
+    value: copy.impact.inShort.stats.find((t) => t.id === s.id)?.value ?? "",
+  }))
+  .filter((s) => s.value);
+
+function ImpactBand() {
+  const b = c.impactBand;
+  return (
+    <section className="section section--alt">
+      <div className="container">
+        <div className="section-head">
+          <SectionMarker index="08" label={b.sectionLabel} />
+          <h2 className="h2 head" style={{ maxWidth: "20ch" }}>
+            {b.heading}
+          </h2>
+        </div>
+
+        <p className="lede">{b.body}</p>
+
+        <ul className="home-impact__stats">
+          {IMPACT_STATS.map((s) => (
+            <li className="rp-stat" key={s.id}>
+              <p className="rp-stat__value">{s.value}</p>
+              <p className="rp-stat__label">{s.label}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="home-impact__scope">{b.scope}</p>
+
+        <div className="home-impact__actions">
+          <Link className="btn btn--primary" href="/impact">
+            {b.linkLabel} <span aria-hidden="true">→</span>
+          </Link>
+          <a
+            className="btn btn--secondary"
+            href={LATEST_REPORT.file}
+            download={LATEST_REPORT.downloadName}
+          >
+            {copy.impact.downloadLabel} <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   return (
     <>
@@ -529,6 +583,7 @@ export default function Homepage() {
       <InThePress />
       <StoriesPreview />
       <GalleryPreview />
+      <ImpactBand />
     </>
   );
 }

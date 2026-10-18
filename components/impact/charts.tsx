@@ -1,4 +1,4 @@
-/* Charts for /reporting, drawn in plain HTML and CSS from content/report.ts.
+/* Charts for /impact, drawn in plain HTML and CSS from content/report.ts.
    Server components: no chart library and no client JavaScript. Positions are
    inline percentages; everything else is in the `.rp-*` rules in pages.css.
 

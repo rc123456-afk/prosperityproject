@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------------
-   The October 2026 report, as data, for the charts and tables on /reporting.
+   The October 2026 report, as data, for the charts and tables on /impact.
 
    Every number here is copied from the PDF itself,
    public/downloads/prosperity-project-impact-report-2026-10.pdf, and the page

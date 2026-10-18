@@ -1,41 +1,10 @@
-import type { Metadata } from "next";
-import {
-  ImpactHero,
-  InShort,
-  WhoTookPart,
-  Overall,
-  ImpactPullQuote,
-  ByCohort,
-  ByQuestion,
-  CheckingTheMeasure,
-  NextRound,
-  Scope,
-  FullReport,
-  ImpactClosing,
-} from "@/components/impact/sections";
+/* /reporting: the page's address from September to October 2026. It serves
+   the Impact page itself rather than redirecting, and its canonical tag
+   points search engines at /impact.
 
-export const metadata: Metadata = {
-  title: "Reporting",
-  description:
-    "Results of a short before-and-after assessment with 400+ learners in four programmes: 420 learner records, 368 complete pairs, and an average score that rose from 51.71% to 80.43%. With the full October 2026 report to download.",
-  alternates: { canonical: "/reporting" },
-};
+   It must not redirect. Until October 2026, /impact sent a permanent (308)
+   redirect here, and browsers cache those indefinitely. A redirect back
+   from /reporting to /impact would send anyone with that cached redirect
+   round in a loop. */
 
-export default function ImpactPage() {
-  return (
-    <>
-      <ImpactHero />
-      <InShort />
-      <WhoTookPart />
-      <Overall />
-      <ImpactPullQuote />
-      <ByCohort />
-      <ByQuestion />
-      <CheckingTheMeasure />
-      <NextRound />
-      <Scope />
-      <FullReport />
-      <ImpactClosing />
-    </>
-  );
-}
+export { default, metadata } from "../impact/page";

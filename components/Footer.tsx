@@ -9,9 +9,9 @@ const LINKS: { label: string; href: string }[] = [
   { label: "Workshops", href: "/workshops" },
   { label: "Programmes", href: "/programmes" },
   { label: "Resources", href: "/resources" },
+  { label: "Impact", href: "/impact" },
   { label: "Stories", href: "/stories" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Reporting", href: "/reporting" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

@@ -1,4 +1,4 @@
-/* Reporting (served at /reporting; formerly "Impact"). A summary of the
+/* Impact (served at /impact, and at its old address /reporting). A summary of the
    October 2026 report, with the PDF itself one click away at the top and the
    foot of the page. The report is the only source for every number here:
    charts and tables read content/report.ts, sentences read copy.impact.
